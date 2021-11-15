@@ -1,0 +1,3 @@
+C:/Users/bourg/Documents/GitHub/KanaCrush/cmake-build-debug/CMakeFiles/KanaCrush.dir
+C:/Users/bourg/Documents/GitHub/KanaCrush/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/bourg/Documents/GitHub/KanaCrush/cmake-build-debug/CMakeFiles/rebuild_cache.dir
