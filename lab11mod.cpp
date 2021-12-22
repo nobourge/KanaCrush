@@ -17,10 +17,14 @@
 #include <iostream>
 #include <array>
 #include <memory>
+#include <tuple>
 
 #define CARDINALS ("N", "E", "S", "W");
 #define CARDINALS_TUP ((1,0),(0,1),(-1,0),(0,-1));
-#define CARDINALS_LEN 4;
+//#define CARDINALS_LEN 4;
+const int CARDINALS_LEN = 4;
+
+
 
 using namespace std;
 
@@ -52,39 +56,66 @@ public:
         return currentGameState;
     }
 
+    void crush(){
+        //todo
+    };
+
     ///
     /// \param square1
     /// \param origin_cardinal
     /// \param destination_column
     /// \param destination_row
     /// \return
-    tuple search_crush(squareType square1,
-                      tuple origin_cardinal,
+    tuple <int> search_crush(squareType square1,
+                      tuple <int,int> origin_cardinal,
                       int destination_column,
-                      int destination_row) {
-        tuple <int, int> crush;
-        cardinals_and_crushes_tup = make_tuple(0,0);
+                      int destination_row,
+                      tuple <int, int> cardinals_and_crushes_tup) {
+        tuple<int, int> s_w_potential_crush;
 
+        s_w_potential_crush = make_tuple(0, 0);
+
+        //squareType_memory =
         int x;
         //for (auto const& i : CARDINALS)
-        for (int i, i <= CARDINALS_LEN, i++)
+        for (int i = 0; i <= CARDINALS_LEN; i++) {
             cardinal = get<i>(CARDINALS_TUP);
-            if (cardinal == origin_cardinal){
+            if (cardinal == origin_cardinal) {
                 break;
-            }
-            else{
+            } else {
                 int same_type_quantity = 0;
                 while (getSquare(destination_row + get<0>(CARDINALS),
-                                destination_column + get<1>(CARDINALS))
-                                == square1){
+                destination_column + get<1>(CARDINALS))
+                == square1){
                     same_type_quantity++;
                 }
-                if (toCrush <= same_type_quantity){
-                    tuple <int, int> crush_card;
-                    card_and_crush_tup = make_tuple(i, same_type_quantity);
-                    auto cardinals_and_crushes = tuple_cat(cardinals_and_crushes,card_and_crush_tup);
+                if (i == 3) {
+                    //S check N
+                    same_type_quantity += get<0>(s_w_potential_crush);
                 }
+                if (i == 4) {
+                    same_type_quantity += get<1>(s_w_potential_crush);
+                    //todo add cardinal, quantity
+                }
+                if (toCrush <= same_type_quantity) {
+                    tuple<int, int> card_and_crush_tup;
+                    card_and_crush_tup = make_tuple(i, same_type_quantity);
+
+                    //add cardinal and tiles to crush
+                    //todo add ie N,2 & S,1
+                    auto cardinals_and_crushes = tuple_cat(cardinals_and_crushes, card_and_crush_tup);
+
+                } else {
+                    //not enough same_type_quantity to crush but
+                    if (i == 1 || i == 2)
+                    {
+                        //memorize for facing cardinal
+                        get<i>(s_w_potential_crush) = same_type_quantity;
+                    }
+                }
+
             }
+        }
         if (2 < tuple_size<decltype(cardinals_and_crushes_tup)>::value){
             return cardinals_and_crushes_tup;
         }
@@ -103,10 +134,14 @@ public:
         tuple <int, int> origin_cardinal;
         origin_cardinal = make_tuple(row1 - destination_row, column1 - destination_column);
 
+        tuple <int, int> cardinals_and_crushes_tup;
+        cardinals_and_crushes_tup = make_tuple(0,0);
+
         tuple cardinals_and_crushes_tup = search_crush(square1,
                                             origin_cardinal,
                                             destination_column,
-                                            destination_row);
+                                            destination_row,
+                                            cardinals_and_crushes_tup);
         //:todo:
         if (cardinals_and_crushes_tup){
             crush(cardinals_and_crushes_tup)
