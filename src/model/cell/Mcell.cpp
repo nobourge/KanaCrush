@@ -1,28 +1,9 @@
 //
 // Created by bourg on 20-12-21.
 //
-
-#include <FL/Fl.H>
-#include <FL/fl_draw.H>
-#include <FL/Fl_Double_Window.H>
-#include <FL/Fl_Box.H>
-#include <string>
-#include <math.h>
-#include <time.h>
-#include <chrono>
-#include <vector>
-#include <iostream>
-#include <array>
-#include <memory>
-
-#include "src/control/cell/cell.cpp"
-#include "C:/Users/Boss/Desktop/LdP2/KanaCrush/src/view/cell/Vcell.cpp"
+#include "../../src.h"
 
 using namespace std;
-
-const int windowWidth = 350;
-const int windowHeight = 350;
-const double refreshPerSecond = 60;
 
 class Board {
 public:
@@ -90,7 +71,7 @@ public:
                         return true;
                     }
                 }
-        // This checks for a tie (all top squares are occupoed)
+        // This checks for a tie (all top squares are occupied)
         for (x=0; x<columns; x++) if (getSquare(0, x)==Empty) break;
         if (x==columns) {
             currentGameState = Tie;

@@ -2,25 +2,15 @@
 // Created by bourg on 20-12-21.
 //
 
-#include <FL/Fl.H>
-#include <FL/fl_draw.H>
-#include <FL/Fl_Double_Window.H>
-#include <FL/Fl_Box.H>
-#include <string>
-#include <math.h>
-#include <time.h>
-#include <chrono>
-#include <vector>
-#include <iostream>
-#include <array>
-#include <memory>
+#include "../../src.h"
 
-#include "src/control/cell/cell.cpp"
-#include "C:/Users/Boss/Desktop/LdP2/KanaCrush/src/model/cell/Mcell.cpp"
+//#include "../../../src/control/cell/Ccell.cpp"
+//#include "../../../src/model/cell/Mcell.cpp"
 
-const int windowWidth = 350;
-const int windowHeight = 350;
-const double refreshPerSecond = 60;
+//const int windowWidth = 350;
+//const int windowHeight = 350;
+//const double refreshPerSecond = 60;
+
 
 class DisplayBoard {
     const shared_ptr<const Board> board;

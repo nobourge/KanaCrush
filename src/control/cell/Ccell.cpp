@@ -2,25 +2,9 @@
 // Created by bourg on 20-12-21.
 //
 
-#include <FL/Fl.H>
-#include <FL/fl_draw.H>
-#include <FL/Fl_Double_Window.H>
-#include <FL/Fl_Box.H>
-#include <string>
-#include <math.h>
-#include <time.h>
-#include <chrono>
-#include <vector>
-#include <iostream>
-#include <array>
-#include <memory>
+#include "../../src.h"
 
-#include "C:/Users/Boss/Desktop/LdP2/KanaCrush/src/model/cell/Mcell.cpp"
-#include "C:/Users/Boss/Desktop/LdP2/KanaCrush/src/view/cell/Vcell.cpp"
-
-const int windowWidth = 350;
-const int windowHeight = 350;
-const double refreshPerSecond = 60;
+//#include "../../../src/model/cell/Mcell.cpp"
 
 class ControllBoard {
     shared_ptr<Board> board;
@@ -36,6 +20,7 @@ public:
                 }
                 break;
             }
+            //case FL_
             case FL_KEYDOWN:
                 switch (Fl::event_key()) {
                     case ' ':
