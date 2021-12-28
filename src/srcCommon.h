@@ -18,4 +18,8 @@
 #include <array>
 #include <memory>
 
+struct Point {
+    int x,y;
+};
+
 #endif //KANACRUSH_SRC_H

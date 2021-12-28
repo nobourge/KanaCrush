@@ -1,6 +1,8 @@
 CC17 = g++ --std='c++17' -Wall -Wextra -Wpedantic -fmax-errors=2
-CC20 = g++ --std='c++20' -Wall -Wextra -Wpedantic -fmax-errors=2
 CC = $(CC17)
+
+#CC20 = g++ --std='c++20' -Wall -Wextra -Wpedantic -fmax-errors=2
+#CC = $(CC20)
 FORMATTER = astyle --style=google -s2 -S
 
 .PHONY: main

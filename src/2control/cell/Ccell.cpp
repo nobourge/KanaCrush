@@ -2,9 +2,9 @@
 // Created by bourg on 20-12-21.
 //
 
-#include "../../src.h"
+#include "../../srcCommon.h"
 
-//#include "../../../src/model/cell/Mcell.cpp"
+//#include "../../../src/11model/cell/Mcell.cpp"
 
 class ControllBoard {
     shared_ptr<Board> board;
