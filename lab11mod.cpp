@@ -18,18 +18,33 @@
 #include <array>
 #include <memory>
 #include <tuple>
+#include <stdlib.h>     /* srand, rand */
+#include <optional>
 
-#define CARDINALS ("N", "E", "S", "W");
-#define CARDINALS_TUP ((1,0),(0,1),(-1,0),(0,-1));
-//#define CARDINALS_LEN 4;
+
+//std::tuple<char, char, char, char> CARDINALS;
+//CARDINALS = make_tuple("N", "E", "S", "W");
+
+/**
+pair<int, int> CARDINALS_PAIR_ARRAY[4] = {make_pair(1, 0),
+                                          make_pair(1, 0),
+                                          make_pair(1, 0),
+                                          make_pair(1, 0)};
+*/
+
+//AUCUNE VARIABLE GLOBALE
+std::pair<int, int> CARDINALS_PAIR_ARRAY[4] = {{1,0},
+                                          {0,1},
+                                          {-1,0},
+                                          {0,-1}};
 const int CARDINALS_LEN = 4;
 
 
 
 using namespace std;
 
-const int windowWidth = 350;
-const int windowHeight = 350;
+const int windowWidth = 3500;
+const int windowHeight = 3500;
 const double refreshPerSecond = 60;
 
 class Board {
@@ -39,6 +54,8 @@ public:
     //static const int toWin = 3;
     static const int toCrush = 3;
     enum squareType {Empty, Red, Black};
+    squareType candy_types[2] =  {Red, Black};
+    int candy_types_len = 2;
     //enum gameState {RedTurn, BlackTurn, RedWins, BlackWins, Tie};
     enum gameState {Play, Crush, Win};
 private:
@@ -49,13 +66,19 @@ public:
     Board() {
         newGame();
     }
-    squareType getSquare(int row, int column) const {
+    squareType getSquareType(int row, int column) const {
         return board.at(row).at(column);
     }
     gameState getGameState() const {
         return currentGameState;
     }
 
+    void swap(int col1, int row1, int col2, int row2){
+        squareType candy1square_type = getSquareType(row1, col1);
+        board.at(row1).at(col1) = getSquareType(row2, col2);
+        board.at(row2).at(col2) = candy1square_type;
+    }
+    /**
     void crush(){
         //todo
     };
@@ -66,60 +89,51 @@ public:
     /// \param destination_column
     /// \param destination_row
     /// \return
-    tuple <int> search_crush(squareType square1,
-                      tuple <int,int> origin_cardinal,
-                      int destination_column,
-                      int destination_row,
-                      tuple <int, int> cardinals_and_crushes_tup) {
-        tuple<int, int> s_w_potential_crush;
+    std::optional<std::vector<std::pair<int,int>>> search_crush(squareType origin_square_type,
+                                                  std::pair <int,int> origin_cardinal,
+                                                  int destination_column,
+                                                  int destination_row) {
+        std::optional<vector<std::pair<int,int>>> cardinal_and_crush_pair_vec;
+        pair<int,int> N_E_potential_crush = make_pair(0, 0);
 
-        s_w_potential_crush = make_tuple(0, 0);
-
-        //squareType_memory =
-        int x;
-        //for (auto const& i : CARDINALS)
-        for (int i = 0; i <= CARDINALS_LEN; i++) {
-            cardinal = get<i>(CARDINALS_TUP);
-            if (cardinal == origin_cardinal) {
-                break;
-            } else {
+        for (int i = 0; i < CARDINALS_LEN; i++) {
+            const int cardinal_direction_int = i;
+            pair<int, int> cardinal;
+            cardinal = CARDINALS_PAIR_ARRAY[i];
+            if (cardinal != origin_cardinal) {
                 int same_type_quantity = 0;
-                while (getSquare(destination_row + get<0>(CARDINALS),
-                destination_column + get<1>(CARDINALS))
-                == square1){
+                while (getSquareType(destination_row + cardinal.first,
+                destination_column + cardinal.second)
+                == origin_square_type){
                     same_type_quantity++;
                 }
-                if (i == 3) {
-                    //S check N
-                    same_type_quantity += get<0>(s_w_potential_crush);
-                }
-                if (i == 4) {
-                    same_type_quantity += get<1>(s_w_potential_crush);
-                    //todo add cardinal, quantity
-                }
-                if (toCrush <= same_type_quantity) {
-                    tuple<int, int> card_and_crush_tup;
-                    card_and_crush_tup = make_tuple(i, same_type_quantity);
+                const int axis_first_direction = cardinal_direction_int % 2;
+                int axis_first_direction_same_type_quantity = std::get<axis_first_direction>(N_E_potential_crush);
 
-                    //add cardinal and tiles to crush
-                    //todo add ie N,2 & S,1
-                    auto cardinals_and_crushes = tuple_cat(cardinals_and_crushes, card_and_crush_tup);
+                if (toCrush <= (axis_first_direction_same_type_quantity + same_type_quantity)) {
+                    cardinal_and_crush_pair_vec.push_back(std::make_pair(cardinal_direction_int, same_type_quantity));
+                    //cardinal_and_crush_pair_vec.emplace_back(i,same_type_quantity);
 
+                    if(0 < axis_first_direction_same_type_quantity){
+                        cardinal_and_crush_pair_vec.push_back(std::make_pair(axis_first_direction, axis_first_direction_same_type_quantity));
+                    }
                 } else {
                     //not enough same_type_quantity to crush but
-                    if (i == 1 || i == 2)
+                    if (cardinal_direction_int < 2)
                     {
-                        //memorize for facing cardinal
-                        get<i>(s_w_potential_crush) = same_type_quantity;
+                        //memorize for same axis other cardinal direction
+                        std::get<cardinal_direction_int>(N_E_potential_crush) = same_type_quantity;
                     }
                 }
-
             }
         }
-        if (2 < tuple_size<decltype(cardinals_and_crushes_tup)>::value){
-            return cardinals_and_crushes_tup;
+        //return b ? std::optional<std::string>{"Godzilla"} : std::nullopt;
+        if (cardinal_and_crush_pair_vec){
+            return cardinal_and_crush_pair_vec;
         }
+        return {};
     }
+    */
 
     ///
     /// \param column
@@ -129,80 +143,32 @@ public:
         if (currentGameState == Win
             || currentGameState == Crush)
             return false; // Can not move
-        squareType square1 = getSquare(row1, column1);
+        squareType origin_square_type = getSquareType(row1, column1);
 
-        tuple <int, int> origin_cardinal;
-        origin_cardinal = make_tuple(row1 - destination_row, column1 - destination_column);
+        std::pair <int, int> origin_cardinal;
+        origin_cardinal = make_pair(row1 - destination_row,
+                                    column1 - destination_column);
 
-        tuple <int, int> cardinals_and_crushes_tup;
-        cardinals_and_crushes_tup = make_tuple(0,0);
-
-        tuple cardinals_and_crushes_tup = search_crush(square1,
-                                            origin_cardinal,
-                                            destination_column,
-                                            destination_row,
-                                            cardinals_and_crushes_tup);
-        //:todo:
-        if (cardinals_and_crushes_tup){
-            crush(cardinals_and_crushes_tup)
-        }
-
-
-        // Finds where the piece should go
-        //int row = 0;
-        //while (row <rows && getSquare(row, column) == Empty) row+=1;
-        //if (row==0) return false; // Row full
-        //board.at(row-1).at(column)=currentGameState==RedTurn?Red: Black; //make move
-
-
-        //This code checks to see if there are four in a row
-        //Starting in every square and going in four different directions
-        //(Horizonal, vertical, two diagonals)
-        int x;
-        for (int row=0; row<rows; row++)
-            for (int column=0; column<columns; column++)
-                if (getSquare(row, column)!=Empty) {
-                    squareType color = getSquare(row, column);
-
-                    for (x=1; x<toWin; x++)
-                        if (row+x>=rows || getSquare(row+x, column)!=color) break;
-                    if (x==toWin) {
-                        currentGameState=(color==Red)?RedWins: BlackWins;
-                        return true;
-                    }
-                    for (x=1; x<toWin; x++)
-                        if (column+x>=columns || getSquare(row, column+x)!=color) break;
-                    if (x==toWin) {
-                        currentGameState=(color==Red)?RedWins: BlackWins;
-                        return true;
-                    }
-                    for (x=1; x<toWin; x++)
-                        if (row+x>=rows || column+x>=columns || getSquare(row+x, column+x)!=color) break;
-                    if (x==toWin) {
-                        currentGameState=(color==Red)?RedWins: BlackWins;
-                        return true;
-                    }
-                    for (x=1; x<toWin; x++)
-                        if (row+x>=rows || column-x<0 || getSquare(row+x, column-x)!=color) break;
-                    if (x==toWin) {
-                        currentGameState=(color==Red)?RedWins: BlackWins;
-                        return true;
-                    }
-                }
-        // This checks for a tie (all top squares are occupoed)
-        for (x=0; x<columns; x++) if (getSquare(0, x)==Empty) break;
-        if (x==columns) {
-            currentGameState = Tie;
+        /**
+        std::optional<std::vector<std::pair<int,int>>> cardinal_and_crush_pair_vec = search_crush(origin_square_type,
+                                                                                            origin_cardinal,
+                                                                                            destination_column,
+                                                                                            destination_row
+                                                                                            );
+        if (cardinal_and_crush_pair_vec){
+            // Change currentGameState to crush
+            currentGameState = Crush;
             return true;
+            //crush(cardinals_and_crushes)
         }
-        // Change whose turn it is
-        currentGameState = currentGameState==RedTurn?BlackTurn: RedTurn;
-        return true;
+        else{
+         board->swap(col1, row1, destination_column, destination_row);
+        }
+        */
     }
     void newGame() {
-        for (auto &c: board) for (auto &x: c) x = Empty;
-        blackWentFirst=!blackWentFirst;
-        currentGameState = blackWentFirst?BlackTurn: RedTurn;
+        for (auto &c: board) for (auto &x: c) x = candy_types[rand() % candy_types_len] ;
+        currentGameState = Play;
     }
 };
 
@@ -217,10 +183,10 @@ class DisplayBoard {
 public:
     DisplayBoard(const shared_ptr<const Board> board): board{board} {};
     void draw() const {
-        fl_draw_box(FL_FLAT_BOX, 0, 50, 1000, 1000, FL_BLUE);
+        fl_draw_box(FL_FLAT_BOX, 0, 50, 2000, 2000, FL_BLUE);
         for (int x=0; x<Board::columns; x++)
             for (int y=0; y<Board::rows; y++) {
-                switch (board->getSquare(y, x)) {
+                switch (board->getSquareType(y, x)) {
                     case Board::Red:
                         fl_color(FL_RED);
                         break;
@@ -238,24 +204,17 @@ public:
 
         string message;
         switch (board->getGameState()) {
-            case Board::RedTurn:
-                message="Red's Turn";
+            case Board::Play:
+                message="Play";
                 fl_color(FL_RED);
                 break;
-            case Board::BlackTurn:
-                message="Black's Turn";
+            case Board::Crush:
+                message="Crush";
                 fl_color(FL_BLACK);
                 break;
-            case Board::Tie:
-                message="Tie";
-                fl_color(FL_BLUE);
-                break;
-            case Board::RedWins:
-                message="Red Wins!";
-                fl_color(FL_RED);
-                break;
-            case Board::BlackWins:
-                message="Black Wins!";
+
+            case Board::Win:
+                message="Win!";
                 fl_color(FL_BLACK);
                 break;
         }
@@ -273,18 +232,47 @@ ControllBoard class.
 class ControllBoard {
     shared_ptr<Board> board;
 public:
+    bool swapable;
     ControllBoard(shared_ptr<Board> board): board{board} {};
     bool processEvent(const int event) {
+        //static int push[2] = { 0, 0 };
+        int col1;
+        int row1;
+        int destination_column;
+        int destination_row;
         switch (event) {
             case FL_PUSH: {
-                int col = Fl::event_x()/50;
-                if (col>=0 && col<=Board::columns) {
-                    board->move(col);
-                    return true;
+                col1 = Fl::event_x()/50;
+                row1 = Fl::event_y()/50;
+                if (col1 >= 0 && col1<=Board::columns &&
+                    row1 >= 0 && row1<=Board::rows) {
+
+                    //push[0] = col1;
+                    //push[1] = row1;
+                    swapable = true;
                 }
-                break;
+                return 1;
             }
-            case FL_KEYDOWN:
+            case FL_RELEASE: {
+                board->swap(col1, row1, destination_column, destination_row);
+                //board->move(col1, row1, destination_column, destination_row);
+                return 1;
+            }
+            case FL_DRAG: {
+                //The mouse has moved with a button held down. The current button state is in Fl::event_state().
+                // The mouse position is in Fl::event_x() and Fl::event_y().
+                //
+                //In order to receive FL_DRAG events, the widget must return non-zero when handling FL_PUSH.
+                destination_column = Fl::event_x()/50;
+                destination_row = Fl::event_y()/50;
+
+                if (swapable){
+                    //position(offset[0]+Fl::event_x(), offset[1]+Fl::event_y());     // handle dragging
+                    //board->draw();
+                }
+                return 1;
+            }
+            case FL_KEYDOWN:{
                 switch (Fl::event_key()) {
                     case ' ':
                         board->newGame();
@@ -292,6 +280,7 @@ public:
                     case 'q':
                         exit(0);
                 }
+            }
         }
         return false;
     }
@@ -307,12 +296,14 @@ class MainWindow : public Fl_Window {
     ControllBoard controllBoard;
 public:
     MainWindow()
-            :Fl_Window(500, 500, windowWidth, windowHeight, "Lab 11"),
+            //:Fl_Window(y, x, windowWidth, windowHeight, "Lab 11"),
+            :Fl_Window(300, 300, windowWidth, windowHeight, "Lab 11"),
+            //todo: window always centered
              board{make_shared<Board>()},
              displayBoard(board),
              controllBoard(board) {
         Fl::add_timeout(1.0/refreshPerSecond, Timer_CB, this);
-        // resizable(this);
+        resizable(this);
     }
     void draw() override {
         Fl_Window::draw();
