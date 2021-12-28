@@ -12,6 +12,8 @@
 #include <iostream>
 #include <random>
 #include <list>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -96,9 +98,10 @@ int Rectangle::getColor() {
 Cell class.
 --------------------------------------------------*/
 
-class Cell {
+class Cell { 
     Rectangle r;
     vector<int> l{1, 91, 3, 2, 4, 232}; // voir fltk color map
+    
     int index = rand() % l.size();
     int color = l[index];
     bool on=false;
@@ -128,11 +131,6 @@ void Cell::mouseMove(Point mouseLoc){
 }
 void Cell::mouseClick(Point mouseLoc, int colorID){
     if (r.contains(mouseLoc)){
-        // p.x>=center.x-w/2 &&
-        // p.x<center.x+w/2 &&
-        // p.y>=center.y-h/2 &&
-        // p.y<center.y+h/2;
-
         r.setFillColor(colorID);
     }
 }
@@ -246,7 +244,7 @@ class MainWindow : public Fl_Window {
                 else {
                     first_click = Point{Fl::event_x(),Fl::event_y()};
                     cellColor1 = canvas.checkColors(first_click);
-                    cout << cellColor1 << endl;
+                    // cout << cellColor1 << endl;
                 }
                 return 1;
             case FL_KEYDOWN:
@@ -263,6 +261,8 @@ class MainWindow : public Fl_Window {
 };
 
 int main(int argc, char *argv[]) {
+    // it changes the seed of the rand method
+    srand(time(NULL));
     MainWindow window;
     window.show(argc, argv);
     return Fl::run();
