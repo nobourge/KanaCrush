@@ -27,9 +27,6 @@ struct Point {
     int x,y;
 };
 
-/*--------------------------------------------------
-Rectangle class.
---------------------------------------------------*/
 
 class Rectangle{
     Point center;
@@ -74,9 +71,6 @@ int Rectangle::getColor() {
     return fillColor;
 }
 
-/*--------------------------------------------------
-Cell class.
---------------------------------------------------*/
 
 class Cell {
     Rectangle r;
@@ -121,10 +115,6 @@ int Cell::retColor(){
     return r.getColor();
 }
 
-/*--------------------------------------------------
-Canvas class.
---------------------------------------------------*/
-
 class Canvas{
     vector<Cell> cells;
     vector<int> colors;
@@ -141,8 +131,6 @@ public:
 Canvas::Canvas(){
     for (int i=0;i<90;i++)
         cells.push_back(Cell{Point{50*(i%9)+25,50*(i/10)+25},50,50});
-// You could also write:
-//        cells.push_back({Point{50*(i%10)+25,50*(i/10)+25},40,40});
 }
 void Canvas::draw() {
     for (auto &c:cells) c.draw();
@@ -184,10 +172,6 @@ void Canvas::checkIfThree(){
         t++;
     }
 }
-
-/*--------------------------------------------------
-ControllBoard class.
---------------------------------------------------*/
 
 class ControllBoard {
     Canvas canvas;
@@ -241,10 +225,7 @@ public:
         return false;
     }
 };
-
-/*--------------------------------------------------
-MainWindow class.
---------------------------------------------------*/
+*/
 
 class MainWindow : public Fl_Window {
     Canvas canvas;

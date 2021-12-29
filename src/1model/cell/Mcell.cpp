@@ -31,12 +31,6 @@ int Rectangle::getColor() {
     return fillColor;
 }
 
-/*--------------------------------------------------
-Cell class.
---------------------------------------------------*/
-
-
-
 Cell::Cell(Point center,int w, int h):
         r(center,w,h,FL_BLACK, color){}
 void Cell::draw(){

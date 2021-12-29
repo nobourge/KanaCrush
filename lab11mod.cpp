@@ -70,6 +70,7 @@ int Tempo::getColor(int id) {
         return color2;
 }
 
+/**
 class Rectangle{
     Point center;
     int w,h;
@@ -113,9 +114,6 @@ int Rectangle::getColor() {
     return fillColor;
 }
 
-/*--------------------------------------------------
-Cell class.
---------------------------------------------------*/
 
 class Cell {
     Rectangle r;
@@ -158,6 +156,7 @@ int Cell::checkColors(Point mouseLoc) {
 int Cell::retColor(){
     return r.getColor();
 }
+*/
 
 class Canvas{
     vector<Cell> cells;
@@ -346,11 +345,6 @@ public:
 };
 
 
-/*--------------------------------------------------
-DisplayBoard class.
---------------------------------------------------*/
-
-
 class DisplayBoard {
 
     const shared_ptr<const Board> board;
@@ -399,9 +393,6 @@ public:
     }
 };
 
-/*--------------------------------------------------
-ControllBoard class.
---------------------------------------------------*/
 
 class ControllBoard {
     shared_ptr<Board> board;
@@ -459,11 +450,7 @@ public:
         return false;
     }
 };
-
-/*--------------------------------------------------
-MainWindow class.
---------------------------------------------------*/
-
+/**
 class MainWindow : public Fl_Window {
     shared_ptr<Board> board;
     DisplayBoard displayBoard;
@@ -498,3 +485,4 @@ int main(int argc, char *argv[]) {
     window.show(argc, argv);
     return Fl::run();
 }
+*/

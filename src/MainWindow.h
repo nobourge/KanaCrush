@@ -6,13 +6,28 @@
 #define KANACRUSH_MAINWINDOW_H
 
 #include "observer.h"
-#include "crush.h"
 #include "board.h"
+#include "src/2control/Cboard.h"
 #include "candy.h"
 
 const int windowWidth = 3500;
 const int windowHeight = 3500;
 const double refreshPerSecond = 60;
 
+class MainWindow : public Fl_Window {
+    //M
+    shared_ptr<Board> board;
+    //V
+    DisplayBoard displayBoard;
+    //C
+    ControlBoard controlBoard;
+public:
+    MainWindow();
+    void draw() {}
+    //int handle(int event) override {}
+    int handle() {return controlBoard.processEvent(event);}
+    //static void Timer_CB(void *userdata) {}
+    static void Timer_CB() {}
+};
 
 #endif //KANACRUSH_MAINWINDOW_H
