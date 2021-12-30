@@ -5,13 +5,16 @@
 #include "Vboard.h"
 
 DisplayBoard::DisplayBoard(const shared_ptr<const Board> board): board{board} {};
+
 void DisplayBoard::draw() const
 {
+    for (auto &c:cells) c.draw();
+    /**
     fl_draw_box(FL_FLAT_BOX, 0, 50, 2000, 2000, FL_BLUE);
     for (int x=0; x<Board::columns; x++)
         for (int y=0; y<Board::rows; y++)
         {
-            Cell current_cell
+            //Cell current_cell
             switch (board->getSquareType(y, x))
             {
                 case Board::Red:
@@ -51,5 +54,6 @@ void DisplayBoard::draw() const
     int width{0}, height{0};
     fl_measure(message.c_str(), width, height, false);
     fl_draw(message.c_str(), 175-width/2, 30);
+    */
 }
 

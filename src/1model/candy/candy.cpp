@@ -8,12 +8,6 @@ Candy::Candy(int i, int j) {
     type = rand() % 6 + 1;
     row = i;
     col = j;
-    effect = 0;
-    isMove = false;
-}
-
-Candy::Candy(const Candy &other) {
-    this->type = other.type;
 }
 
 Candy::Candy(int type) {

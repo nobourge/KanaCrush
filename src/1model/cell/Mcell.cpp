@@ -36,24 +36,7 @@ Cell::Cell(Point center,int w, int h):
 void Cell::draw(){
     r.draw();
 }
-void Cell::mouseMove(Point mouseLoc){
-    if (r.contains(mouseLoc)){
-        r.setFrameColor(FL_RED);
-    }
-    else {
-        r.setFrameColor(FL_BLACK);
-    }
-}
-void Cell::mouseClick(Point mouseLoc, int colorID){
-    if (r.contains(mouseLoc)){
-        r.setFillColor(colorID);
-    }
-}
-int Cell::checkColors(Point mouseLoc) {
-    if (r.contains(mouseLoc)) {
-        return r.getColor();
-    }
-}
-int Cell::retColor(){
+
+int Cell::getColor(){
     return r.getColor();
 }

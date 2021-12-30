@@ -6,7 +6,15 @@
 
 Board::Board() {
     newGame();
+    crush();
 }
+
+void Board::newGame() {
+    int types_quantity = 6:
+    for (auto &c: board) for (auto &x: c) x = squareType[(rand() % types_quantity - 1) + 1] ;
+    currentGameState = Play;
+}
+
 squareType Board::getSquareType(int row, int column) const {
     return board.at(row).at(column);
 }
@@ -19,20 +27,20 @@ void Board::swap(int row1, int col1, int row2, int col2){
     board.at(row1).at(col1) = getSquareType(row2, col2);
     board.at(row2).at(col2) = candy1square_type;
 }
-/**
+
 void Board::swap(Candy *candy1, Candy *candy2) {
     int type = candy1->getType();
     candy1->setCandy(candy2->getType());
     candy2->setCandy(type);
 }
 
-bool Board::crushFrom(int x, int y){
     ///
     /// \param square1
     /// \param origin_cardinal
     /// \param destination_column
     /// \param destination_row
     /// \return
+bool Board::crushFrom(int x, int y){
     std::optional<std::vector<std::pair<int,int>>> search_crush(squareType origin_square_type,
             std::pair <int,int> origin_cardinal,
             int destination_column,

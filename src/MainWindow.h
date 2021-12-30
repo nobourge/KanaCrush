@@ -5,10 +5,12 @@
 #ifndef KANACRUSH_MAINWINDOW_H
 #define KANACRUSH_MAINWINDOW_H
 
-#include "observer.h"
-#include "board.h"
-#include "src/2control/Cboard.h"
-#include "candy.h"
+#include "1model/Mboard.h"
+#include "2control/Cboard.h"
+#include "3view/Vboard.h"
+//#include "candy.h"
+//#include "observer.h"
+
 
 const int windowWidth = 3500;
 const int windowHeight = 3500;

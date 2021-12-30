@@ -9,7 +9,6 @@ class Candy {
 
 public:
     Candy(int i, int j);
-    Candy(const Candy &other);
     Candy(int type);
 
     void setCandy(int type);

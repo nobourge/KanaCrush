@@ -5,20 +5,18 @@
 #ifndef KANACRUSH_CELL_H
 #define KANACRUSH_CELL_H
 
+#include "../../1model/cell/Mcell.h"
 
 #include <stdlib.h>     /* srand, rand */
-#include "srcCommon.h"
 
-struct Point {
-    int x,y;
-};
 
-class Rectangle{
-    Point center;
+class VRectangle{
+    const shared_ptr<const Rectangle> rectangle;
+    center;
     int w,h;
     Fl_Color fillColor, frameColor;
 public:
-    Rectangle(Point center,int w, int h,
+    VRectangle(const shared_ptr<const Rectangle> rectangle): rectangle{rectangle} {},
               Fl_Color frameColor=FL_BLACK,
               Fl_Color fillColor=FL_WHITE);
     void draw();
@@ -28,19 +26,14 @@ public:
     int getColor();
 };
 
-class Cell {
-    Rectangle r;
+class VCell {
+    //const shared_ptr<const Cell> cell;
     vector<int> l{1, 91, 3, 2, 4, 232}; // voir fltk color map
     int index = rand() % l.size();
     int color = l[index];
-    bool on=false;
 public:
-    Cell(Point center,int w, int h);
+    VCell(Point center,int w, int h);
     void draw();
-    void mouseMove(Point mouseLoc);
-    void mouseClick(Point mouseLoc1, int colorID);
-    int checkColors(Point mouseLoc);
-    int retColor();
 };
 
 #endif //KANACRUSH_CELL_H

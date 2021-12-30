@@ -5,7 +5,7 @@
 #ifndef KANACRUSH_VBOARD_H
 #define KANACRUSH_VBOARD_H
 
-#include "Vcell.h"
+#include "cell/Vcell.h"
 
 class DisplayBoard {
     const shared_ptr<const Board> board;

@@ -17,10 +17,11 @@
 #include <iostream>
 #include <array>
 #include <memory>
+#include <stdlib.h>     /* srand, rand */
 
-#include "src/model/cell/Mcell.cpp"
-#include "src/control/cell/Ccell.cpp"
-#include "src/view/cell/Vcell.cpp"
+
+#include "MainWindow.h"
+
 
 
 
