@@ -1,4 +1,7 @@
 # KanaCrush
+
+![Visualization of the codebase](./diagram.svg)
+
 INFO-F-202
 Langages de programmation 2
 Université libre de Bruxelles
