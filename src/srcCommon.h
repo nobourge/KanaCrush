@@ -23,3 +23,5 @@ struct Point {
 };
 
 #endif //KANACRUSH_SRC_H
+
+//view::iota(start, end)
