@@ -158,9 +158,9 @@ class Animation: public Sketchable {
   Animation(shared_ptr<Sketchable> toAnimate)
       : toAnimate{toAnimate} {}
   virtual bool isComplete() =0;
-  virtual void start(int direction, char directionText) {
+  virtual void start(int direction, char directionText, Fl_Color newFillColor) {
     shared_ptr<Animation> a = dynamic_pointer_cast<Animation>(toAnimate);
-    if (a) a->start(1, 'V');
+    if (a) a->start(1, 'V', FL_BLACK);
   };
   bool contains(Point p) const override {
     return toAnimate->contains(p);
@@ -202,6 +202,7 @@ class Bounce: public Animation {
   int time{0};
   int direction = -1;
   char directionText;
+  Fl_Color color;
   Point currentTranslation();
  public:
   Bounce(shared_ptr<Sketchable> toAnimate,
@@ -212,12 +213,13 @@ class Bounce: public Animation {
         direction{direction} {}
   void draw() override;
   bool isComplete() override;
-  void start(int dir, char dirText) override {
-    Animation::start(dir, dirText);
+  void start(int dir, char dirText, Fl_Color newFillColor) override {
+    Animation::start(dir, dirText, newFillColor);
     bouncing = true;
     time = 0;
     direction = dir;
     directionText = dirText;
+    color = newFillColor;
   }
 };
 
@@ -231,10 +233,12 @@ void Bounce::draw() {
 }
 
 Point Bounce::currentTranslation() {
-  if (isComplete())
+  if (isComplete()) {
+    toAnimate->setFillColor(color);
     return {0, 0};
+  }
   else
-    return {0, static_cast<int>(direction*bounceHeight*sin(pi*time/duration)/2)};
+    return {0, static_cast<int>(direction*bounceHeight*time/duration)};
 
 }
 
@@ -260,7 +264,7 @@ class ClickableCell {
   void animationV2(Point mouseLoc);
   void animationH1(Point mouseLoc);
   void animationH2(Point mouseLoc);
-  void animationF(Point mouseLoc, int dir, char direction);
+  void animationF(Point mouseLoc, int dir, char direction, Fl_Color newFillColor);
   Fl_Color getColor(Point mouseLoc);
   void setFillColor(Fl_Color newFillColor);
   bool isComplete();
@@ -273,9 +277,9 @@ void ClickableCell::draw() {
   animation->draw();
 }
 
-void ClickableCell::animationF(Point mouseLoc, int direction, char directionText) {
+void ClickableCell::animationF(Point mouseLoc, int direction, char directionText, Fl_Color newFillColor) {
   if (animation->contains(mouseLoc)) {
-    animation->start(direction, directionText);
+    animation->start(direction, directionText, newFillColor);
   }
 }
 
@@ -362,45 +366,42 @@ void Canvas::mouseRelease(Point mouseLoc) {
     cellColor1 = cells[concCarre1].getColor(mouseLoc);
     cellColor2 = cells[concCarre2].getColor(mouse_release);
     // doing the animation always inwards for all the directions possible
+    // and changing the colors accordingly right after the animation is ended
     if (nDuCarre2Y > nDuCarre1Y) {
       for (auto &c: cells)
-        c.animationF(mouse_click, 1, 'V');
+        c.animationF(mouse_click, 1, 'V', cellColor2);
       for (auto &c: cells)
-        c.animationF(mouse_release, -1, 'V');
+        c.animationF(mouse_release, -1, 'V', cellColor1);
     }
     else if (nDuCarre2Y < nDuCarre1Y) {
       for (auto &c: cells)
-        c.animationF(mouse_release, 1, 'V');
+        c.animationF(mouse_release, 1, 'V', cellColor1);
       for (auto &c: cells)
-        c.animationF(mouse_click, -1, 'V');
+        c.animationF(mouse_click, -1, 'V', cellColor2);
     }
     else if (nDuCarre2X > nDuCarre1X) {
       for (auto &c: cells)
-        c.animationF(mouse_click, 1, 'H');
+        c.animationF(mouse_click, 1, 'H', cellColor2);
       for (auto &c: cells)
-        c.animationF(mouse_release, -1, 'H');
+        c.animationF(mouse_release, -1, 'H', cellColor1);
     }
     else if (nDuCarre2X < nDuCarre1X) {
       for (auto &c: cells)
-        c.animationF(mouse_release, 1, 'H');
+        c.animationF(mouse_release, 1, 'H', cellColor1);
       for (auto &c: cells)
-        c.animationF(mouse_click, -1, 'H');
+        c.animationF(mouse_click, -1, 'H', cellColor2);
     }
-    // changing the colors
-    changeColors(concCarre1, concCarre2);
   }
-}
-
-void Canvas::changeColors(int concCarre1, int concCarre2) {
-  cells[concCarre1].setFillColor(cellColor2);
-  cells[concCarre2].setFillColor(cellColor1);
 }
 
 void Canvas::keyPressed(int keyCode) {
   switch (keyCode) {
     case 'q':
       exit(0);
+    case 32: // Space bar
+      exit(0);
   }
+
 }
 
 /*--------------------------------------------------
