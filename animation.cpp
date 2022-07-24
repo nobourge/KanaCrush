@@ -1,14 +1,11 @@
 // These should include everything you might use
 #include <FL/Fl.H>
 #include <FL/fl_draw.H>
-#include <FL/Fl_Window.H>
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Box.H>
 #include <string>
-#include <cmath>
-//#include <math.h>
-#include <ctime>
-//#include <time.h>
+#include <math.h>
+#include <time.h>
 #include <chrono>
 #include <vector>
 #include <iostream>
@@ -29,13 +26,15 @@ using namespace std;
 const int windowWidth = 450;
 const int windowHeight = 450;
 const double refreshPerSecond = 60;
-enum Colors{Red, Orange, Yellow, Green, Blue, Purple, White};
 enum gameState {Ready, Crush, Win, Loss};
-// char Cols[6] {'1', '2', '3', '4', '91', '232'};
 int Cols[6] {1, 2, 3, 4, 91, 232};
-// enum Cols {FL_RED, FL_ORANGE, FL_YELLOW, FL_GREEN, FL_BLUE, FL_PURPLE};
-// char Cols {FL_RED, FL_ORANGE, FL_YELLOW, FL_GREEN, FL_BLUE, FL_PURPLE};
 
+
+/*--------------------------------------------------
+concatenate method.
+
+Used to concatenate 2 ints into 1.
+--------------------------------------------------*/
 unsigned concatenate(unsigned x, unsigned y) {
     unsigned pow = 10;
     while(y >= pow)
@@ -43,6 +42,9 @@ unsigned concatenate(unsigned x, unsigned y) {
     return x * pow + y;        
 }
 
+/*--------------------------------------------------
+Point structure.
+--------------------------------------------------*/
 struct Point {
   int x,y;
 };
@@ -56,6 +58,7 @@ class Sketchable {
   virtual bool contains(Point p) const =0;
   virtual Point getCenter() const =0;
   virtual Fl_Color getColor(Point mouseLoc) const =0;
+  virtual void setFillColor(Fl_Color newFillColor) =0;
   virtual ~Sketchable() {};
 };
 
@@ -155,9 +158,9 @@ class Animation: public Sketchable {
   Animation(shared_ptr<Sketchable> toAnimate)
       : toAnimate{toAnimate} {}
   virtual bool isComplete() =0;
-  virtual void start() {
+  virtual void start(int direction, char directionText) {
     shared_ptr<Animation> a = dynamic_pointer_cast<Animation>(toAnimate);
-    if (a) a->start();
+    if (a) a->start(1, 'V');
   };
   bool contains(Point p) const override {
     return toAnimate->contains(p);
@@ -168,15 +171,21 @@ class Animation: public Sketchable {
   Fl_Color getColor(Point mouseLoc) const override {
     return toAnimate->getColor(mouseLoc);
   }
+  void setFillColor(Fl_Color newFillColor) {
+    toAnimate->setFillColor(newFillColor);
+  }
 };
 
 /*--------------------------------------------------
 Translation Class
 --------------------------------------------------*/
 struct Translation {
-  Translation(Point p) {
+  Translation(Point p, char directionText) {
     fl_push_matrix();
-    fl_translate(p.x, p.y);
+    if (directionText == 'V')
+      fl_translate(p.x, p.y);
+    else if (directionText == 'H')
+      fl_translate(p.y, p.x);
   }
   ~Translation() {
     fl_pop_matrix();
@@ -191,7 +200,8 @@ class Bounce: public Animation {
   int bounceHeight;
   bool bouncing = false;
   int time{0};
-  int direction;
+  int direction = -1;
+  char directionText;
   Point currentTranslation();
  public:
   Bounce(shared_ptr<Sketchable> toAnimate,
@@ -202,17 +212,19 @@ class Bounce: public Animation {
         direction{direction} {}
   void draw() override;
   bool isComplete() override;
-  void start() override {
-    Animation::start();
+  void start(int dir, char dirText) override {
+    Animation::start(dir, dirText);
     bouncing = true;
     time = 0;
+    direction = dir;
+    directionText = dirText;
   }
 };
 
 void Bounce::draw() {
   if (bouncing)
     ++time;
-  Translation t3{currentTranslation()};
+  Translation t1{currentTranslation(), directionText};
   toAnimate->draw();
   if (isComplete())
     bouncing = false;
@@ -222,8 +234,8 @@ Point Bounce::currentTranslation() {
   if (isComplete())
     return {0, 0};
   else
-    // return {0, static_cast<int>(-1*bounceHeight*sin(pi*time/duration))};
-    return {0, static_cast<int>(-1*bounceHeight*sin(pi*time/duration/2))};
+    return {0, static_cast<int>(direction*bounceHeight*sin(pi*time/duration)/2)};
+
 }
 
 bool Bounce::isComplete() {
@@ -244,8 +256,14 @@ class ClickableCell {
 
   // Methods that draw and handle events
   void draw();
-  void mouseClick(Point mouseLoc);
+  void animationV1(Point mouseLoc);
+  void animationV2(Point mouseLoc);
+  void animationH1(Point mouseLoc);
+  void animationH2(Point mouseLoc);
+  void animationF(Point mouseLoc, int dir, char direction);
   Fl_Color getColor(Point mouseLoc);
+  void setFillColor(Fl_Color newFillColor);
+  bool isComplete();
 };
 
 ClickableCell::ClickableCell(shared_ptr<Animation> animation):
@@ -255,14 +273,22 @@ void ClickableCell::draw() {
   animation->draw();
 }
 
-void ClickableCell::mouseClick(Point mouseLoc) {
+void ClickableCell::animationF(Point mouseLoc, int direction, char directionText) {
   if (animation->contains(mouseLoc)) {
-    animation->start();
+    animation->start(direction, directionText);
   }
 }
 
 Fl_Color ClickableCell::getColor(Point mouseLoc) {
   return animation->getColor(mouseLoc);
+}
+
+bool ClickableCell::isComplete() {
+  return animation->isComplete();
+}
+
+void ClickableCell::setFillColor(Fl_Color newFillColor) {
+  animation->setFillColor(newFillColor);
 }
 
 /*--------------------------------------------------
@@ -294,6 +320,7 @@ class Canvas {
   void mouseClick(Point mouseLoc);
   void keyPressed(int keyCode);
   void mouseRelease(Point mouseLoc);
+  void changeColors(int concCarre1, int concCarre2);
 };
 
 Canvas::Canvas() {
@@ -316,8 +343,6 @@ void Canvas::draw() {
 
 void Canvas::mouseClick(Point mouseLoc) {
   mouse_click = Point{Fl::event_x(),Fl::event_y()};
-  for (auto &c: cells)
-    c.mouseClick(mouseLoc);
 }
 
 void Canvas::mouseRelease(Point mouseLoc) {
@@ -336,20 +361,39 @@ void Canvas::mouseRelease(Point mouseLoc) {
     // getting the colors
     cellColor1 = cells[concCarre1].getColor(mouseLoc);
     cellColor2 = cells[concCarre2].getColor(mouse_release);
+    // doing the animation always inwards for all the directions possible
+    if (nDuCarre2Y > nDuCarre1Y) {
+      for (auto &c: cells)
+        c.animationF(mouse_click, 1, 'V');
+      for (auto &c: cells)
+        c.animationF(mouse_release, -1, 'V');
+    }
+    else if (nDuCarre2Y < nDuCarre1Y) {
+      for (auto &c: cells)
+        c.animationF(mouse_release, 1, 'V');
+      for (auto &c: cells)
+        c.animationF(mouse_click, -1, 'V');
+    }
+    else if (nDuCarre2X > nDuCarre1X) {
+      for (auto &c: cells)
+        c.animationF(mouse_click, 1, 'H');
+      for (auto &c: cells)
+        c.animationF(mouse_release, -1, 'H');
+    }
+    else if (nDuCarre2X < nDuCarre1X) {
+      for (auto &c: cells)
+        c.animationF(mouse_release, 1, 'H');
+      for (auto &c: cells)
+        c.animationF(mouse_click, -1, 'H');
+    }
     // changing the colors
-    // cells.emplace_back(
-    //       make_shared<Bounce>(
-    //           make_shared<Rectangle>(Point{nDuCarre1X*50+25, nDuCarre1Y*50+25}, 50, 50,
-    //           FL_BLACK, cellColor2)));
-    // cells.emplace_back(
-    //       make_shared<Bounce>(
-    //           make_shared<Rectangle>(Point{nDuCarre2X*50+25, nDuCarre2Y*50+25}, 50, 50,
-    //           FL_BLACK, cellColor1)));
-    for (auto &c: cells)
-      c.mouseClick(mouse_click);
-    for (auto &c: cells)
-      c.mouseClick(mouse_release);
+    changeColors(concCarre1, concCarre2);
   }
+}
+
+void Canvas::changeColors(int concCarre1, int concCarre2) {
+  cells[concCarre1].setFillColor(cellColor2);
+  cells[concCarre2].setFillColor(cellColor1);
 }
 
 void Canvas::keyPressed(int keyCode) {
@@ -365,9 +409,6 @@ MainWindow class.
 
 class MainWindow : public Fl_Window {
   Canvas canvas;
-  Point mouse_click, mouse_release, mouse_hover;
-  Colors cellColor1, cellColor2;
-  int nDuCarre1X, nDuCarre1Y, nDuCarre2X, nDuCarre2Y;
 public:
   MainWindow() :Fl_Window(3000, 300, windowWidth, windowHeight, "Kana Crush") {
     Fl::add_timeout(1.0/refreshPerSecond, Timer_CB, this);
