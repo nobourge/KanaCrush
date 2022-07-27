@@ -84,16 +84,18 @@ add_executable(KanaCrush
 #        src/CandyCrush.cpp
 #        src/main.cpp
 #        src/main.h
-#        src/MainWindow.cpp
-#        src/MainWindow.h
+        src/MainWindow.cpp
+        src/MainWindow.h
 #        src/observer.cpp
 #        src/observer.h
 #        src/srcCommon.h
-        animation.cpp
+        src/2view/animation.cpp
+        src/2view/animation.h
 #        lab11mod.cpp
 #        lab11mod.h
-#        main.cpp
-#        working.cpp
-        )
+        src/main.cpp
+        src/main.h
+        src/FL_includes.h
+        src/constants.h src/2view/canvas.cpp src/2view/canvas.h)
 
 target_link_libraries(KanaCrush fltk)

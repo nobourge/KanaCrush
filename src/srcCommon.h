@@ -5,10 +5,8 @@
 #ifndef KANACRUSH_SRC_H
 #define KANACRUSH_SRC_H
 
-#include <FL/Fl.H>
-#include <FL/fl_draw.H>
-#include <FL/Fl_Double_Window.H>
-#include <FL/Fl_Box.H>
+
+#include "FL_includes.h"
 #include <string>
 #include <math.h>
 #include <time.h>
