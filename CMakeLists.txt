@@ -96,6 +96,6 @@ add_executable(KanaCrush
         src/main.cpp
         src/main.h
         src/FL_includes.h
-        src/constants.h src/2view/canvas.cpp src/2view/canvas.h)
+        src/constants.h src/2view/canvas.cpp src/2view/canvas.h src/2view/sketchable.cpp src/2view/sketchable.h)
 
 target_link_libraries(KanaCrush fltk)

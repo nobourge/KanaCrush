@@ -158,10 +158,6 @@ public:
   }
 };
 
-/*--------------------------------------------------
-DispalyBoard class.
---------------------------------------------------*/
-
 class DisplayBoard {
   const shared_ptr<const Board> board;
   int fillColor = 0;
@@ -205,11 +201,6 @@ public:
       }
   }
 };
-
-
-/*--------------------------------------------------
-ControllBoard class.
---------------------------------------------------*/
 
 class ControllBoard {
   shared_ptr<Board> board;
@@ -271,10 +262,6 @@ public:
     return false;
   }
 };
-
-/*--------------------------------------------------
-MainWindow class.
---------------------------------------------------*/
 
 class MainWindow : public Fl_Window {
   shared_ptr<Board> board;

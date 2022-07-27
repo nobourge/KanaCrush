@@ -5,20 +5,13 @@
 #ifndef KANACRUSH_CELL_H
 #define KANACRUSH_CELL_H
 
-
-struct Point {
-    int x,y;
-};
-
-class Rectangle{
-    Point center;
-    int w,h;
-public:
-    Rectangle(Point center,int w, int h);
-};
-
 class Cell {
-public:
-    Cell(Point center,int w, int h);
+  int value;
+
+ public:
+    Cell(int value);
+    int getValue();
+    void setValue(int value);
+
 };
 #endif //KANACRUSH_CELL_H

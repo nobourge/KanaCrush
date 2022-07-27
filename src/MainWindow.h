@@ -11,23 +11,6 @@
 #include "2view/canvas.h"
 
 
-//class MainWindow : public Fl_Window {
-//    //M
-//    shared_ptr<Board> board;
-//    //V
-//    DisplayBoard displayBoard;
-//    //C
-//    ControlBoard controlBoard;
-//public:
-//    MainWindow();
-//    void draw() {}
-//    //int handle(int event) override {}
-//    int handle() {return controlBoard.processEvent(event);}
-//    //static void Timer_CB(void *userdata) {}
-//    static void Timer_CB() {}
-//};
-
-
 class MainWindow : public Fl_Window {
   Canvas canvas;
  public:

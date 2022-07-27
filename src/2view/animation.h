@@ -7,83 +7,8 @@
 
 
 #include <srcCommon.h>
-//#include <src/2view/Vboard.h>
-//#include "Vboard.h"
+#include "sketchable.h"
 
-//class Canvas {
-// public:
-//  Canvas(const shared_ptr<const Board> board);
-//  void draw() const;
-//  void update();
-//  bool isFinished() const;
-//  void setFinished(bool finished);
-// private:
-//  const shared_ptr<const Board> board;
-//  bool finished;
-//};
-
-
-/*--------------------------------------------------
-Sketchable class.
---------------------------------------------------*/
-class Sketchable {
- public:
-  virtual void draw() =0;
-  virtual bool contains(Point p) const =0;
-  virtual Point getCenter() const =0;
-  virtual Fl_Color getColor(Point mouseLoc) const =0;
-  virtual void setFillColor(Fl_Color newFillColor) =0;
-  virtual ~Sketchable() = default;;
-};
-
-
-/*--------------------------------------------------
-Rectangle class.
-
-Use to display a filled-in rectangle on the screen
-with different colors for the fill and the border
---------------------------------------------------*/
-class Rectangle: public Sketchable {
-  Point center;
-  int w, h;
-  Fl_Color fillColor, frameColor;
- public:
-  Rectangle(Point center, int w, int h,
-            Fl_Color frameColor,
-            Fl_Color fillColor);
-  void draw() override;
-  void setFillColor(Fl_Color newFillColor) override;
-  Fl_Color getFillColor() const {
-    return fillColor;
-  }
-  void setFrameColor(Fl_Color newFrameColor);
-  Fl_Color getFrameColor() const {
-    return frameColor;
-  }
-  void setWidth(int new_width) {
-    w = new_width;
-  }
-  void setHeight(int new_height) {
-    h = new_height;
-  }
-  int getWidth() const {
-    return w;
-  }
-  int getHeight() const {
-    return h;
-  }
-  bool contains(Point p) const override;
-  Point getCenter() const override {
-    return center;
-  }
-  Fl_Color getColor(Point mouseLoc) const override {
-    return fillColor;
-  }
-};
-
-/*--------------------------------------------------
-Animation class
---------------------------------------------------*/
 class Animation: public Sketchable {
  protected:
   std::shared_ptr<Sketchable> toAnimate;

@@ -20,7 +20,7 @@ public:
     enum gameState {Play, Crush, Win};
 private:
     //gameState currentGameState = Play;
-    array< array< squareType, columns >, rows > board;
+    std::array< std::array< squareType, columns >, rows > board;
 public:
     Board()
     squareType getSquareType() const
