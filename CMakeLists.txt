@@ -59,10 +59,10 @@ add_executable(KanaCrush
 #        src/1model/button/button.h
 #        src/1model/candy/candy.cpp
 #        src/1model/candy/candy.h
-#        src/1model/cell/Mcell.cpp
-#        src/1model/cell/Mcell.h
-#        src/1model/Mboard.cpp
-#        src/1model/Mboard.h
+        src/1model/cell/Mcell.cpp
+        src/1model/cell/Mcell.h
+        src/1model/board/Mboard.cpp
+        src/1model/board/Mboard.h
 #        src/2view/button/button.cpp
 #        src/2view/button/button.h
 #        src/2view/candy/candy.cpp
@@ -78,24 +78,32 @@ add_executable(KanaCrush
 #        src/3control/cell/Ccell.h
 #        src/3control/Cboard.cpp
 #        src/3control/Cboard.h
-#        src/board.cpp
-#        src/board.h
+#        src/cells.cpp
+#        src/cells.h
 #        src/candy.cpp
 #        src/CandyCrush.cpp
 #        src/main.cpp
 #        src/main.h
-        src/MainWindow.cpp
-        src/MainWindow.h
-#        src/observer.cpp
-#        src/observer.h
-#        src/srcCommon.h
-        src/2view/animation.cpp
-        src/2view/animation.h
-#        lab11mod.cpp
-#        lab11mod.h
+        src/constants.h
+        src/FL_includes.h
+        src/srcCommon.h
+
         src/main.cpp
         src/main.h
-        src/FL_includes.h
-        src/constants.h src/2view/canvas.cpp src/2view/canvas.h src/2view/sketchable.cpp src/2view/sketchable.h)
+        src/MainWindow.cpp
+        src/MainWindow.h
+
+        src/1model/game/game.cpp
+        src/1model/game/game.h
+
+        src/2view/animation.cpp
+        src/2view/animation.h
+
+        src/2view/canvas.cpp
+        src/2view/canvas.h
+        src/2view/sketchable.cpp
+        src/2view/sketchable.h
+
+        )
 
 target_link_libraries(KanaCrush fltk)

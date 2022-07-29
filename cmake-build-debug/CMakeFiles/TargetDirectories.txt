@@ -1,0 +1,3 @@
+/home/noe/Github/KanaCrush/cmake-build-debug/CMakeFiles/KanaCrush.dir
+/home/noe/Github/KanaCrush/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/noe/Github/KanaCrush/cmake-build-debug/CMakeFiles/rebuild_cache.dir

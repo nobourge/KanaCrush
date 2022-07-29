@@ -8,10 +8,12 @@
 
 #include "constants.h"
 
-#include "2view/canvas.h"
 
+#include "2view/canvas.h"
+#include "1model/game/game.h"
 
 class MainWindow : public Fl_Window {
+  Game game;
   Canvas canvas;
  public:
   MainWindow() :Fl_Window(3000, 300, windowWidth, windowHeight, "Kana Crush") {

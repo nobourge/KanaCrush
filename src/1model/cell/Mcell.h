@@ -5,13 +5,22 @@
 #ifndef KANACRUSH_CELL_H
 #define KANACRUSH_CELL_H
 
+#include "srcCommon.h"
+
 class Cell {
   int value;
+  int type;
 
  public:
-    Cell(int value);
-    int getValue();
+    Cell();
+    explicit Cell(int value);
+//    Cell(int type);
+    Cell(int value, int type);
+
+    int getValue() const;
     void setValue(int value);
+    int getType() const;
+    void setType(int type);
 
 };
 #endif //KANACRUSH_CELL_H

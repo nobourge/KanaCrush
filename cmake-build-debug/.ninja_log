@@ -1,0 +1,27 @@
+# ninja log v5
+4	949	1659101504886946718	CMakeFiles/KanaCrush.dir/src/MainWindow.cpp.o	b7a1b566b979de77
+846	1017	1659102143475782819	KanaCrush	cedb98330f05ae83
+0	68	1659105057349975093	build.ninja	8e1504cb6a2ebaeb
+0	1072	1659100882832802844	CMakeFiles/KanaCrush.dir/src/1model/cell/Mcell.cpp.o	fdd4123be0d1a453
+1203	1949	1659100883692801904	CMakeFiles/KanaCrush.dir/src/2view/animation.cpp.o	d8e7ea5a057ba400
+1950	2643	1659100884412801056	CMakeFiles/KanaCrush.dir/src/2view/sketchable.cpp.o	4502c728c066f4c3
+2	946	1659101504886946718	CMakeFiles/KanaCrush.dir/src/main.cpp.o	494468edc1adf870
+1	882	1659101504798948028	CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o	e249ea607a8048eb
+0	846	1659102143291786340	CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o	961eb5119eb2a988
+1855	2791	1659100884556800886	CMakeFiles/KanaCrush.dir/src/2view/canvas.cpp.o	9fd1f4edcab15be4
+0	39	1659105057349975093	build.ninja	8e1504cb6a2ebaeb
+3	819	1659111354127686303	CMakeFiles/KanaCrush.dir/src/1model/cell/Mcell.cpp.o	fdd4123be0d1a453
+5	899	1659111354163686174	CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o	e249ea607a8048eb
+6	996	1659111354223685959	CMakeFiles/KanaCrush.dir/src/main.cpp.o	494468edc1adf870
+819	1582	1659111354879683653	CMakeFiles/KanaCrush.dir/src/MainWindow.cpp.o	b7a1b566b979de77
+899	1712	1659111355019683155	CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o	961eb5119eb2a988
+996	1819	1659111355131682761	CMakeFiles/KanaCrush.dir/src/2view/animation.cpp.o	d8e7ea5a057ba400
+1582	2440	1659111355743680607	CMakeFiles/KanaCrush.dir/src/2view/sketchable.cpp.o	4502c728c066f4c3
+2440	2583	1659111355887680098	KanaCrush	cedb98330f05ae83
+1	863	1659111401143519266	CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o	e249ea607a8048eb
+863	1026	1659111401299518706	KanaCrush	cedb98330f05ae83
+1	834	1659111629230467097	CMakeFiles/KanaCrush.dir/src/1model/cell/Mcell.cpp.o	fdd4123be0d1a453
+834	992	1659111629358469158	KanaCrush	cedb98330f05ae83
+1	721	1659111775344497154	CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o	e249ea607a8048eb
+1	847	1659111775492498907	CMakeFiles/KanaCrush.dir/src/1model/cell/Mcell.cpp.o	fdd4123be0d1a453
+847	1008	1659111775652500807	KanaCrush	cedb98330f05ae83
