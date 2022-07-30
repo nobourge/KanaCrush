@@ -227,6 +227,7 @@ void Board::setCellsValueDistribution() {
     cellsInitRandom();
   }
 }
+
 //void Board::setCellsContainersHeadOrientation(std::string cells_containers_head_orientation) {
 void Board::setCellsContainersHeadOrientation() {
 
