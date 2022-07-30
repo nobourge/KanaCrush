@@ -9,26 +9,34 @@
 //#include "candy/candy.h"
 
 class Board {
+  Board(const std::string &value_distribution, const std::string &cells_containers_head_orientation);
+//cells_ containers size
   static const int rows_quantity = 9;
+  //containers container size
   static const int columns_quantity = 9;
 //  static const int toCrush = 3;
 
-//  std::vector<std::vector<Cell>> cells = {};
-  std::array<std::array<Cell, columns_quantity>, rows_quantity> cells = {};
 
-  //array of array of cells
+  //array of array of cells_
 
-//    std::shared_ptr<std::array<std::array<Cell, columns_quantity>, rows_quantity>> cells;
+     std::array<std::array<Cell, columns_quantity>, rows_quantity> cells_;
+//     std::shared_ptr<std::array<std::array<Cell, columns_quantity>, rows_quantity>> cells_;
+//    static std::shared_ptr<std::array<std::array<Cell, columns_quantity>, rows_quantity>> cells_;
 
-  std::string state;
+  std::string cells_value_distribution_;
+  std::string cells_containers_head_orientation_;
+  std::string state_;
 
  public:
   Board();
 
+  explicit Board(const std::string& value_distribution);
+
   bool crushFrom(int x, int y);
 
-  // cells init random
-    static void cellsInitRandom();
+  // cells_ init random
+  void cellsInitRandom();
+    void cellsInitValueAscent();
 
   //get cell value
   int getCellValue(int row, int column) const;
@@ -50,6 +58,10 @@ class Board {
     void printBoard();
 
 //  void cellsValueSetRandom();
+  void printBoard(const std::string &cells_containers_head_orientation);
+  void setCellsContainersHeadOrientation();
+  void setCellsValueDistribution();
+  void setCellsContainersHeadOrientation(std::string cells_containers_head_orientation);
 };
 
 #endif //KANACRUSH_MBOARD_H

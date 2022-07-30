@@ -78,8 +78,8 @@ add_executable(KanaCrush
 #        src/3control/cell/Ccell.h
 #        src/3control/Cboard.cpp
 #        src/3control/Cboard.h
-#        src/cells.cpp
-#        src/cells.h
+#        src/cells_.cpp
+#        src/cells_.h
 #        src/candy.cpp
 #        src/CandyCrush.cpp
 #        src/main.cpp
@@ -104,6 +104,6 @@ add_executable(KanaCrush
         src/2view/sketchable.cpp
         src/2view/sketchable.h
 
-        )
+        src/test.cpp src/test.h)
 
 target_link_libraries(KanaCrush fltk)

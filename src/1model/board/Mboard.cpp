@@ -3,24 +3,24 @@
 //
 
 #include "Mboard.h"
-
-Board::Board() {
-  std::cout << "Board::Board()" << std::endl;
-  std::cout << cells.at(0).at(0).getValue() << std::endl;
-
-  printBoard();
-
-}
+//
+//Board::Board() {
+//  std::cout << "Board::Board()" << std::endl;
+//  std::cout << cells_.at(0).at(0).getValue() << std::endl;
+//
+//  printBoard();
+//
+//}
 
 
 void Board::newGame() {
 //    int types_quantity = 6;
-//    for (auto &c: cells) for (auto &x: c) x = squareType[(rand() % types_quantity - 1) + 1] ;
+//    for (auto &c: cells_) for (auto &x: c) x = squareType[(rand() % types_quantity - 1) + 1] ;
 //    currentGameState = Play;
 }
 
 //squareType Board::getSquareType(int row, int column) const {
-//    return cells.at(row).at(column);
+//    return cells_.at(row).at(column);
 //}
 //gameState Board::getGameState() const {
 //    return currentGameState;
@@ -33,10 +33,15 @@ void Board::crush() {
 void Board::swap(int row1, int col1, int row2, int col2){
 //    squareType candy1square_type = getSquareType(row1, col1);
 
-  int tmp = cells.at(row1).at(col1).getValue();
-  cells.at(row1).at(col1).setValue(cells.at(row2).at(col2).getValue());
+  int tmp = cells_.at(row1).at(col1).getValue();
+  cells_.at(row1).at(col1).setValue(cells_.at(row2).at(col2).getValue());
 
-    cells.at(row2).at(col2).setValue(tmp);
+    cells_.at(row2).at(col2).setValue(tmp);
+
+//    int tmp = cells_->at(row1).at(col1).getValue();
+//  cells_->at(row1).at(col1).setValue(cells_->at(row2).at(col2).getValue());
+//
+//    cells_->at(row2).at(col2).setValue(tmp);
 }
 
 //
@@ -116,30 +121,129 @@ bool Board::crushFrom(int x, int y)
 }
 //
 //int Board::getCellValue(int row, int column) const {
-//    return cells.at(row).at(column).getValue();
+//    return cells_.at(row).at(column).getValue();
 //}
 //void Board::setCellValue(int row, int column, int value) {
-//    cells.at(row).at(column).setValue(value);
+//    cells_.at(row).at(column).setValue(value);
 //}
-void Board::printBoard() {
-    for (auto &c: cells) {
-        for (auto &x: c) {
-            std::cout << x.getValue() << " ";
+void Board::printBoard(const std::string& cells_containers_head_orientation) {
+    std::cout << "Board::printBoard()" << std::endl;
+    if (cells_containers_head_orientation == "left")
+    {
+        for (auto &c: cells_)
+        {
+            for (auto &x: c)
+            {
+                std::cout << x.getValue() << " ";
+            }
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
+    }
+    else if (cells_containers_head_orientation == "right")
+    {
+      //print containers in reverse order
+        for (auto it = cells_.rbegin(); it != cells_.rend(); ++it)
+        {
+            for (auto &x: *it)
+            {
+                std::cout << x.getValue() << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+    else if (cells_containers_head_orientation == "up") {
+      //print containers heads on first line
+      for (int i = 0; i < cells_.size(); i++)
+        {
+        for (auto &c : cells_) {
+          std::cout << c.at(i).getValue() << " ";
+        }
+      std::cout << std::endl;
+      }
     }
 
+    else if (cells_containers_head_orientation == "down")
+      {
+        //print containers heads on last line
+        for ( int i = cells_.size() - 1; i >= 0; i--)
+        {
+          for (auto &c : cells_) {
+            std::cout << c.at(i).getValue() << " ";
+          }
+          std::cout << std::endl;
+
+        }
+      }
+    else
+    {
+        std::cout << "Board::printBoard() - invalid cells_containers_head_orientation" << std::endl;
+    }
 }
 void Board::cellsInitRandom() {
-  //init random cells
+  //init random cells_
     for (int i = 0; i < rows_quantity; i++) {
         for (int j = 0; j < columns_quantity; j++) {
-//          cells.emplace_back(std::make_shared<Cell>());
-//            cells.push_back() std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
-//            cells[i][j] = std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
+//          cells_.emplace_back(std::make_shared<Cell>());
+//            cells_.push_back() std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
+//            cells_[i][j] = std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
         }
     }
 }
 int Board::getCellType(int row, int column) const {
   return 0;
+}
+void Board::cellsInitValueAscent() {
+
+  std::cout << "cells_ size: " << cells_.size() << std::endl;
+//cells_ set ascending value
+    for (int i = 0; i < rows_quantity; i++) {
+        for (int j = 0; j < columns_quantity; j++) {
+            cells_.at(i).at(j).setValue(i * columns_quantity + j);
+        }
+    }
+
+//  std::vector<std::vector<Cell>> cells_ = {};
+//  auto cells_ = std::array<std::array<Cell("ascent"), columns_quantity>, rows_quantity>;
+//  cells_ = {};
+//  std::array<std::array<Cell(), columns_quantity>, rows_quantity> cells_ = {};
+}
+
+//set cells_container_head_orientation: left, right, up, down set
+void Board::setCellsValueDistribution() {
+
+
+  std::cout << "please insert cells_value_distribution_ (random, ascent)" << std::endl;
+
+  std::cin >> cells_value_distribution_;
+
+  if (cells_value_distribution_ == "random") {
+    std::cout << "Board::Board(std::string value_distribution) random" << std::endl;
+    cellsInitRandom();
+  } else if (cells_value_distribution_ == "ascent") {
+    std::cout << "Board::Board(std::string value_distribution) ascent" << std::endl;
+    cellsInitValueAscent();
+  } else {
+    std::cout << "Board::Board(std::string value_distribution) : unknown value_distribution, cells_ initialization: random" << std::endl;
+    cellsInitRandom();
+  }
+}
+//void Board::setCellsContainersHeadOrientation(std::string cells_containers_head_orientation) {
+void Board::setCellsContainersHeadOrientation() {
+
+    std::cout << "Board::setCellsContainersHeadOrientation()" << std::endl;
+    std::cout << "please insertCellsContainersHeadOrientation" << std::endl;
+    std::cout << "left, right, up, down" << std::endl;
+
+    std::cin >> cells_containers_head_orientation_;
+}
+
+Board::Board() {
+    std::cout << "Board::Board()" << std::endl;
+    setCellsValueDistribution();
+    setCellsContainersHeadOrientation();
+  printBoard(cells_containers_head_orientation_);
+
+}
+Board::Board(const std::string &value_distribution, const std::string &cells_containers_head_orientation) {
+
 }

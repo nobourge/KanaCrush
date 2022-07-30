@@ -51,7 +51,7 @@ void Canvas::mouseRelease(Point mouseLoc) {
   AdjacentX = (abs(n_du_carre_1_x_-nDuCarre2X) == 0 && abs(nDuCarre1Y-nDuCarre2Y) == 1);
   AdjacentY = (abs(n_du_carre_1_x_-nDuCarre2X) == 1 && abs(nDuCarre1Y-nDuCarre2Y) == 0);
   if (AdjacentX || AdjacentY) {
-    // put the coordinates together to be able to access them through cells
+    // put the coordinates together to be able to access them through cells_
     int concCarre1 = concatenate(n_du_carre_1_x_+1, nDuCarre1Y+1);
     int concCarre2 = concatenate(nDuCarre2X+1, nDuCarre2Y+1);
     // getting the colors
