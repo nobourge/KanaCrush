@@ -9,11 +9,6 @@
 
 class Game {
   std::shared_ptr<Board> board_;
-//  std::shared_ptr<Board> board_(nullptr);
-//  std::shared_ptr<Board> board = std::make_shared<Board>("ascent");
-//  auto board = std::make_shared<Board>("ascent"); //auto' not allowed in non-static class membe
-//    std::shared_ptr<Board("ascent")> board; // Expected expression
-//    std::shared_ptr<Board> board;
     //state_ of the game
     std::string state;
 

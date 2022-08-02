@@ -9,5 +9,7 @@
 //#include "srcCommon.h"
 #include "MainWindow.h"
 
+int main(int argc, char *argv[]);
+
 #endif //KANACRUSH_MAIN_H
 

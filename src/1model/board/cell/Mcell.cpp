@@ -10,33 +10,33 @@ Cell::Cell() {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> dis(1, 6);
-    value = dis(gen);
+    value_ = dis(gen);
     // type init random
     std::uniform_int_distribution<> disType(1, 6);
-    type = disType(gen);
+    type_ = disType(gen);
 
 }
 
 Cell::Cell(int value) {
-    this->value = value;
+    value_ = value;
 }
 
 int Cell::getValue() const {
-    return value;
+    return value_;
 }
 
 void Cell::setValue(int value) {
-    this->value = value;
+    value_ = value;
 }
 int Cell::getType() const {
-  return type;
+  return type_;
 }
 void Cell::setType(int type) {
-  this->type = type;
+  type_ = type;
 
 }
 Cell::Cell(int value, int type) {
-    this->value = value;
-    this->type = type;
+    value_ = value;
+    type_ = type;
 
 }

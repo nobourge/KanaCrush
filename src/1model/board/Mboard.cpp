@@ -3,14 +3,8 @@
 //
 
 #include "Mboard.h"
-//
-//Board::Board() {
-//  std::cout << "Board::Board()" << std::endl;
-//  std::cout << cells_.at(0).at(0).getValue() << std::endl;
-//
-//  printBoard();
-//
-//}
+
+#include <utility>
 
 
 void Board::newGame() {
@@ -209,12 +203,18 @@ void Board::cellsInitValueAscent() {
 }
 
 //set cells_container_head_orientation: left, right, up, down set
-void Board::setCellsValueDistribution() {
+//void Board::setCellsValueDistribution() {
+void Board::setCellsValueDistribution(const std::string& value_distribution) {
 
+  if (value_distribution == "input"){
+    std::cout << "please insert cells_value_distribution_ (random, ascent)" << std::endl;
 
-  std::cout << "please insert cells_value_distribution_ (random, ascent)" << std::endl;
+    std::cin >> cells_value_distribution_;
+  }
 
-  std::cin >> cells_value_distribution_;
+  else {
+    cells_value_distribution_ = value_distribution;
+  }
 
   if (cells_value_distribution_ == "random") {
     std::cout << "Board::Board(std::string value_distribution) random" << std::endl;
@@ -228,23 +228,82 @@ void Board::setCellsValueDistribution() {
   }
 }
 
-//void Board::setCellsContainersHeadOrientation(std::string cells_containers_head_orientation) {
-void Board::setCellsContainersHeadOrientation() {
+void Board::setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation="down") {
+//void Board::setCellsContainersHeadOrientation() {
 
+  if (cells_containers_head_orientation == "input") {
     std::cout << "Board::setCellsContainersHeadOrientation()" << std::endl;
     std::cout << "please insertCellsContainersHeadOrientation" << std::endl;
     std::cout << "left, right, up, down" << std::endl;
 
     std::cin >> cells_containers_head_orientation_;
+  }
+  else {
+    cells_containers_head_orientation_ = cells_containers_head_orientation;
+  }
 }
 
 Board::Board() {
     std::cout << "Board::Board()" << std::endl;
     setCellsValueDistribution();
     setCellsContainersHeadOrientation();
+//
+//  deleteCell(0, 0);
+//    deleteCell(0, 1);
+//    deleteCell(0, 2);
+  rain(0,0);
   printBoard(cells_containers_head_orientation_);
 
 }
-Board::Board(const std::string &value_distribution, const std::string &cells_containers_head_orientation) {
+//Board::Board(const std::string &value_distribution, const std::string &cells_containers_head_orientation) {
+//
+//    std::cout << "Board::Board(std::string value_distribution, std::string cells_containers_head_orientation)" << std::endl;
+//    cells_value_distribution_ = value_distribution;
+//    cells_containers_head_orientation_ = cells_containers_head_orientation;
+//    setCellsValueDistribution();
+//    setCellsContainersHeadOrientation();
+//    printBoard(cells_containers_head_orientation_);
+//}
 
+//delete cell
+void Board::deleteCell(int row, int column) {
+    cells_.at(row).at(column).setValue(0);
+
+}
+
+
+//add cell
+void Board::addCell(int row, int column, int value) {
+    cells_.at(row).at(column).setValue(value);
+}
+
+
+//find groups of minimum 3 cells
+// with same value
+// in same row or column
+// adjacents to each other
+
+
+//
+////crush
+//void Board::crush(std::vector<std::pair<int, int>> crushable_cells_vec) {
+//    for (auto &crushable_cell : crushable_cells_vec) {
+//        deleteCell(crushable_cell.first, crushable_cell.second);
+//    }
+//}
+//
+//cell replace value with next cell value
+void Board::replaceCellValue(int row, int column) {
+    cells_.at(row).at(column).setValue(cells_.at(row).at(column+1).getValue());
+}
+
+
+
+//cell rain
+void Board::rain(int row, int column) {
+    for (int i = 0; i < columns_quantity-column-1; i++) {
+//        cells_.at(row).at(i).setValue(cells_.at(row).at(i+1).getValue());
+      replaceCellValue(row, i);
+      printBoard();
+    }
 }

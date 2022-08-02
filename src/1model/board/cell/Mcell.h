@@ -8,8 +8,8 @@
 #include "srcCommon.h"
 
 class Cell {
-  int value;
-  int type;
+  int value_;
+  int type_;
 
  public:
     Cell();

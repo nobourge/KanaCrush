@@ -59,8 +59,8 @@ add_executable(KanaCrush
 #        src/1model/button/button.h
 #        src/1model/candy/candy.cpp
 #        src/1model/candy/candy.h
-        src/1model/cell/Mcell.cpp
-        src/1model/cell/Mcell.h
+        src/1model/board/cell/Mcell.cpp
+        src/1model/board/cell/Mcell.h
         src/1model/board/Mboard.cpp
         src/1model/board/Mboard.h
 #        src/2view/button/button.cpp
@@ -104,6 +104,13 @@ add_executable(KanaCrush
         src/2view/sketchable.cpp
         src/2view/sketchable.h
 
-        src/test.cpp src/test.h)
+        src/test.cpp
+        src/test.h
+#
+#        src/1model/board/linked_list/linked_list.cpp
+#        src/1model/board/linked_list/linked_list.h
+#        src/1model/board/linked_list/node/Node.cpp
+#        src/1model/board/linked_list/node/Node.h
+        )
 
 target_link_libraries(KanaCrush fltk)
