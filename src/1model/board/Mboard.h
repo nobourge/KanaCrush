@@ -18,7 +18,10 @@ class Board {
 // todo https://www.javatpoint.com/difference-between-arraylist-and-linkedlist#:~:text=2)%20Manipulation%20with,required%20in%20memory.
 //     std::array<std::linked_list<Cell, columns_quantity>, rows_quantity> cells_;
 
-     std::array<std::array<Cell, columns_quantity>, rows_quantity> cells_;
+     //declaration of cells_ container without initialization
+        std::array<std::array<std::shared_ptr<Cell>, columns_quantity>, rows_quantity> cells_;
+
+//     std::array<std::array<Cell, columns_quantity>, rows_quantity> cells_;
 //     std::shared_ptr<std::array<std::array<Cell, columns_quantity>, rows_quantity>> cells_;
 //    static std::shared_ptr<std::array<std::array<Cell, columns_quantity>, rows_quantity>> cells_;
 
@@ -28,6 +31,8 @@ class Board {
 
  public:
   Board();
+  Board(std::string data_structure);//todo
+
 //  explicit Board(const std::string& value_distribution="random");
 //  Board(const std::string &value_distribution, const std::string &cells_containers_head_orientation);
 

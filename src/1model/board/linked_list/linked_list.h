@@ -23,8 +23,9 @@ class linked_list {
  public:
     linked_list();
     ~linked_list();
-    void add(Node *cell);
-  void set_next(Node *cell);
+    void init(int size=10);
+    void add(Node *node);
+  void set_next(Node *node);
   void set_prev(Node *cell);
     void remove(Node *cell);
     void remove_all();

@@ -5,11 +5,22 @@
 #include "Node.h"
 
 #include <utility>
-Node::Node(Node *cell) {
-    std::cout << "Node::Node(std::shared_ptr<Cell> cell)" << std::endl;
-    cell_ = std::move(cell);
+
+
+Node::Node()
+//Node::Node():private Cell()
+{
+  std::cout <<
+  "Node::Node()" <<
+//  Node.getValue() <<
+//  Node->getValue() <<
+   std::endl;
+//    cell_ = std::move(cell);
     next_ = nullptr;
     prev_ = nullptr;
+    std::cout << next_ << std::endl;
+//    std::cout << Node.getValue() << std::endl;
+//    std::cout << value_ << std::endl;
 
 }
 Node::~Node() {
@@ -32,6 +43,7 @@ void Node::set_prev(std::shared_ptr<Node> node) {
 }
 std::shared_ptr<Node> Node::get_next() {
     std::cout << "Node::get_next()" << std::endl;
-    return next_
+    return next_;
 
 }
+
