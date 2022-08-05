@@ -5,7 +5,7 @@
 #ifndef KANACRUSH_MAIN_H
 #define KANACRUSH_MAIN_H
 
-
+#include "test.h"
 //#include "srcCommon.h"
 #include "MainWindow.h"
 

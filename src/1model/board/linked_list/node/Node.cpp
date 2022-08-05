@@ -4,22 +4,21 @@
 
 #include "Node.h"
 
-#include <utility>
-
+//#include <utility>
+#include "constants.h"
 
 Node::Node()
 //Node::Node():private Cell()
 {
   std::cout <<
   "Node::Node()" <<
-//  Node.getValue() <<
-//  Node->getValue() <<
    std::endl;
-//    cell_ = std::move(cell);
+    cell_ = std::make_shared<Cell>();
     next_ = nullptr;
     prev_ = nullptr;
-    std::cout << next_ << std::endl;
-//    std::cout << Node.getValue() << std::endl;
+    std::cout << "next_ : " << next_ << std::endl;
+    std::cout << "prev_ : " << prev_ << std::endl;
+    std::cout << "value : " << cell_->getValue() << std::endl;
 //    std::cout << value_ << std::endl;
 
 }
@@ -31,19 +30,41 @@ Node::~Node() {
 
 }
 void Node::set_next(std::shared_ptr<Node> node) {
+  if (DEBUG) {
     std::cout << "Node::set_next(std::shared_ptr<Node> node)" << std::endl;
-    next_ = std::move(node);
+  }
+  next_ = std::move(node);
 
 
 }
 void Node::set_prev(std::shared_ptr<Node> node) {
+  if (DEBUG) {
     std::cout << "Node::set_prev(std::shared_ptr<Node> node)" << std::endl;
-    prev_ = std::move(node);
+  }
+  prev_ = std::move(node);
 
 }
 std::shared_ptr<Node> Node::get_next() {
-    std::cout << "Node::get_next()" << std::endl;
+    if (DEBUG) {
+        std::cout << "Node::get_next()" << std::endl;
+    }
     return next_;
 
 }
 
+std::shared_ptr<Node> Node::get_prev() {
+    if (DEBUG) {
+        std::cout << "Node::get_prev()" << std::endl;
+    }
+    return prev_;
+
+}
+std::shared_ptr<Cell> Node::get_cell() {
+    if (DEBUG) {
+        std::cout << "Node::get_cell()" << std::endl;
+    }
+    return static_cast<const std::shared_ptr<Cell> &>(cell_);
+
+}
+
+//

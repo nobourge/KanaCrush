@@ -12,15 +12,16 @@ class Cell {
   int type_;
 
  public:
+
     Cell();
+
     explicit Cell(int value);
 //    Cell(int type);
     Cell(int value, int type);
-
-    int getValue() const;
     void setValue(int value);
     int getType() const;
     void setType(int type);
 
+  int getValue() const;
 };
 #endif //KANACRUSH_CELL_H

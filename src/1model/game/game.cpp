@@ -40,6 +40,7 @@
 
 Game::Game() {
     std::cout << "Game::Game()" << std::endl;
+
 //    std::cout << "please, insert board init mode" << std::endl;
 //    std::string parameter;
 //    std::cin >> parameter;

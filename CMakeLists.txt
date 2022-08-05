@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.22)
 project(KanaCrush)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 20)
+#set(CMAKE_CXX_STANDARD 14)
 #
 ## Download automatic conan.cmake file
 #if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
@@ -96,21 +97,21 @@ add_executable(KanaCrush
         src/1model/game/game.cpp
         src/1model/game/game.h
 
-        src/2view/animation.cpp
-        src/2view/animation.h
+        src/2view/GUI/animation.cpp
+        src/2view/GUI/animation.h
 
-        src/2view/canvas.cpp
-        src/2view/canvas.h
-        src/2view/sketchable.cpp
-        src/2view/sketchable.h
+        src/2view/GUI/canvas.cpp
+        src/2view/GUI/canvas.h
+        src/2view/GUI/sketchable.cpp
+        src/2view/GUI/sketchable.h
 
         src/test.cpp
         src/test.h
-#
-#        src/1model/board/linked_list/linked_list.cpp
-#        src/1model/board/linked_list/linked_list.h
-#        src/1model/board/linked_list/node/Node.cpp
-#        src/1model/board/linked_list/node/Node.h
-        )
+
+        src/1model/board/linked_list/Linked_list.cpp
+        src/1model/board/linked_list/Linked_list.h
+        src/1model/board/linked_list/node/Node.cpp
+        src/1model/board/linked_list/node/Node.h
+        src/parameters.cpp src/parameters.h src/2view/MVCinclude.h src/1model/MVCinclude.h src/3control/MVCinclude.h)
 
 target_link_libraries(KanaCrush fltk)

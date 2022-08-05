@@ -5,8 +5,14 @@
 #ifndef KANACRUSH_SRC_TEST_H_
 #define KANACRUSH_SRC_TEST_H_
 
+#include "parameters.h"
 //main test function
-#include "main.h"
-void test();
+
+void test(std::string mode);
+int testAuto();
+
+void testManual();
+//void testManualParameters();
+void testAutoParameters();
 
 #endif //KANACRUSH_SRC_TEST_H_

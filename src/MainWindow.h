@@ -9,7 +9,7 @@
 #include "constants.h"
 
 
-#include "2view/canvas.h"
+#include "src/2view/GUI/canvas.h"
 #include "1model/game/game.h"
 
 class MainWindow : public Fl_Window {

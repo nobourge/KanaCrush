@@ -7,8 +7,27 @@
 //main test function
 #include "main.h"
 
-int testAuto();
-void testManual();
+int testAuto() {
+  //main() test;
+  std::cout << "testAuto()" << std::endl;
+  //  DEBUG = true;
+  BOARD_SIZE = 9;
+//  BOARD_SIZE = 10;
+
+  CELLS_CONTAINERS_HEAD_ORIENTATION = "down";
+  PARAMETRIZED = true;
+  std::cout << "1: "  << std::endl;
+  std::cout << "BOARD_SIZE: " << BOARD_SIZE << std::endl;
+    std::cout << "CELLS_CONTAINERS_HEAD_ORIENTATION: " << CELLS_CONTAINERS_HEAD_ORIENTATION << std::endl;
+    std::cout << "PARAMETRIZED: " << PARAMETRIZED << std::endl;
+//  MainWindow window;
+//  window.show();
+//  std::cout << "testAuto() end" << std::endl;
+
+//  return Fl::run();
+
+}
+
 void test(std::string mode="auto") {
   if (mode == "auto") {
     std::cout << "test auto" << std::endl;
@@ -33,13 +52,15 @@ void testManual() {
   std::cout << "Game state_: " << state << std::endl;
 
 }
-int testAuto() {
-  //main() test;
-    std::cout << "testAuto()" << std::endl;
-  MainWindow window;
-  window.show();
-  std::cout << "testAuto() end" << std::endl;
 
-  return Fl::run();
+
+//parameters predefined test
+void testAutoParameters() {
+  //main() test;
+    std::cout << "testAutoParameters()" << std::endl;
+
+  testAuto();
+  std::cout << "testAutoParameters() end" << std::endl;
+
 
 }

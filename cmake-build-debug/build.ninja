@@ -51,84 +51,87 @@ build cmake_object_order_depends_target_KanaCrush: phony || CMakeFiles/KanaCrush
 
 build CMakeFiles/KanaCrush.dir/src/1model/board/cell/Mcell.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/1model/board/cell/Mcell.cpp || cmake_object_order_depends_target_KanaCrush
   DEP_FILE = CMakeFiles/KanaCrush.dir/src/1model/board/cell/Mcell.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/1model/board/cell
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
 
 build CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/1model/board/Mboard.cpp || cmake_object_order_depends_target_KanaCrush
   DEP_FILE = CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/1model/board
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
 
 build CMakeFiles/KanaCrush.dir/src/main.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/main.cpp || cmake_object_order_depends_target_KanaCrush
   DEP_FILE = CMakeFiles/KanaCrush.dir/src/main.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
 
 build CMakeFiles/KanaCrush.dir/src/MainWindow.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/MainWindow.cpp || cmake_object_order_depends_target_KanaCrush
   DEP_FILE = CMakeFiles/KanaCrush.dir/src/MainWindow.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
 
 build CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/1model/game/game.cpp || cmake_object_order_depends_target_KanaCrush
   DEP_FILE = CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/1model/game
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
 
-build CMakeFiles/KanaCrush.dir/src/2view/animation.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/animation.cpp || cmake_object_order_depends_target_KanaCrush
-  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/animation.cpp.o.d
-  FLAGS = -g
+build CMakeFiles/KanaCrush.dir/src/2view/GUI/animation.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/GUI/animation.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/GUI/animation.cpp.o.d
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
-  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/2view
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
+  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/2view/GUI
 
-build CMakeFiles/KanaCrush.dir/src/2view/canvas.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/canvas.cpp || cmake_object_order_depends_target_KanaCrush
-  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/canvas.cpp.o.d
-  FLAGS = -g
+build CMakeFiles/KanaCrush.dir/src/2view/GUI/canvas.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/GUI/canvas.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/GUI/canvas.cpp.o.d
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
-  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/2view
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
+  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/2view/GUI
 
-build CMakeFiles/KanaCrush.dir/src/2view/sketchable.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/sketchable.cpp || cmake_object_order_depends_target_KanaCrush
-  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/sketchable.cpp.o.d
-  FLAGS = -g
+build CMakeFiles/KanaCrush.dir/src/2view/GUI/sketchable.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/GUI/sketchable.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/GUI/sketchable.cpp.o.d
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
-  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/2view
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
+  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/2view/GUI
 
 build CMakeFiles/KanaCrush.dir/src/test.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/test.cpp || cmake_object_order_depends_target_KanaCrush
   DEP_FILE = CMakeFiles/KanaCrush.dir/src/test.cpp.o.d
-  FLAGS = -g
+  FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
-  TARGET_PDB = KanaCrush.pdb
+
+build CMakeFiles/KanaCrush.dir/src/1model/board/linked_list/Linked_list.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/1model/board/linked_list/Linked_list.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/1model/board/linked_list/Linked_list.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
+  OBJECT_DIR = CMakeFiles/KanaCrush.dir
+  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/1model/board/linked_list
+
+build CMakeFiles/KanaCrush.dir/src/1model/board/linked_list/node/Node.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/1model/board/linked_list/node/Node.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/1model/board/linked_list/node/Node.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
+  OBJECT_DIR = CMakeFiles/KanaCrush.dir
+  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/1model/board/linked_list/node
+
+build CMakeFiles/KanaCrush.dir/src/parameters.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/parameters.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/parameters.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
+  OBJECT_DIR = CMakeFiles/KanaCrush.dir
+  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src
 
 
 # =============================================================================
@@ -138,15 +141,14 @@ build CMakeFiles/KanaCrush.dir/src/test.cpp.o: CXX_COMPILER__KanaCrush_Debug /ho
 #############################################
 # Link the executable KanaCrush
 
-build KanaCrush: CXX_EXECUTABLE_LINKER__KanaCrush_Debug CMakeFiles/KanaCrush.dir/src/1model/board/cell/Mcell.cpp.o CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o CMakeFiles/KanaCrush.dir/src/main.cpp.o CMakeFiles/KanaCrush.dir/src/MainWindow.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o CMakeFiles/KanaCrush.dir/src/2view/animation.cpp.o CMakeFiles/KanaCrush.dir/src/2view/canvas.cpp.o CMakeFiles/KanaCrush.dir/src/2view/sketchable.cpp.o CMakeFiles/KanaCrush.dir/src/test.cpp.o
+build KanaCrush: CXX_EXECUTABLE_LINKER__KanaCrush_Debug CMakeFiles/KanaCrush.dir/src/1model/board/cell/Mcell.cpp.o CMakeFiles/KanaCrush.dir/src/1model/board/Mboard.cpp.o CMakeFiles/KanaCrush.dir/src/main.cpp.o CMakeFiles/KanaCrush.dir/src/MainWindow.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/animation.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/canvas.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/sketchable.cpp.o CMakeFiles/KanaCrush.dir/src/test.cpp.o CMakeFiles/KanaCrush.dir/src/1model/board/linked_list/Linked_list.cpp.o CMakeFiles/KanaCrush.dir/src/1model/board/linked_list/node/Node.cpp.o CMakeFiles/KanaCrush.dir/src/parameters.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lfltk
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/KanaCrush.dir/
   TARGET_FILE = KanaCrush
-  TARGET_PDB = KanaCrush.pdb
+  TARGET_PDB = KanaCrush.dbg
 
 
 #############################################
@@ -192,14 +194,14 @@ build all: phony KanaCrush
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCCompilerABI.c /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystem.cmake.in /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-FindBinUtils.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-Determine-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCCompiler.cmake.in /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCCompilerABI.c /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXCompiler.cmake.in /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXCompilerABI.cpp /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCompilerIdDetection.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCXXCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompileFeatures.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompilerABI.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineCompilerId.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeDetermineSystem.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeFindBinUtils.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeParseImplicitIncludeInfo.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeParseImplicitLinkInfo.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeParseLibraryArchitecture.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystem.cmake.in /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeTestCCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeTestCXXCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeTestCompilerCommon.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/ADSP-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/ARMCC-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/ARMClang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/AppleClang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Borland-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Bruce-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Clang-DetermineCompilerInternal.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Comeau-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Compaq-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Compaq-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Cray-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Embarcadero-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Fujitsu-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/FujitsuClang-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GHS-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-FindBinUtils.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/HP-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/HP-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IAR-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMCPP-C-DetermineVersionInternal.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMCPP-CXX-DetermineVersionInternal.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMClang-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IBMClang-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Intel-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/IntelLLVM-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/LCC-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/LCC-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/MSVC-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/NVHPC-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/NVIDIA-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/OpenWatcom-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/PGI-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/PathScale-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SCO-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SDCC-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SunPro-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/SunPro-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/TI-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/TinyCC-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/VisualAge-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/VisualAge-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/Watcom-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XL-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XL-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XLClang-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/XLClang-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/zOS-C-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Internal/FeatureTesting.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-Determine-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
+build ../CMakeLists.txt /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCXXInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeGenericSystem.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeInitializeConfigs.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeLanguageInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Compiler/GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-C.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux-GNU.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/Linux.cmake /snap/clion/203/bin/cmake/linux/share/cmake-3.23/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.23.2/CMakeCCompiler.cmake CMakeFiles/3.23.2/CMakeCXXCompiler.cmake CMakeFiles/3.23.2/CMakeSystem.cmake: phony
 
 
 #############################################

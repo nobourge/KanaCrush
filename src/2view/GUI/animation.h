@@ -6,7 +6,7 @@
 #define KANACRUSH_SRC_2VIEW_ANIMATION_H_
 
 
-#include <srcCommon.h>
+#include "src/srcCommon.h"
 #include "sketchable.h"
 
 class Animation: public Sketchable {
