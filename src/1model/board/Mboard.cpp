@@ -157,7 +157,6 @@ void Board::printBoard()
         for (int i = 0; i < cells_.size(); i++)
         {
 //          std::cout << "i: " << " | ";
-//          std::cout << "i: " << i << " | ";
           for (auto &linked_list : cells_)
           {
             if (DEBUG)
