@@ -6,10 +6,12 @@
 #define KANACRUSH_SRC_PARAMETERS_H_
 
 #include <string>
+//static bool DEBUG = true;
 static bool DEBUG = false;
+static bool DEBUG_CRUSH = true;
 
 //board
-static int BOARD_SIZE = 10;
+static int BOARD_SIZE = 9;
 static std::string BOARD_DATA_STRUCTURE;
 //static std::string BOARD_DATA_STRUCTURE = "linked_list";
 //orientation

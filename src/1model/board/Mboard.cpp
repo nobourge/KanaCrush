@@ -129,10 +129,10 @@ void Board::printBoard()
 
     if (data_structure_ == "linked_list")
     {
-      for (auto &linked_list : cells_) {
-        linked_list->print();
+      if (DEBUG||DEBUG_CRUSH) {for (auto &linked_list : cells_) {
+          linked_list->print();
         }
-
+      }
 
       if (cells_containers_head_orientation_ == "left")
       {
@@ -142,21 +142,12 @@ void Board::printBoard()
         }
       }
 
-
       else if (cells_containers_head_orientation_ == "down")
       {
 //        std::cout << "printing cells_containers_head_orientation: " << cells_containers_head_orientation_ << std::endl;
 //        std::cout << "cells size: " << cells_.size() << std::endl;
-
-        for (int i = 0; i < cells_.size(); i++) {
-//          std::cout << "cells_[" << i << "] size: " << std::endl;
-//          std::cout << "i: " << " | ";
-
-        }
-
         for (int i = 0; i < cells_.size(); i++)
         {
-//          std::cout << "i: " << " | ";
           for (auto &linked_list : cells_)
           {
             if (DEBUG)
@@ -166,12 +157,7 @@ void Board::printBoard()
               std::cout << "head next: " << linked_list->get_head()->get_next()->get_cell()->getValue() << std::endl;
               std::cout << "tail previous: " << linked_list->get_tail()->get_prev()->get_cell()->getValue() << std::endl;
               std::cout << "tail: " << linked_list->get_tail()->get_cell()->getValue() << std::endl;
-//            std::cout << linked_list->get_head()->getValue() << " | " << std::endl;
-
-              std::cout << "i: " << i << " | ";
             }
-//
-
             if (i == 0)
             {
               linked_list->end();
@@ -321,7 +307,7 @@ void Board::setCellsValueDistribution(const std::string& value_distribution) {
   }
 }
 
-void Board::setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation="down") {
+void Board::setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation) {
 //void Board::setCellsContainersHeadOrientation() {
 //  std::cout << "Board::setCellsContainersHeadOrientation() - cells_containers_head_orientation_: " << cells_containers_head_orientation_ << std::endl;
 
@@ -442,4 +428,41 @@ void Board::setCells()
     }
 
 
+}
+std::shared_ptr<Linked_list> Board::get_cells(int row) {
+    return cells_.at(row);
+}
+
+//cells_container move cells
+//void Board::moveCells(int row, int column, int direction) {
+//  if (direction == 0) {
+//    for (int i = 0; i < columns_quantity-column-1; i++) {
+//      replaceCellValue(row, i);
+//    }
+//  }
+//  else if (direction == 1) {
+//    for (int i = 0; i < columns_quantity-column-1; i++) {
+//      replaceCellValue(row, columns_quantity-1-i);
+//    }
+//  }
+//  else if (direction == 2) {
+//    for (int i = 0; i < rows_quantity-row-1; i++) {
+//      replaceCellValue(i, column);
+//    }
+//  }
+//  else if (direction == 3) {
+//    for (int i = 0; i < rows_quantity-row-1; i++) {
+//      replaceCellValue(rows_quantity-1-i, column);
+//    }
+//  }
+//}
+
+//crush column
+void Board::crushColumn(int column,
+                        int origin,
+                        int nodes_quantity
+                            ) {
+  get_cells(column)->crush(origin,
+                           nodes_quantity);
+//  get_cells(column)->move(origin, destination, nodes_quantity);
 }

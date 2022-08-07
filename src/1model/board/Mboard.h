@@ -47,6 +47,9 @@ class Board {
   void cellsInitRandom();
     void cellsInitValueAscent();
 
+    //get_cells_
+    std::shared_ptr<Linked_list> get_cells(int row);
+
   //get cell value
   int getCellValue(int row, int column) const;
   //set cell value
@@ -73,7 +76,7 @@ class Board {
 //  void printBoard(const std::string &cells_containers_head_orientation="down");
 //  void setCellsContainersHeadOrientation();
 
-  void setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation);
+  void setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation="down");
   void deleteCell(int row, int column);
   void addCell(int row, int column, int value);
   void replaceCellValue(int row, int column);
@@ -82,6 +85,8 @@ class Board {
   void cellsInitValueAscent(std::string data_structure);
   void setDataStructure(const std::string &data_structure="linked_list");
   void setCells();
+//  void crushColumn(int column, int origin, int destination, int nodes_quantity);
+  void crushColumn(int column, int origin, int nodes_quantity);
 };
 
 #endif //KANACRUSH_MBOARD_H

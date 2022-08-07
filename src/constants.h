@@ -16,4 +16,5 @@ static const double refreshPerSecond = 60;
 static const int windowWidth = 450;
 static const int windowHeight = 450;
 
+//static const bool DEBUG = true;
 #endif //KANACRUSH__CONSTANTS_H_

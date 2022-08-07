@@ -60,9 +60,21 @@ class Linked_list {
   void set_tail(std::shared_ptr<Node> node);
   void set_head(std::shared_ptr<Node> node);
   void add(std::shared_ptr<Node> node);
-  void set_values(std::string mode, int head, int tail);
+  void set_values(std::string mode,
+                  int head=0,
+                  int tail=0);
   std::shared_ptr<Node> get_next(std::shared_ptr<Node> node);
   std::shared_ptr<Node> get_prev(std::shared_ptr<Node> node);
+  std::shared_ptr<Node> get_node(int index);
+  void crush(int origin_int,
+             int nodes_quantity);
+  void move(std::shared_ptr<Node> origin,
+            std::shared_ptr<Node> destination,
+            int nodes_quantity,
+            std::string mode="after");
+  void setRandom(const std::shared_ptr<Node>& start,
+                 int nodes_quantity,
+                 int direction=-1);
 };
 
 #endif //KANACRUSH_SRC_1MODEL_BOARD_LINKED_LIST_H_

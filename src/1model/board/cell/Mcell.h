@@ -12,15 +12,13 @@ class Cell {
   int type_;
 
  public:
-
     Cell();
-
     explicit Cell(int value);
-//    Cell(int type);
     Cell(int value, int type);
     void setValue(int value);
     int getType() const;
     void setType(int type);
+    void setRandom();
 
   int getValue() const;
 };

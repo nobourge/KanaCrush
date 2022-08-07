@@ -6,15 +6,7 @@
 
 // Cell initialization with random value
 Cell::Cell() {
-  // value init random
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<> dis(1, 6);
-    value_ = dis(gen);
-    // type init random
-    std::uniform_int_distribution<> disType(1, 6);
-    type_ = disType(gen);
-
+  setRandom();
 }
 
 Cell::Cell(int value) {
@@ -38,5 +30,14 @@ void Cell::setType(int type) {
 Cell::Cell(int value, int type) {
     value_ = value;
     type_ = type;
+
+}
+void Cell::setRandom() {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(1, 6);
+    value_ = dis(gen);
+    std::uniform_int_distribution<> disType(1, 6);
+    type_ = disType(gen);
 
 }
