@@ -17,23 +17,20 @@
 \usepackage{titlesec}
 \usepackage{xcolor}
 \usepackage{verbatim}
-\usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage{comment}
 
 \usepackage{natbib}
 \usepackage{url}
-\usepackage{algpseudocode}
 
 \usepackage{adjustbox}
 
 
 
-
 \newcommand*{\MyIncludeGraphicsMaxSize}[2][]{%
-\begin{adjustbox}{max size={\textwidth}{\textheight}}
-    \includegraphics[#1]{#2}%
-\end{adjustbox}
+    \begin{adjustbox}{max size={\textwidth}{\textheight}}
+        \includegraphics[#1]{#2}%
+    \end{adjustbox}
 }
 \usepackage{array,booktabs,ragged2e}
 \newcolumntype{R}[1]{>{\RaggedLeft\arraybackslash}p{#1}}
@@ -50,7 +47,7 @@
     filecolor=magenta,
     urlcolor=cyan,
     pdfpagemode=FullScreen,
-    }
+}
 
 
 \title{kanacrush}
@@ -59,41 +56,61 @@
 
 \begin{document}
 
-\maketitle
-\tableofcontents
-\newpage
+    \maketitle
+    \tableofcontents
+    \newpage
 
 
-\section{Introduction}
-\section{Tâches }
- Indiquez les tâches que vous avez accomplies.
+    \section{Introduction}
+    \section{Tâches }
+    Indiquez les tâches que vous avez accomplies.
 
-\subsection{1. Fonctionnalité de base}
-\subsection{4. Faire glisser le carré}
-\subsection{14. Éditeur de tableau.  }
-Ajoutez la possibilité de pouvoir modifier un niveau de manière
-interactive au lieu d’y jouer. Ce n’est évidemment pas dans le jeu original ! Vous devriez
-pouvoir enregistrer les modifications et ajouter de nouveaux niveaux.
-\section{Classes }
-Pour chaque classe, voici l’interface (pas le corps des méthodes) et  le rôle de chaque classe et comment elle se rapporte aux autres classes.
-\section{Logique du jeu}
-Supposons que le jeu démarre,  le premier niveau est sélectionné sélectionné (si la
-tâche 11 est terminée), attend  10 secondes, puis fais un coup. Décrivez en détail ce qui
-se passe dans votre code.
-\section{Modèle-Vue-Contrôleur}
-Avez-vous utilisé ce modèle de conception ? Si c’est le cas, expliquez comment vos classes correspondent à ce modèle de conception.
-
-\section{Score}
-ous calculezon le score.
+    \subsection{1. Fonctionnalité de base}
+    \subsection{4. Faire glisser le carré}
+    \subsection{14. Éditeur de tableau.  }
+    Ajoutez la possibilité de pouvoir modifier un niveau de manière
+    interactive au lieu d’y jouer. Ce n’est évidemment pas dans le jeu original ! Vous devriez
+    pouvoir enregistrer les modifications et ajouter de nouveaux niveaux.
+    \section{Classes }
+    Pour chaque classe, voici l’interface (pas le corps des méthodes) et  le rôle de chaque classe et comment elle se rapporte aux autres classes.
+    \subsection{}
+    \subsection{}
+    \subsection{}
+    \subsection{}
 
 
-\section{ressources}
+    \section{Logique du jeu}
+    Supposons que le jeu démarre,
+    le premier niveau est sélectionné (si la
+    tâche 11 est terminée),
+    attente de 10 secondes,
+    puis un coup est joué.
+
+    Décrivez en détail ce qui
+    se passe dans votre code.
+
+
+    \subsection{Control}
+    l'endroit du clic est enregistré sous forme de coordonnée.
+    \subsection{Model}
+    \subsection{View}
+
+    \section{Modèle-Vue-Contrôleur}
+    Nous avons utilisé ce modèle de conception car il a les avantages de modularité de l'orienté objet portés à l'échelle d'un projet multi-plateforme. Nos classes correspondent à ce modèle de conception de la manière suivante:
+
+
+    \section{Score}
+    Nous calculons le score
+
+    score observer met à jour le score affiché
+
+    \section{ressources}
 
 
 
 
-L'écriture du code a été accélérée à l'aide du plugin "Github Copilot"
-\href{https://copilot.github.com/}{https://copilot.github.com/}
+    L'écriture du code a été accélérée à l'aide du plugin "Github Copilot"
+    \href{https://copilot.github.com/}{https://copilot.github.com/}
 
 
 \end{document}
