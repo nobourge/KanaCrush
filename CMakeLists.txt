@@ -123,6 +123,6 @@ add_executable(KanaCrush
         src/2view/GUI/MenuWindow.h
 #        src/2view/GUI/Window.cpp
 #        src/2view/GUI/Window.h
-        )
+        src/2view/GUI/WelcomeWindow.cpp src/2view/GUI/WelcomeWindow.h src/1model/Welcome.cpp src/1model/Welcome.h)
 
 target_link_libraries(KanaCrush fltk)

@@ -26,6 +26,7 @@ int testAuto() {
 
 //  return Fl::run();
 
+  return 0;
 }
 
 void test(std::string mode="auto") {

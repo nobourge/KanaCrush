@@ -7,6 +7,8 @@
 
 #include "test.h"
 //#include "srcCommon.h"
+
+#include "1model/Welcome.h"
 #include "1model/Menu.h"
 #include "1model/game/game.h"
 
