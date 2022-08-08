@@ -5,7 +5,8 @@
 #ifndef KANACRUSH_SRC_1MODEL_GAME_GAME_H_
 #define KANACRUSH_SRC_1MODEL_GAME_GAME_H_
 
-#include "../board/Mboard.h"
+#include "board/Mboard.h"
+#include "../MVCinclude.h"
 
 class Game {
   std::shared_ptr<Board> board_;
@@ -19,6 +20,7 @@ class Game {
 
 
  public:
+//  Game(argc, argv);
   Game();
 //  explicit Game(const std::string& parameter);
 

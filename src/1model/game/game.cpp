@@ -49,6 +49,9 @@ Game::Game() {
     //state_ of the game
     state = "Ready";
     std::cout << "Game state_: " << state << std::endl;
+
+
+
     state = "Playing";
     std::cout << "Game state_: " << state << std::endl;
     board_->crushColumn(0,2,2);
@@ -58,4 +61,29 @@ Game::Game() {
 
 
 }
+
+//Game::Game(int argc, char argv) {
+//  std::cout << "Game::Game()" << std::endl;
+//
+////    std::cout << "please, insert board init mode" << std::endl;
+////    std::string parameter;
+////    std::cin >> parameter;
+//  board_ = std::make_shared<Board>();
+////    board_ = std::make_shared<Board>(parameter);
+//  //state_ of the game
+//  state = "Ready";
+//  std::cout << "Game state_: " << state << std::endl;
+//
+//
+//
+//
+//  state = "Playing";
+//  std::cout << "Game state_: " << state << std::endl;
+//  board_->crushColumn(0,2,2);
+//  board_->get_cells(0)->print();
+//  board_->printBoard();
+////    board_->get_cells(0)->move(board_->get_cells(0)->get_head(), board_->get_cells(0)->get_tail(), 3);
+//
+//
+//}
 

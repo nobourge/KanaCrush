@@ -57,3 +57,6 @@ void DisplayBoard::draw() const
     */
 }
 
+void VBoard::draw() {
+
+}

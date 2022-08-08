@@ -55,7 +55,9 @@ class Bounce: public Animation {
         direction{direction} {}
   void draw() override;
   bool isComplete() override;
-  void start(int dir, char dirText, Fl_Color newFillColor) override {
+  void start(int dir,
+             char dirText,
+             Fl_Color newFillColor) override {
     Animation::start(dir, dirText, newFillColor);
     bouncing = true;
     time = 0;
@@ -66,8 +68,6 @@ class Bounce: public Animation {
 };
 
 /*--------------------------------------------------
-ClickableCell class
-
 The Canvas class below will have ClickableCells as instance
 variables and call the methods of ClickableCell
 --------------------------------------------------*/
@@ -83,7 +83,10 @@ class ClickableCell {
   void animationV2(Point mouseLoc);
   void animationH1(Point mouseLoc);
   void animationH2(Point mouseLoc);
-  void animationF(Point mouseLoc, int dir, char direction, Fl_Color newFillColor);
+  void animationF(Point mouseLoc,
+                  int dir,
+                  char direction,
+                  Fl_Color newFillColor);
   Fl_Color getColor(Point mouseLoc);
   void setFillColor(Fl_Color newFillColor);
   bool isComplete();

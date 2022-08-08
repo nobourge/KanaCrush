@@ -3,7 +3,7 @@
 //
 
 #include "Linked_list.h"
-#include "src/1model/board/linked_list/node/Node.h"
+#include "src/1model/game/board/linked_list/node/Node.h"
 #include "constants.h"
 
 
@@ -15,7 +15,7 @@ Linked_list::Linked_list() {
 
   print();
 }
-//initialize the linked list with rows_quantity Nodes
+//initialize the linked list with cells_containers_size Nodes
 void Linked_list::init(int size) {
     std::cout << "Linked_list::init()" << std::endl;
     //create a new node

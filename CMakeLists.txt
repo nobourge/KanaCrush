@@ -60,10 +60,10 @@ add_executable(KanaCrush
 #        src/1model/button/button.h
 #        src/1model/candy/candy.cpp
 #        src/1model/candy/candy.h
-        src/1model/board/cell/Mcell.cpp
-        src/1model/board/cell/Mcell.h
-        src/1model/board/Mboard.cpp
-        src/1model/board/Mboard.h
+        src/1model/game/board/cell/Mcell.cpp
+        src/1model/game/board/cell/Mcell.h
+        src/1model/game/board/Mboard.cpp
+        src/1model/game/board/Mboard.h
 #        src/2view/button/button.cpp
 #        src/2view/button/button.h
 #        src/2view/candy/candy.cpp
@@ -79,8 +79,8 @@ add_executable(KanaCrush
 #        src/3control/cell/Ccell.h
 #        src/3control/Cboard.cpp
 #        src/3control/Cboard.h
-#        src/cells_.cpp
-#        src/cells_.h
+#        src/cell_linked_list_array.cpp
+#        src/cell_linked_list_array.h
 #        src/candy.cpp
 #        src/CandyCrush.cpp
 #        src/main.cpp
@@ -91,8 +91,8 @@ add_executable(KanaCrush
 
         src/main.cpp
         src/main.h
-        src/MainWindow.cpp
-        src/MainWindow.h
+        src/2view/GUI/MainWindow.cpp
+        src/2view/GUI/MainWindow.h
 
         src/1model/game/game.cpp
         src/1model/game/game.h
@@ -108,10 +108,21 @@ add_executable(KanaCrush
         src/test.cpp
         src/test.h
 
-        src/1model/board/linked_list/Linked_list.cpp
-        src/1model/board/linked_list/Linked_list.h
-        src/1model/board/linked_list/node/Node.cpp
-        src/1model/board/linked_list/node/Node.h
-        src/parameters.cpp src/parameters.h src/2view/MVCinclude.h src/1model/MVCinclude.h src/3control/MVCinclude.h)
+        src/1model/game/board/linked_list/Linked_list.cpp
+        src/1model/game/board/linked_list/Linked_list.h
+        src/1model/game/board/linked_list/node/Node.cpp
+        src/1model/game/board/linked_list/node/Node.h
+        src/parameters.cpp
+        src/parameters.h
+        src/2view/MVCinclude.h
+        src/1model/MVCinclude.h
+        src/3control/MVCinclude.h
+        src/1model/Menu.cpp
+        src/1model/Menu.h
+        src/2view/GUI/MenuWindow.cpp
+        src/2view/GUI/MenuWindow.h
+#        src/2view/GUI/Window.cpp
+#        src/2view/GUI/Window.h
+        )
 
 target_link_libraries(KanaCrush fltk)

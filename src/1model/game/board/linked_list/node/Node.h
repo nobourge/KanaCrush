@@ -6,7 +6,7 @@
 #define KANACRUSH_SRC_1MODEL_BOARD_NODE_H_
 
 #include "src/parameters.h"
-#include "../../cell/Mcell.h"
+#include "src/1model/game/board/cell/Mcell.h"
 
 //Cell heritage
 class Node : public Cell {

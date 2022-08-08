@@ -7,16 +7,16 @@
 //
 
 #include "constants.h"
-
-
 #include "src/2view/GUI/canvas.h"
-#include "1model/game/game.h"
 
 class MainWindow : public Fl_Window {
-  Game game;
   Canvas canvas;
  public:
-  MainWindow() :Fl_Window(3000, 300, windowWidth, windowHeight, "Kana Crush") {
+  MainWindow() :Fl_Window(3000,
+                          300,
+                          windowWidth,
+                          windowHeight,
+                          "Game") {
     Fl::add_timeout(1.0/refreshPerSecond, Timer_CB, this);
     // resizable(this);
   }

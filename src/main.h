@@ -7,7 +7,10 @@
 
 #include "test.h"
 //#include "srcCommon.h"
-#include "MainWindow.h"
+#include "1model/Menu.h"
+#include "1model/game/game.h"
+
+#include "src/2view/GUI/MainWindow.h"
 
 int main(int argc, char *argv[]);
 

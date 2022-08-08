@@ -5,13 +5,13 @@
 #ifndef KANACRUSH_VBOARD_H
 #define KANACRUSH_VBOARD_H
 
-#include "src/2view/cell/Vcell.h"
+//#include "cell/Vcell.h"
 
-class DisplayBoard {
-    const shared_ptr<const Board> board;
+class VBoard {
+//    const shared_ptr<const Board> board;
 public:
-    DisplayBoard(const shared_ptr<const Board> board): board{board} {};
-    void draw() const {}
+//    DisplayBoard(const shared_ptr<const Board> board): board{board} {};
+    void draw();
 };
 
 #endif //KANACRUSH_VBOARD_H

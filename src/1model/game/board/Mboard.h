@@ -5,26 +5,31 @@
 #ifndef KANACRUSH_MBOARD_H
 #define KANACRUSH_MBOARD_H
 
-#include "../../parameters.h"
-#include "linked_list/Linked_list.h"
-//#include "candy/candy.h"
-#include "cell/Mcell.h"
+#include "src/parameters.h"
+#include "src/1model/MVCinclude.h"
+
+#include "src/1model/game/board/linked_list/Linked_list.h"
+#include "src/1model/game/board/cell/Mcell.h"
 
 
 class Board {
   std::string data_structure_;
-//cells_ containers size
-  static const int rows_quantity = 9;
+//cell_linked_list_array containers size
+  static const int cells_containers_size = 9;
   //containers container size
-  static const int columns_quantity = 9;
+  static const int cells_containers_container_size = 9;
 
-// todo https://www.javatpoint.com/difference-between-arraylist-and-linkedlist#:~:text=2)%20Manipulation%20with,required%20in%20memory.
+//  https://www.javatpoint.com/difference-between-arraylist-and-linkedlist#:~:text=2)%20Manipulation%20with,required%20in%20memory.
 
 // array of linked lists
-    std::array<std::shared_ptr<Linked_list>, rows_quantity> cells_;
+// to crush
+    std::array<std::shared_ptr<Linked_list>, cells_containers_size> cell_linked_list_array;
 
-     //declaration of cells_ container without initialization
-//        std::array<std::array<std::shared_ptr<Cell>, columns_quantity>, rows_quantity> cells_;
+     //declaration of
+     // array of array
+     // without initialization
+     // to random access search & comparison
+      std::array<std::array<std::shared_ptr<Cell>, cells_containers_container_size>, cells_containers_size> cell_array_array;
 
 
   std::string cells_value_distribution_;
@@ -40,7 +45,7 @@ class Board {
 
   bool crushFrom(int x, int y);
 
-  // cells_ init
+  // cell_linked_list_array init
     void init(const std::string& data_structure="linked_list",
               const std::string& value_distribution="ascent",
               const std::string& cells_containers_head_orientation="down");
@@ -87,6 +92,7 @@ class Board {
   void setCells();
 //  void crushColumn(int column, int origin, int destination, int nodes_quantity);
   void crushColumn(int column, int origin, int nodes_quantity);
+  void updateCells();
 };
 
 #endif //KANACRUSH_MBOARD_H

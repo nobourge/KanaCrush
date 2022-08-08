@@ -4,38 +4,31 @@
 
 #include "Mboard.h"
 
-#include <utility>
-
-
 void Board::newGame() {
 //    int types_quantity = 6;
-//    for (auto &c: cells_) for (auto &x: c) x = squareType[(rand() % types_quantity - 1) + 1] ;
+//    for (auto &c: cell_linked_list_array) for (auto &x: c) x = squareType[(rand() % types_quantity - 1) + 1] ;
 //    currentGameState = Play;
 }
 
 //squareType Board::getSquareType(int row, int column) const {
-//    return cells_.at(row).at(column);
+//    return cell_linked_list_array.at(row).at(column);
 //}
 //gameState Board::getGameState() const {
 //    return currentGameState;
 //}
 
-void Board::crush() {
-
-
-}
 void Board::swap(int row1, int col1, int row2, int col2){
 //    squareType candy1square_type = getSquareType(row1, col1);
 //
-//  int tmp = cells_.at(row1).at(col1).getValue();
-//  cells_.at(row1).at(col1).setValue(cells_.at(row2).at(col2).getValue());
+//  int tmp = cell_linked_list_array.at(row1).at(col1).getValue();
+//  cell_linked_list_array.at(row1).at(col1).setValue(cell_linked_list_array.at(row2).at(col2).getValue());
 //
-//    cells_.at(row2).at(col2).setValue(tmp);
+//    cell_linked_list_array.at(row2).at(col2).setValue(tmp);
 
-//    int tmp = cells_->at(row1).at(col1).getValue();
-//  cells_->at(row1).at(col1).setValue(cells_->at(row2).at(col2).getValue());
+//    int tmp = cell_linked_list_array->at(row1).at(col1).getValue();
+//  cell_linked_list_array->at(row1).at(col1).setValue(cell_linked_list_array->at(row2).at(col2).getValue());
 //
-//    cells_->at(row2).at(col2).setValue(tmp);
+//    cell_linked_list_array->at(row2).at(col2).setValue(tmp);
 }
 
 //
@@ -115,10 +108,10 @@ bool Board::crushFrom(int x, int y)
 }
 //
 //int Board::getCellValue(int row, int column) const {
-//    return cells_.at(row).at(column).getValue();
+//    return cell_linked_list_array.at(row).at(column).getValue();
 //}
 //void Board::setCellValue(int row, int column, int value) {
-//    cells_.at(row).at(column).setValue(value);
+//    cell_linked_list_array.at(row).at(column).setValue(value);
 //}
 void Board::printBoard()
 {
@@ -129,14 +122,14 @@ void Board::printBoard()
 
     if (data_structure_ == "linked_list")
     {
-      if (DEBUG||DEBUG_CRUSH) {for (auto &linked_list : cells_) {
+      if (DEBUG||DEBUG_CRUSH) {for (auto &linked_list : cell_linked_list_array) {
           linked_list->print();
         }
       }
 
       if (cells_containers_head_orientation_ == "left")
       {
-        for (auto &linked_list: cells_)
+        for (auto &linked_list: cell_linked_list_array)
         {
             linked_list->print();
         }
@@ -145,10 +138,10 @@ void Board::printBoard()
       else if (cells_containers_head_orientation_ == "down")
       {
 //        std::cout << "printing cells_containers_head_orientation: " << cells_containers_head_orientation_ << std::endl;
-//        std::cout << "cells size: " << cells_.size() << std::endl;
-        for (int i = 0; i < cells_.size(); i++)
+//        std::cout << "cells size: " << cell_linked_list_array.size() << std::endl;
+        for (int i = 0; i < cell_linked_list_array.size(); i++)
         {
-          for (auto &linked_list : cells_)
+          for (auto &linked_list : cell_linked_list_array)
           {
             if (DEBUG)
             {
@@ -178,7 +171,7 @@ void Board::printBoard()
 //    {
 //      if (cells_containers_head_orientation == "left")
 //      {
-//        for (auto &c: cells_)
+//        for (auto &c: cell_linked_list_array)
 //        {
 //          for (auto &x: c)
 //          {
@@ -190,7 +183,7 @@ void Board::printBoard()
 //      else if (cells_containers_head_orientation == "right")
 //      {
 //        //print containers in reverse order
-//        for (auto it = cells_.rbegin(); it != cells_.rend(); ++it)
+//        for (auto it = cell_linked_list_array.rbegin(); it != cell_linked_list_array.rend(); ++it)
 //        {
 //          for (auto &x: *it)
 //          {
@@ -201,9 +194,9 @@ void Board::printBoard()
 //      }
 //      else if (cells_containers_head_orientation == "up") {
 //        //print containers heads on first line
-//        for (int i = 0; i < cells_.size(); i++)
+//        for (int i = 0; i < cell_linked_list_array.size(); i++)
 //        {
-//          for (auto &c : cells_) {
+//          for (auto &c : cell_linked_list_array) {
 //            std::cout << c.at(i).getValue() << " ";
 //          }
 //          std::cout << std::endl;
@@ -213,9 +206,9 @@ void Board::printBoard()
 //      else if (cells_containers_head_orientation == "down")
 //      {
 //        //print containers heads on last line
-//        for ( int i = cells_.size() - 1; i >= 0; i--)
+//        for ( int i = cell_linked_list_array.size() - 1; i >= 0; i--)
 //        {
-//          for (auto &c : cells_) {
+//          for (auto &c : cell_linked_list_array) {
 //            std::cout << c.at(i).getValue() << " ";
 //          }
 //          std::cout << std::endl;
@@ -234,17 +227,17 @@ void Board::printBoard()
 //void Board::addNode(int row, int column, int value)
 //{
 //    Cell *cell = new Cell(row, column, value);
-//    cells_.push_back(cell);
+//    cell_linked_list_array.push_back(cell);
 //}
 
 
 void Board::cellsInitRandom() {
-  //init random cells_
-    for (int i = 0; i < rows_quantity; i++) {
-        for (int j = 0; j < columns_quantity; j++) {
-//          cells_.emplace_back(std::make_shared<Cell>());
-//            cells_.push_back() std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
-//            cells_[i][j] = std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
+  //init random cell_linked_list_array
+    for (int i = 0; i < cells_containers_size; i++) {
+        for (int j = 0; j < cells_containers_container_size; j++) {
+//          cell_linked_list_array.emplace_back(std::make_shared<Cell>());
+//            cell_linked_list_array.push_back() std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
+//            cell_linked_list_array[i][j] = std::make_shared<Cell>(rand() % (5 + 1), rand() % (5 + 1));
         }
     }
 }
@@ -254,23 +247,23 @@ int Board::getCellType(int row, int column) const {
 void Board::cellsInitValueAscent() {
 
   std::cout << "Board::cellsInitValueAscent()" << std::endl;
-  std::cout << "cells_ size: " << cells_.size() << std::endl;
-//cells_ set ascending value
+  std::cout << "cell_linked_list_array size: " << cell_linked_list_array.size() << std::endl;
+//cell_linked_list_array set ascending value
 int value = 1;
       if (data_structure_ == "linked_list")
       {
 //        setCells();
-        for (auto &linked_list: cells_) {
+        for (auto &linked_list: cell_linked_list_array) {
           linked_list->set_values("increment", value,0);
-          value += cells_.size();
+          value += cell_linked_list_array.size();
 
         }
       }
 
       else if (data_structure_ == "array")
       {
-        for (int j = 0; j < columns_quantity; j++) {
-//                cells_.at(i).at(j).setValue(i * columns_quantity + j);
+        for (int j = 0; j < cells_containers_container_size; j++) {
+//                cell_linked_list_array.at(i).at(j).setValue(i * cells_containers_container_size + j);
         }
       }
 }
@@ -302,7 +295,7 @@ void Board::setCellsValueDistribution(const std::string& value_distribution) {
     std::cout << "Board::Board(std::string value_distribution) ascent" << std::endl;
     cellsInitValueAscent();
   } else {
-    std::cout << "Board::Board(std::string value_distribution) : unknown value_distribution, cells_ initialization: random" << std::endl;
+    std::cout << "Board::Board(std::string value_distribution) : unknown value_distribution, cell_linked_list_array initialization: random" << std::endl;
 //    cellsInitValue();
   }
 }
@@ -341,7 +334,7 @@ Board::Board() {
   setCellsContainersHeadOrientation("down");
 //  printBoard();
 //board first linked list first node value print
-//  std::cout << "first value: " << cells_.at(0)->get_head()->getValue() << std::endl;
+//  std::cout << "first value: " << cell_linked_list_array.at(0)->get_head()->getValue() << std::endl;
 //
 //  deleteCell(0, 0);
 //    deleteCell(0, 1);
@@ -354,14 +347,14 @@ Board::Board() {
 
 //delete cell
 void Board::deleteCell(int row, int column) {
-//    cells_.at(row).at(column).setValue(0);
+//    cell_linked_list_array.at(row).at(column).setValue(0);
 
 }
 
 
 //add cell
 void Board::addCell(int row, int column, int value) {
-//    cells_.at(row).at(column).setValue(value);
+//    cell_linked_list_array.at(row).at(column).setValue(value);
 }
 
 
@@ -381,15 +374,15 @@ void Board::addCell(int row, int column, int value) {
 //
 //cell replace value with next cell value
 void Board::replaceCellValue(int row, int column) {
-//    cells_.at(row).at(column).setValue(cells_.at(row).at(column+1).getValue());
+//    cell_linked_list_array.at(row).at(column).setValue(cell_linked_list_array.at(row).at(column+1).getValue());
 }
 
 
 
 //cell rain
 void Board::rain(int row, int column) {
-    for (int i = 0; i < columns_quantity-column-1; i++) {
-//        cells_.at(row).at(i).setValue(cells_.at(row).at(i+1).getValue());
+    for (int i = 0; i < cells_containers_container_size-column-1; i++) {
+//        cell_linked_list_array.at(row).at(i).setValue(cell_linked_list_array.at(row).at(i+1).getValue());
       replaceCellValue(row, i);
       printBoard();
     }
@@ -418,41 +411,41 @@ void Board::setCells()
 
     else if (data_structure_ == "linked_list") {
         std::cout << "Board::setCells() linked_list" << std::endl;
-//        cells_ = std::array<std::shared_ptr<Linked_list()>, rows_quantity> ;
-      for (int i = 0; i < rows_quantity; i++) {
-        cells_.at(i) = std::make_shared<Linked_list>();
+//        cell_linked_list_array = std::array<std::shared_ptr<Linked_list()>, cells_containers_size> ;
+      for (int i = 0; i < cells_containers_size; i++) {
+        cell_linked_list_array.at(i) = std::make_shared<Linked_list>();
       }
     }
     else {
-        std::cout << "Board::setCells() : unknown data_structure_, cells_ initialization: array" << std::endl;
+        std::cout << "Board::setCells() : unknown data_structure_, cell_linked_list_array initialization: array" << std::endl;
     }
 
 
 }
 std::shared_ptr<Linked_list> Board::get_cells(int row) {
-    return cells_.at(row);
+    return cell_linked_list_array.at(row);
 }
 
 //cells_container move cells
 //void Board::moveCells(int row, int column, int direction) {
 //  if (direction == 0) {
-//    for (int i = 0; i < columns_quantity-column-1; i++) {
+//    for (int i = 0; i < cells_containers_container_size-column-1; i++) {
 //      replaceCellValue(row, i);
 //    }
 //  }
 //  else if (direction == 1) {
-//    for (int i = 0; i < columns_quantity-column-1; i++) {
-//      replaceCellValue(row, columns_quantity-1-i);
+//    for (int i = 0; i < cells_containers_container_size-column-1; i++) {
+//      replaceCellValue(row, cells_containers_container_size-1-i);
 //    }
 //  }
 //  else if (direction == 2) {
-//    for (int i = 0; i < rows_quantity-row-1; i++) {
+//    for (int i = 0; i < cells_containers_size-row-1; i++) {
 //      replaceCellValue(i, column);
 //    }
 //  }
 //  else if (direction == 3) {
-//    for (int i = 0; i < rows_quantity-row-1; i++) {
-//      replaceCellValue(rows_quantity-1-i, column);
+//    for (int i = 0; i < cells_containers_size-row-1; i++) {
+//      replaceCellValue(cells_containers_size-1-i, column);
 //    }
 //  }
 //}
@@ -466,3 +459,55 @@ void Board::crushColumn(int column,
                            nodes_quantity);
 //  get_cells(column)->move(origin, destination, nodes_quantity);
 }
+
+
+void Board::crush() {
+
+    for (int i = 0; i < cells_containers_size; i++) {
+        for (int j = 0; j < cells_containers_container_size; j++) {
+//        if (get_cells(i)->get_head()->getValue() == get_cells(i)->get_head()->getNext()->getValue()) {
+//            crushColumn(i, j, 2);
+//        }
+        }
+    }
+
+}
+
+//cell_linked_list_array update cell_array_array
+void Board::updateCells() {
+  if (data_structure_ == "array") {
+    std::cout << "Board::updateCells() array" << std::endl;
+  }
+  else if (data_structure_ == "linked_list") {
+    std::cout << "Board::updateCells() linked_list" << std::endl;
+    for (int i = 0; i < cells_containers_container_size ; i++) {
+      //temp_node
+        std::shared_ptr<Node> temp_node = cell_linked_list_array.at(i)->get_head();
+
+      for (int j = 0; j < cells_containers_size ; j++) {
+
+
+        //and update cell_array_array
+        //at i,j
+        cell_array_array.at(i).at(j)->set(temp_node->getValue(),
+                                          temp_node->getType());
+        //iterate through linked list
+        //temps node
+        temp_node = temp_node->get_next();
+      }
+    }
+  }
+  else {
+    std::cout << "Board::updateCells() : unknown data_structure_, cell_array_array initialization: array" << std::endl;
+  }
+}
+
+
+
+//update Vboard
+
+//update Canvas cells
+
+
+
+

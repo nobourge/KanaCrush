@@ -19,6 +19,7 @@ class Cell {
     int getType() const;
     void setType(int type);
     void setRandom();
+    void set(int value, int type);
 
   int getValue() const;
 };

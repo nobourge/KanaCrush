@@ -41,3 +41,9 @@ void Cell::setRandom() {
     type_ = disType(gen);
 
 }
+void Cell::set(int value, int type) {
+    value_ = value;
+    type_ = type;
+
+
+}

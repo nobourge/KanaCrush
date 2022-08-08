@@ -24,7 +24,13 @@ int main(int argc, char *argv[]) {
 //        break;
 //    }
 
+  Menu menu;
+    menu.run();
+//MainMenu mainMenu;
+  Game game;
+
   MainWindow window;
   window.show(argc, argv);
+
   return Fl::run();
 }

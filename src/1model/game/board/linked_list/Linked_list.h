@@ -5,7 +5,7 @@
 #ifndef KANACRUSH_SRC_1MODEL_BOARD_LINKED_LIST_H_
 #define KANACRUSH_SRC_1MODEL_BOARD_LINKED_LIST_H_
 
-#include "node/Node.h"
+#include "src/1model/game/board/linked_list/node/Node.h"
 
 class Linked_list {
 //head and tail of the list
