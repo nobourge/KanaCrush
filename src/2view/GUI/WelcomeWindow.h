@@ -11,8 +11,10 @@
 #include "Fl/Fl_Button.H"
 #include "Fl/Fl_Box.H"
 #include "srcCommon.h"
+#include "src/1model/Welcome.h"
 
 class WelcomeWindow : public Fl_Window {
+  Welcome welcome_ = Welcome();
   //title
     Fl_Box *title_ = new Fl_Box(0
         , 0

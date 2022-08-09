@@ -8,9 +8,5 @@ Menu::Menu() {
 
 }
 void Menu::run() {
-  MenuWindow menuWindow;
-    menuWindow.run();
-
-
 }
 

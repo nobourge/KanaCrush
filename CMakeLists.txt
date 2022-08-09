@@ -91,8 +91,8 @@ add_executable(KanaCrush
 
         src/main.cpp
         src/main.h
-        src/2view/GUI/MainWindow.cpp
-        src/2view/GUI/MainWindow.h
+        src/2view/GUI/GameWindow.cpp
+        src/2view/GUI/GameWindow.h
 
         src/1model/game/game.cpp
         src/1model/game/game.h
@@ -115,7 +115,6 @@ add_executable(KanaCrush
         src/parameters.cpp
         src/parameters.h
         src/2view/MVCinclude.h
-        src/1model/MVCinclude.h
         src/3control/MVCinclude.h
         src/1model/Menu.cpp
         src/1model/Menu.h
@@ -123,6 +122,6 @@ add_executable(KanaCrush
         src/2view/GUI/MenuWindow.h
 #        src/2view/GUI/Window.cpp
 #        src/2view/GUI/Window.h
-        src/2view/GUI/WelcomeWindow.cpp src/2view/GUI/WelcomeWindow.h src/1model/Welcome.cpp src/1model/Welcome.h)
+        src/2view/GUI/WelcomeWindow.cpp src/2view/GUI/WelcomeWindow.h src/1model/Welcome.cpp src/1model/Welcome.h src/2view/GUI/ClickableCell.cpp src/2view/GUI/ClickableCell.h)
 
 target_link_libraries(KanaCrush fltk)

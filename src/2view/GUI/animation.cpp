@@ -60,29 +60,3 @@ bool Bounce::isComplete() {
   return time > duration;
 }
 
-ClickableCell::ClickableCell(shared_ptr<Animation> animation):
-  animation{animation} {}
-
-void ClickableCell::draw() {
-  animation->draw();
-}
-
-void ClickableCell::animationF(Point mouseLoc, int direction, char directionText, Fl_Color newFillColor) {
-  if (animation->contains(mouseLoc)) {
-    animation->start(direction, directionText, newFillColor);
-  }
-}
-
-Fl_Color ClickableCell::getColor(Point mouseLoc) {
-  return animation->getColor(mouseLoc);
-}
-
-bool ClickableCell::isComplete() {
-  return animation->isComplete();
-}
-
-void ClickableCell::setFillColor(Fl_Color newFillColor) {
-  animation->setFillColor(newFillColor);
-}
-
-

@@ -12,7 +12,7 @@
 #include "1model/Menu.h"
 #include "1model/game/game.h"
 
-#include "src/2view/GUI/MainWindow.h"
+#include "src/2view/GUI/GameWindow.h"
 
 int main(int argc, char *argv[]);
 

@@ -1,6 +1,8 @@
 
 
 #include "main.h"
+#include "2view/GUI/WelcomeWindow.h"
+#include "2view/GUI/MenuWindow.h"
 
 int main(int argc, char *argv[]) {
 //  int test_number=1;
@@ -24,16 +26,14 @@ int main(int argc, char *argv[]) {
 //        break;
 //    }
 
-//  Welcome welcome;
-    Welcome::run();
+  WelcomeWindow welcome_window;
+    welcome_window.run();
 
-  Menu menu;
-    menu.run();
+  MenuWindow menu_window;
+    menu_window.run();
 
-  Game game;
-
-  MainWindow window;
-  window.show(argc, argv);
+  GameWindow game_window;
+  game_window.run();
 
   return Fl::run();
 }

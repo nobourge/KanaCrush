@@ -67,10 +67,10 @@ doit être effectuée dans le cadre du fichier contenant la conception du tablea
 tâche 3.
 7. Bonbons spéciaux. Ajoutez des bonbons rayés, des bonbons emballés et une bombe de
 couleur. Ils devraient fonctionner comme dans le jeu.
-8. Score. Ajoutez une fenêtre avec le score. Le score doit être incrémenté pour divers événements, comme chaque fois qu’un bonbon a été effacé. Dans le jeu original, le calcul
-du score est complexe. Vous pouvez faire quelque chose de simple, mais expliquez dans
+8. Score. Ajoutez une fenêtre avec le score_. Le score_ doit être incrémenté pour divers événements, comme chaque fois qu’un bonbon a été effacé. Dans le jeu original, le calcul
+du score_ est complexe. Vous pouvez faire quelque chose de simple, mais expliquez dans
 votre rapport comment vous procédez.
-9. Meilleur score. Affichez-le toujours quelque part sur l’écran principal du jeu. Cela devrait être enregistré et durer d’une session à l’autre dans un fichier (mais vous devriez
+9. Meilleur score_. Affichez-le toujours quelque part sur l’écran principal du jeu. Cela devrait être enregistré et durer d’une session à l’autre dans un fichier (mais vous devriez
 avoir un moyen de le réinitialiser !)
 10. Écran d’accueil. Lorsque vous démarrez le jeu, un écran d’accueil devrait apparaître
 pendant une seconde avant que l’écran principal du jeu ne soit chargé. L’écran d’accueil
@@ -95,7 +95,7 @@ pouvoir enregistrer les modifications et ajouter de nouveaux niveaux.
 15. Niveaux à ingrédients. Ajoutez la possibilité de créer des niveaux avec des ingrédients
 qu’il faut faire tomber (comme les cerises et les noisettes dans le jeu original).
 4 Style de codage
-Votre score de style de codage sera basé sur la façon dont vous codez en utilisant les principes
+Votre score_ de style de codage sera basé sur la façon dont vous codez en utilisant les principes
 de la programmation orientée objet.
 — Tout doit être décomposé en classes et en fichiers.
 — Aucune variable globale.
@@ -124,7 +124,7 @@ Vous devez inclure un court rapport écrit au format PDF. Celui-ci doit au minim
 tâche 11 est terminée), attend 10 secondes, puis fais un coup. Décrivez en détail ce qui
 se passe dans votre code.
 — Modèle-Vue-Contrôleur. Avez-vous utilisé ce modèle de conception ? Si c’est le cas, expliquez comment vos classes correspondent à ce modèle de conception.
-— Score. Si vous avez terminé la tâche 8, expliquez comment vous calculez le score.
+— Score. Si vous avez terminé la tâche 8, expliquez comment vous calculez le score_.
 7 Retard
 Vos points seront réduit de 1% pour chaque heure de retard.
 8 Ce sur quoi vous n’êtes PAS noté

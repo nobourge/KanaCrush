@@ -10,16 +10,25 @@
 Node::Node()
 //Node::Node():private Cell()
 {
-  std::cout <<
-  "Node::Node()" <<
-   std::endl;
+  if (DEBUG_NODE){
+    std::cout <<
+              "Node::Node()" <<
+              std::endl;
+  }
+
     cell_ = std::make_shared<Cell>();
     next_ = nullptr;
     prev_ = nullptr;
+  if (DEBUG_NODE){
+    std::cout <<
+              "Node::Node()" <<
+              std::endl;
     std::cout << "next_ : " << next_ << std::endl;
     std::cout << "prev_ : " << prev_ << std::endl;
     std::cout << "value : " << cell_->getValue() << std::endl;
 //    std::cout << value_ << std::endl;
+  }
+
 
 }
 Node::~Node() {

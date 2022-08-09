@@ -70,8 +70,8 @@ build CMakeFiles/KanaCrush.dir/src/main.cpp.o: CXX_COMPILER__KanaCrush_Debug /ho
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src
 
-build CMakeFiles/KanaCrush.dir/src/2view/GUI/MainWindow.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/GUI/MainWindow.cpp || cmake_object_order_depends_target_KanaCrush
-  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/GUI/MainWindow.cpp.o.d
+build CMakeFiles/KanaCrush.dir/src/2view/GUI/GameWindow.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/GUI/GameWindow.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/GUI/GameWindow.cpp.o.d
   FLAGS = -g -std=gnu++2a
   INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
@@ -161,6 +161,13 @@ build CMakeFiles/KanaCrush.dir/src/1model/Welcome.cpp.o: CXX_COMPILER__KanaCrush
   OBJECT_DIR = CMakeFiles/KanaCrush.dir
   OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/1model
 
+build CMakeFiles/KanaCrush.dir/src/2view/GUI/ClickableCell.cpp.o: CXX_COMPILER__KanaCrush_Debug /home/noe/Github/KanaCrush/src/2view/GUI/ClickableCell.cpp || cmake_object_order_depends_target_KanaCrush
+  DEP_FILE = CMakeFiles/KanaCrush.dir/src/2view/GUI/ClickableCell.cpp.o.d
+  FLAGS = -g -std=gnu++2a
+  INCLUDES = -I/home/noe/Github/KanaCrush/. -I/home/noe/Github/KanaCrush/src
+  OBJECT_DIR = CMakeFiles/KanaCrush.dir
+  OBJECT_FILE_DIR = CMakeFiles/KanaCrush.dir/src/2view/GUI
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target KanaCrush
@@ -169,7 +176,7 @@ build CMakeFiles/KanaCrush.dir/src/1model/Welcome.cpp.o: CXX_COMPILER__KanaCrush
 #############################################
 # Link the executable KanaCrush
 
-build KanaCrush: CXX_EXECUTABLE_LINKER__KanaCrush_Debug CMakeFiles/KanaCrush.dir/src/1model/game/board/cell/Mcell.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/board/Mboard.cpp.o CMakeFiles/KanaCrush.dir/src/main.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/MainWindow.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/animation.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/canvas.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/sketchable.cpp.o CMakeFiles/KanaCrush.dir/src/test.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/board/linked_list/Linked_list.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/board/linked_list/node/Node.cpp.o CMakeFiles/KanaCrush.dir/src/parameters.cpp.o CMakeFiles/KanaCrush.dir/src/1model/Menu.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/MenuWindow.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/WelcomeWindow.cpp.o CMakeFiles/KanaCrush.dir/src/1model/Welcome.cpp.o
+build KanaCrush: CXX_EXECUTABLE_LINKER__KanaCrush_Debug CMakeFiles/KanaCrush.dir/src/1model/game/board/cell/Mcell.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/board/Mboard.cpp.o CMakeFiles/KanaCrush.dir/src/main.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/GameWindow.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/game.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/animation.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/canvas.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/sketchable.cpp.o CMakeFiles/KanaCrush.dir/src/test.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/board/linked_list/Linked_list.cpp.o CMakeFiles/KanaCrush.dir/src/1model/game/board/linked_list/node/Node.cpp.o CMakeFiles/KanaCrush.dir/src/parameters.cpp.o CMakeFiles/KanaCrush.dir/src/1model/Menu.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/MenuWindow.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/WelcomeWindow.cpp.o CMakeFiles/KanaCrush.dir/src/1model/Welcome.cpp.o CMakeFiles/KanaCrush.dir/src/2view/GUI/ClickableCell.cpp.o
   FLAGS = -g
   LINK_LIBRARIES = -lfltk
   OBJECT_DIR = CMakeFiles/KanaCrush.dir

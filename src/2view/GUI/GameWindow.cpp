@@ -3,6 +3,6 @@
 //
 
 #include "srcCommon.h"
-#include "MainWindow.h"
+#include "GameWindow.h"
 
 

@@ -13,7 +13,7 @@ class Animation: public Sketchable {
  protected:
   std::shared_ptr<Sketchable> toAnimate;
  public:
-  Animation(std::shared_ptr<Sketchable> toAnimate)
+  explicit Animation(std::shared_ptr<Sketchable> toAnimate)
       : toAnimate{toAnimate} {}
   virtual bool isComplete() =0;
   virtual void start(int direction,
@@ -28,9 +28,13 @@ class Animation: public Sketchable {
   Point getCenter() const override {
     return toAnimate->getCenter();
   }
-  Fl_Color getColor(Point mouseLoc) const override {
-    return toAnimate->getColor(mouseLoc);
+  Fl_Color PointgetColor(Point mouseLoc) const override {
+    return toAnimate->PointgetColor(mouseLoc);
   }
+  Fl_Color getFillColor() const  {
+    return toAnimate->getFillColor();
+  }
+
   void setFillColor(Fl_Color newFillColor) override {
     toAnimate->setFillColor(newFillColor);
   }
@@ -65,31 +69,6 @@ class Bounce: public Animation {
     directionText = dirText;
     color = newFillColor;
   }
-};
-
-/*--------------------------------------------------
-The Canvas class below will have ClickableCells as instance
-variables and call the methods of ClickableCell
---------------------------------------------------*/
-class ClickableCell {
-  std::shared_ptr<Animation> animation;
- public:
-  // Constructor
-  ClickableCell(std::shared_ptr<Animation> animation);
-
-  // Methods that draw and handle events
-  void draw();
-  void animationV1(Point mouseLoc);
-  void animationV2(Point mouseLoc);
-  void animationH1(Point mouseLoc);
-  void animationH2(Point mouseLoc);
-  void animationF(Point mouseLoc,
-                  int dir,
-                  char direction,
-                  Fl_Color newFillColor);
-  Fl_Color getColor(Point mouseLoc);
-  void setFillColor(Fl_Color newFillColor);
-  bool isComplete();
 };
 
 

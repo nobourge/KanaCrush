@@ -20,7 +20,7 @@ int testAuto() {
   std::cout << "BOARD_SIZE: " << BOARD_SIZE << std::endl;
     std::cout << "CELLS_CONTAINERS_HEAD_ORIENTATION: " << CELLS_CONTAINERS_HEAD_ORIENTATION << std::endl;
     std::cout << "PARAMETRIZED: " << PARAMETRIZED << std::endl;
-//  MainWindow window;
+//  GameWindow window;
 //  window.show();
 //  std::cout << "testAuto() end" << std::endl;
 

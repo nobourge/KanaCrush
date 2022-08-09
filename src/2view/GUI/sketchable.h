@@ -6,13 +6,19 @@
 #define KANACRUSH_SRC_2VIEW_SKETCHABLE_H_
 
 #include "srcCommon.h"
+#include "constants.h"
 
 class Sketchable {
+  Fl_Color fillColor;
+  Fl_Color frameColor;
+
  public:
   virtual void draw() =0;
   virtual bool contains(Point p) const =0;
   virtual Point getCenter() const =0;
-  virtual Fl_Color getColor(Point mouseLoc) const =0;
+  virtual Fl_Color PointgetColor(Point mouseLoc) const =0;
+  //get color
+  virtual Fl_Color getFillColor() const = 0;
   virtual void setFillColor(Fl_Color newFillColor) =0;
   virtual ~Sketchable() = default;;
 };
@@ -54,9 +60,23 @@ class Rectangle: public Sketchable {
   Point getCenter() const override {
     return center;
   }
-  Fl_Color getColor(Point mouseLoc) const override {
+  Fl_Color PointgetColor(Point mouseLoc) const override {
     return fillColor;
   }
+
+  //print
+    void print(std::string attribute) const {
+        std::cout << attribute << ": " << fillColor << std::endl;
+        if (attribute == "fillColor") {
+            std::cout << attribute << ": " << fillColor << std::endl;
+        } else if (attribute == "frameColor") {
+            std::cout << attribute << ": " << frameColor << std::endl;
+        }
+    }
+
+    //print color code
+
+
 };
 
 #endif //KANACRUSH_SRC_2VIEW_SKETCHABLE_H_

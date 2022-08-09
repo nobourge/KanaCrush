@@ -35,6 +35,9 @@ void Rectangle::draw() {
 void Rectangle::setFillColor(Fl_Color newFillColor) {
   fillColor = newFillColor;
 }
+//Fl_Color Rectangle::getFillColor() const {
+//    return fillColor;
+//}
 
 void Rectangle::setFrameColor(Fl_Color newFrameColor) {
   frameColor = newFrameColor;

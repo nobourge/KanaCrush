@@ -10,11 +10,12 @@
 #include "Fl/Fl_Button.H"
 #include "Fl/Fl_Box.H"
 #include "srcCommon.h"
-
+#include "1model/Menu.h"
 
 class MenuWindow : public Fl_Window {
 //class MenuWindow : public GUIWindow {
 
+  Menu menu_ = Menu();
 //  Fl_Box *title;
 //buttons
   int buttons_quantity = 5;

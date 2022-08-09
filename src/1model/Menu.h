@@ -5,8 +5,6 @@
 #ifndef KANACRUSH_SRC_1MODEL_MENU_H_
 #define KANACRUSH_SRC_1MODEL_MENU_H_
 
-#include "../2view/GUI/MenuWindow.h"
-
 class Menu {
   //menu window
 

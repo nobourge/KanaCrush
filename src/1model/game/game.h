@@ -6,18 +6,13 @@
 #define KANACRUSH_SRC_1MODEL_GAME_GAME_H_
 
 #include "board/Mboard.h"
-#include "../MVCinclude.h"
 
 class Game {
   std::shared_ptr<Board> board_;
-    //state_ of the game
-    std::string state;
-
-    int score{};
-    int nbCellsCrushed{};
-    int nbCellsCrushedTotal{};
-    int nbCellsCrushedTotalMax{};
-
+  std::shared_ptr<Board> canvas_;
+    std::string state_;
+    int score_{};
+    int nb_cells_crushed_{};
 
  public:
 //  Game(argc, argv);
@@ -25,5 +20,6 @@ class Game {
 //  explicit Game(const std::string& parameter);
 
 //  void boardInit(const std::string &parameter);
+  std::shared_ptr<Board> getBoard();
 };
 #endif //KANACRUSH_SRC_1MODEL_GAME_GAME_H_
