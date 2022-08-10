@@ -131,7 +131,8 @@ void Board::print()
           std::shared_ptr<Node> temp_node = get_cells(i)->get_head();
 
           for (int j = 0; j < cells_containers_size_; j++) {
-            std::cout << "temp_node ->getValue() : " << temp_node->get_cell()->getValue() << std::endl;
+            std::cout << "temp_node ->getValue() : " << temp_node->getValue() << std::endl;
+//            std::cout << "temp_node ->getValue() : " << temp_node->get_cell()->getValue() << std::endl;
           }
         }
       }
@@ -154,11 +155,7 @@ void Board::print()
           {
             if (DEBUG || DEBUG_BOARD)
             {
-              linked_list->print();
-              std::cout << "head: " << linked_list->get_head()->get_cell()->getValue() << std::endl;
-              std::cout << "head next: " << linked_list->get_head()->get_next()->get_cell()->getValue() << std::endl;
-              std::cout << "tail previous: " << linked_list->get_tail()->get_prev()->get_cell()->getValue() << std::endl;
-              std::cout << "tail: " << linked_list->get_tail()->get_cell()->getValue() << std::endl;
+              linked_list->debug();
             }
             if (i == 0)
             {
@@ -168,7 +165,7 @@ void Board::print()
             {
               linked_list->previous();
             }
-            std::cout << linked_list->get_iterator()->get_cell()->getValue() << " ";
+            std::cout << linked_list->get_iterator()->getValue() << " ";//*
 
           }
           std::cout << std::endl;

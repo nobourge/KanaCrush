@@ -58,6 +58,7 @@ class Linked_list {
                  int nodes_quantity,
                  int direction=-1);
   [[nodiscard]] int get_size() const;
+  void debug();
 };
 
 #endif //KANACRUSH_SRC_1MODEL_BOARD_LINKED_LIST_H_

@@ -16,16 +16,16 @@ Node::Node()
               std::endl;
   }
 
-    cell_ = std::make_shared<Cell>();
+//    cell_ = std::make_shared<Cell>();
+
+    setRandom();
     next_ = nullptr;
     prev_ = nullptr;
   if (DEBUG_NODE){
-    std::cout <<
-              "Node::Node()" <<
-              std::endl;
     std::cout << "next_ : " << next_ << std::endl;
     std::cout << "prev_ : " << prev_ << std::endl;
-    std::cout << "value : " << cell_->getValue() << std::endl;
+    std::cout << "value : " << getValue() << std::endl;
+//    std::cout << "value : " << cell_->getValue() << std::endl;
 //    std::cout << value_ << std::endl;
   }
 

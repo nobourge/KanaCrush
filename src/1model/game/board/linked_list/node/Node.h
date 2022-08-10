@@ -9,6 +9,7 @@
 #include "src/1model/game/board/cell/Mcell.h"
 
 //Cell heritage
+//class Node : protected Cell {
 class Node : public Cell {
     std::shared_ptr<Cell> cell_;
     std::shared_ptr<Node> next_;

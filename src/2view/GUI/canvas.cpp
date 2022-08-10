@@ -107,13 +107,13 @@ Canvas::Canvas(std::shared_ptr<Board> board) {
                                           50,
                                           50,
                                           FL_BLACK,
-                                          (Fl_Color) Colors_codes[(temp_node->get_cell()->getValue())-1]
+                                          (Fl_Color) Colors_codes[(temp_node->getValue())-1]//*
               )
           )
       );
       if (DEBUG_CANVAS) {
         std::cout << "Canvas::Canvas(std::shared_ptr<Board> board)" << std::endl;
-        std::cout << "temp_node ->getValue() : " << temp_node->get_cell()->getValue() << std::endl;
+        std::cout << "temp_node ->getValue() : " << temp_node->getValue() << std::endl;//*
 
         std::cout << "canvas.cells.size() : " << cells.size() << std::endl;
         std::cout << "canvas.cells.at(i*j).getFillColor() : " << cells.at(i*j).getFillColor() << std::endl;

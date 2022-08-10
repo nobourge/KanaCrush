@@ -8,6 +8,7 @@
 #include "srcCommon.h"
 
 class Cell {
+ protected:
   int value_;
   int type_;
 

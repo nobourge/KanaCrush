@@ -12,19 +12,19 @@ Linked_list::Linked_list(const std::string& mode, int value) {
 }
 //initialize the linked list with cells_containers_size_ Nodes
 void Linked_list::init(int size) {
+  if (DEBUG_LINKED_LIST) {
+    std::cout << "Linked_list::init()" << std::endl;
+  }
+
   for (int i = 0; i < size; i++)
   {
     std::shared_ptr<Node> node = std::make_shared<Node>();
     add(node);
-    if (DEBUG) {
-      std::cout << "Linked_list::init()" << std::endl;
-      std::cout << "node value: " << node->get_cell()->getValue() << std::endl;
-      std::cout << "head: " << get_head()->get_cell()->getValue() << std::endl;
-      std::cout << "head next: " << get_head()->get_next()->get_cell()->getValue() << std::endl;
-      std::cout << "tail previous: " << get_tail()->get_prev()->get_cell()->getValue() << std::endl;
-      std::cout << "tail: " << get_tail()->get_cell()->getValue() << std::endl;
-      print();
-    }
+
+  }
+  if (DEBUG_LINKED_LIST) {
+//      std::cout << "node value: " << node->getValue() << std::endl;
+    debug();
   }
 }
 Linked_list::~Linked_list() {
@@ -46,14 +46,14 @@ void Linked_list::add( const std::shared_ptr<Node>& node) {
       tail_ = tail_->get_next();
       if (DEBUG_LINKED_LIST) {
 
-        std::cout << "head next: " << get_head()->get_next()->get_cell()->getValue() << std::endl;
-        std::cout << "tail previous: " << get_tail()->get_prev()->get_cell()->getValue() << std::endl;
+//        std::cout << "head next: " << get_head()->get_next()->getValue() << std::endl;
+        std::cout << "tail previous: " << get_tail()->get_prev()->getValue() << std::endl;
 
       }
     }
     if (DEBUG_LINKED_LIST){
-      std::cout << "head: " << get_head()->get_cell()->getValue() << std::endl;
-      std::cout << "tail: " << get_tail()->get_cell()->getValue() << std::endl;
+      std::cout << "head: " << get_head()->getValue() << std::endl;
+      std::cout << "tail: " << get_tail()->getValue() << std::endl;
     }
 
     size_++;
@@ -114,23 +114,31 @@ void Linked_list::set_prev(const std::shared_ptr<Node>& node) {
     }
 }
 std::shared_ptr<Node> Linked_list::get_head() {
+  if (DEBUG_LINKED_LIST) {
     std::cout << "Linked_list::get_head()" << std::endl;
+  }
     return head_;
 
 }
 std::shared_ptr<Node> Linked_list::get_tail() {
+  if (DEBUG_LINKED_LIST) {
     std::cout << "Linked_list::get_tail()" << std::endl;
+  }
     return tail_;
 
 }
 void Linked_list::set_head(std::shared_ptr<Node> node) {
+  if (DEBUG_LINKED_LIST) {
     std::cout << "Linked_list::set_head(Cell *cell)" << std::endl;
+    }
     head_ = node;
 
 }
 
 void Linked_list::set_tail(std::shared_ptr<Node> node) {
-    std::cout << "Linked_list::set_tail(Cell *cell)" << std::endl;
+    if (DEBUG_LINKED_LIST) {
+        std::cout << "Linked_list::set_tail(Cell *cell)" << std::endl;
+    }
     tail_ = node;
 
 
@@ -154,8 +162,8 @@ std::shared_ptr<Node> Linked_list::get_prev(std::shared_ptr<Node> node) {
 void Linked_list::begin() {
 //    std::cout << "Linked_list::begin()" << std::endl;
     iterator_ = head_;
-    if (DEBUG) {
-      std::cout << "Linked_list::begin() - iterator_: " << iterator_->get_cell()->getValue() << std::endl;
+    if (DEBUG_LINKED_LIST) {
+      std::cout << "Linked_list::begin() - iterator_: " << iterator_->getValue() << std::endl;
     }
 
 }
@@ -189,7 +197,6 @@ bool Linked_list::is_begin() {
     if (DEBUG) {
         std::cout << "Linked_list::is_begin()" << std::endl;
     }
-    std::cout << "Linked_list::is_begin()" << std::endl;
     return iterator_ == head_;
 
 }
@@ -200,10 +207,17 @@ std::shared_ptr<Node> Linked_list::get_iterator() {
     return iterator_;
 
 }
+void Linked_list::debug() {
+  print();
+  std::cout << "head: " << get_head()->getValue() << std::endl;
+  std::cout << "head next: " << get_head()->get_next()->getValue() << std::endl;
+  std::cout << "tail previous: " << get_tail()->get_prev()->getValue() << std::endl;
+  std::cout << "tail: " << get_tail()->getValue() << std::endl;
+}
 void Linked_list::print() {
   iterator_ = head_;
   for (int i = 0; i < size_; i++) {
-    std::cout << iterator_->get_cell()->getValue() << " ";
+    std::cout << iterator_->getValue() << " "; //@
     iterator_ = iterator_->get_next();
   }
     std::cout << std::endl;
@@ -219,21 +233,21 @@ void Linked_list::set_values(const std::string& mode
     if (mode == "increment"){
       iterator_ = head_;
       for (int i = 0; i < size_; i++) {
-        iterator_->get_cell()->setValue(head++);
+        iterator_->setValue(head++);//*
         iterator_ = iterator_->get_next();
       }
     }
     else if (mode == "decrement"){
       iterator_ = tail_;
       for (int i = 0; i < size_; i++) {
-        iterator_->get_cell()->setValue(tail--);
+        iterator_->setValue(tail--);//*
         iterator_ = iterator_->get_prev();
       }
     }
     else if (mode == "equal"){
       iterator_ = head_;
       for (int i = 0; i < size_; i++) {
-        iterator_->get_cell()->setValue(head);
+        iterator_->setValue(head);//*
         iterator_ = iterator_->get_next();
       }
     }
@@ -241,12 +255,8 @@ void Linked_list::set_values(const std::string& mode
       std::cout << "Linked_list::set_values() - wrong mode" << std::endl;
     }
     if (DEBUG) {
-        std::cout << "Linked_list::set_values() - iterator_: " << iterator_->get_cell()->getValue() << std::endl;
-      print();
-      std::cout << "head: " << get_head()->get_cell()->getValue() << std::endl;
-      std::cout << "head next: " << get_head()->get_next()->get_cell()->getValue() << std::endl;
-      std::cout << "tail previous: " << get_tail()->get_prev()->get_cell()->getValue() << std::endl;
-      std::cout << "tail: " << get_tail()->get_cell()->getValue() << std::endl;
+        std::cout << "Linked_list::set_values() - iterator_: " << iterator_->getValue() << std::endl;
+      debug();
     }
 
 
@@ -264,8 +274,8 @@ void Linked_list::move(std::shared_ptr<Node> origin,
 
         std::shared_ptr<Node> temp;
         if (DEBUG_CRUSH) {
-            std::cout << "Linked_list::move() - origin: " << origin->get_cell()->getValue() << std::endl;
-            std::cout << "Linked_list::move() - destination: " << destination->get_cell()->getValue() << std::endl;
+            std::cout << "Linked_list::move() - origin: " << origin->getValue() << std::endl;
+            std::cout << "Linked_list::move() - destination: " << destination->getValue() << std::endl;
             std::cout << "Linked_list::move() - nodes_quantity: " << nodes_quantity << std::endl;
         }
         if (mode == "after") {
@@ -292,15 +302,14 @@ void Linked_list::move(std::shared_ptr<Node> origin,
           if (destination != tail_)
           {
             if (DEBUG_CRUSH) {
-              std::cout << "Linked_list::move() - destination == tail" << std::endl;
-              std::cout << "Linked_list::move() - destination->get_next()->get_cell()->getValue(): " << destination->get_next()->get_cell()->getValue() << std::endl;
-              std::cout << "Linked_list::move() - destination->get_next()->get_prev()->get_cell()->getValue(): " << destination->get_next()->get_prev()->get_cell()->getValue() << std::endl;
-
-              std::cout << "Linked_list::move() - destination->get_next()->set_prev(temp): " << destination->get_next()->get_cell()->getValue() << std::endl;
-              std::cout << "Linked_list::move() - destination->get_next()->get_prev()->get_cell()->getValue(): " << destination->get_next()->get_prev()->get_cell()->getValue() << std::endl;
-
-              std::cout << "Linked_list::move() - destination->get_next(): " << destination->get_next() << std::endl;
-              std::cout << "Linked_list::move() - destination->get_next()->get_cell()->getValue(): " << destination->get_next()->get_cell()->getValue() << std::endl;
+              std::cout << "Linked_list::move() " << std::endl;
+              std::cout << "destination == tail" << std::endl;
+              std::cout << "destination->get_next()->getValue(): " <<             destination->get_next()->getValue() << std::endl;
+              std::cout << "destination->get_next()->get_prev()->getValue(): " << destination->get_next()->get_prev()->getValue() << std::endl;
+              std::cout << "destination->get_next()->set_prev(temp): " <<                     destination->get_next()->getValue() << std::endl;
+              std::cout << "destination->get_next()->get_prev()->getValue(): " << destination->get_next()->get_prev()->getValue() << std::endl;
+              std::cout << "destination->get_next(): " <<                                     destination->get_next() << std::endl;
+              std::cout << "destination->get_next->getValue(): " <<             destination->get_next()->getValue() << std::endl;
             }
             destination->get_next()->set_prev(temp);
           }
@@ -374,14 +383,14 @@ void Linked_list::setRandom(const std::shared_ptr<Node>& start,
         std::cout << "Linked_list::set_random() - direction == 1" << std::endl;
         std::shared_ptr<Node> temp = start;
         for (int i = 0; i < nodes_quantity; i++) {
-            temp->get_cell()->setRandom();
+            temp->setRandom();//*
             temp = temp->get_next();
         }
     } else if (direction == -1) {
         std::cout << "Linked_list::set_random() - direction == -1" << std::endl;
         std::shared_ptr<Node> temp = start;
         for (int i = 0; i < nodes_quantity; i++) {
-            temp->get_cell()->setRandom();
+            temp->setRandom();//*
             temp = temp->get_prev();
         }
     } else {

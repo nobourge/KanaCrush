@@ -29,8 +29,10 @@ class GameWindow : public Fl_Window {
 
     show();
     canvas_.draw();
+    game_.getBoard()->crushColumn(0,2,2);
 
-    Fl::run();
+
+        Fl::run();
   };
   int handle(int event) override {
     switch (event) {
