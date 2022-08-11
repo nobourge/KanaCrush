@@ -52,6 +52,17 @@ class Canvas {
   void print();
   void redraw();
   void debug();
+  vector<shared_ptr<ClickableCell>> getCrushablesFromDirectionXY(int current_x,
+                                                                 int current_y,
+                                                                 int direction_x,
+                                                                 int direction_y,
+                                                                 Fl_Color color,
+                                                                 vector<shared_ptr<ClickableCell>> crushables);
+  vector<shared_ptr<ClickableCell>> getCrushables(int x,
+                                                  int y,
+                                                  Fl_Color color,
+                                                  char direction,
+                                                  vector<shared_ptr<ClickableCell>> crushables);
 };
 
 #endif //KANACRUSH_SRC_2VIEW_CANVAS_H_

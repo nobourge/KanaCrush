@@ -13,7 +13,7 @@
 class Node : public Cell {
     std::shared_ptr<Cell> cell_;
     std::shared_ptr<Node> next_;
-    std::shared_ptr<Node> prev_;
+    std::shared_ptr<Node> prev_; //todo remove
 
 
 public:

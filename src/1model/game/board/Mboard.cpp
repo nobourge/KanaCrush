@@ -460,6 +460,60 @@ std::shared_ptr<Linked_list> Board::get_cells(int row) {
 //  }
 //}
 
+//search crushable cells_
+//todo from the last crush origin closest to its head
+void Board::searchCrushableCells() {
+  std::array<int, cells_containers_container_size_> containers;
+//  std::vector<std::pair<int, int>> origin_and_nodes_quantity;
+  std::array<std::vector<std::array<int, 2>>, cells_containers_container_size_> crushable_cells;
+
+  std::array<int, cells_containers_container_size_> current_origins;
+  for (int i = 0; i < cells_containers_container_size_; i++) {
+    current_origins.at(i) = i;
+
+  }
+//  std::fill_n(std::array, 100, -1);
+  int current_value;
+  int linked_list_previous_value;
+  int previous_container_value;
+
+  for (int i = 0; i < cells_containers_container_size_; i++) {
+    for (auto &linked_list: cell_linked_list_array)
+    {
+      if (i == 0) {
+        linked_list->begin();
+
+      }
+      else {
+        linked_list->next();
+        current_value = linked_list->get_iterator()->getValue();
+
+        //compare current_value with value in
+        //linked_list previous
+
+        //previous container
+        if (previous_container_value == linked_list->get_iterator()->getValue()) {
+          crushable_cells.at(i).push_back({current_origins.at(i), linked_list->get_iterator()->getValue()});
+//          if (crushable_cells.at(i-1).size() == 0) {
+//            crushable_cells.at(i-1).push_back(std::make_pair(i, linked_list->get_iterator()->getValue()));
+//          }
+//          else {
+//            first_crushable_cell_found_ = true;
+//            crushable_cells.at(i-1).push_back(std::make_pair(i, linked_list->get_iterator()->getValue()));
+//          }
+//            crushable_cells.at(i).push_back(std::make_pair(i, linked_list->get_iterator()->getValue()));
+
+        }
+      }
+      linked_list_previous_value = current_value;
+      previous_container_value = current_value;
+
+
+    }
+  }
+
+
+}
 //crush column
 void Board::crushColumn(int column,
                         int origin,

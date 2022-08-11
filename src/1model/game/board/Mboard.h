@@ -65,6 +65,7 @@ class Board {
   void updateCells(std::string to_update);
   void setCells(const std::string& mode="random"
       , int value=1);
+  void searchCrushableCells();
 };
 
 #endif //KANACRUSH_MBOARD_H

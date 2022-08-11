@@ -69,39 +69,40 @@ void Canvas::mouseRelease(Point mouseLoc) {
     int click_cell_y = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getY();
     int release_cell_x = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getX();
     int release_cell_y = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getY();
-
-
-    if (nDuCarre2Y > nDuCarre1Y) {
-      auto crushables = getCrushables(cells_swapped,
-                                      'S');
-
-      fl_translate(click_cell_x, click_cell_y);
-
+//todo
 //
+//    if (nDuCarre2Y > nDuCarre1Y) {
+//      auto crushables = getCrushables(cells_swapped,
+//                                      'S');
+//
+//      fl_translate(click_cell_x, click_cell_y);
+//
+////
+////      for (auto &c: cells_)
+////        bounce_->bounce(c)
+////        c.bounce(mouse_click, 1, 'V', cellColor2);
+////      for (auto &c: cells_)
+////        c.bounce(mouse_release, -1, 'V', cellColor1);
+//    }
+//    else if (nDuCarre2Y < nDuCarre1Y) {
 //      for (auto &c: cells_)
-//        bounce_->bounce(c)
-//        c.bounce(mouse_click, 1, 'V', cellColor2);
+//        c.bounce(mouse_release, 1, 'V', cellColor1);
 //      for (auto &c: cells_)
-//        c.bounce(mouse_release, -1, 'V', cellColor1);
-    }
-    else if (nDuCarre2Y < nDuCarre1Y) {
-      for (auto &c: cells_)
-        c.bounce(mouse_release, 1, 'V', cellColor1);
-      for (auto &c: cells_)
-        c.bounce(mouse_click, -1, 'V', cellColor2);
-    }
-    else if (nDuCarre2X > n_du_carre_1_x_) {
-      for (auto &c: cells_)
-        c.bounce(mouse_click, 1, 'H', cellColor2);
-      for (auto &c: cells_)
-        c.bounce(mouse_release, -1, 'H', cellColor1);
-    }
-    else if (nDuCarre2X < n_du_carre_1_x_) {
-      for (auto &c: cells_)
-        c.bounce(mouse_release, 1, 'H', cellColor1);
-      for (auto &c: cells_)
-        c.bounce(mouse_click, -1, 'H', cellColor2);
-    }
+//        c.bounce(mouse_click, -1, 'V', cellColor2);
+//    }
+//    else if (nDuCarre2X > n_du_carre_1_x_) {
+//      for (auto &c: cells_)
+//        c.bounce(mouse_click, 1, 'H', cellColor2);
+//      for (auto &c: cells_)
+//        c.bounce(mouse_release, -1, 'H', cellColor1);
+//    }
+//    else if (nDuCarre2X < n_du_carre_1_x_) {
+//      for (auto &c: cells_)
+//        c.bounce(mouse_release, 1, 'H', cellColor1);
+//      for (auto &c: cells_)
+//        c.bounce(mouse_click, -1, 'H', cellColor2);
+//    }
+//todo end
   }
 }
 
@@ -168,7 +169,7 @@ void Canvas::update() {
     for (int j = 0; j < cells_containers_size_ ; j++) {
 //      int temp_value = temp_node->getValue();
 //      int temp_type = temp_node->getType();
-      cells_.at(i*j).setFillColorFrom((temp_node->getValue()) - 1);
+      cells_.at(i).at(j)->setFillColorFrom((temp_node->getValue()) - 1);
       temp_node = temp_node->get_next();
     }
   }
@@ -185,7 +186,7 @@ void Canvas::print() {
   std::cout<< std::endl;
   for (int i = 0; i < cells_containers_container_size_ ; i++) {
     for (int j = 0; j < cells_containers_size_ ; j++) {
-      std::cout << cells_.at(i*j).getFillColor() << " ";
+      std::cout << cells_.at(i).at(j)->getFillColor() << " ";
     }
     std::cout << std::endl;
   }
@@ -196,13 +197,61 @@ void Canvas::print() {
 }
 
 
-//get crushable cells from the swapped cells
-std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushableCells(std::vector<std::shared_ptr<ClickableCell>> cells_swapped, char direction) {
-  std::vector<std::shared_ptr<ClickableCell>> crushable_cells;
-  for (auto &c: swapped_cells) {
-    if (c->getFillColor() == FL_BLACK) {
-      crushable_cells.push_back(c);
-    }
+//
+//get crushable cells from both sides of the cell
+std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushablesFromDirectionXY(
+    int current_x,
+    int current_y,
+    int direction_x,
+    int direction_y,
+    Fl_Color color,
+    std::vector<std::shared_ptr<ClickableCell>> crushables
+    ) {
+
+  while (cells_.at(current_x+=direction_x).at(current_y+=direction_y)->getFillColor() == color) {
+    crushables.push_back(cells_.at(current_x).at(current_y));
   }
-  return crushable_cells;
+    return crushables;
+
 }
+  std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushables(
+    int x,
+    int y,
+    Fl_Color color,
+    char direction,
+    std::vector<std::shared_ptr<ClickableCell>> crushables
+    ) {
+
+  switch (direction) {
+    case 'N':getCrushablesFromDirectionXY(x, y, 0, -1, color, crushables);
+      break;
+    case 'S':
+      getCrushablesFromDirectionXY(x, y, 0, 1, color, crushables);
+        break;
+    case 'E':
+      getCrushablesFromDirectionXY(x, y, 1, 0, color, crushables);
+        break;
+    case 'W':
+      getCrushablesFromDirectionXY(x, y, -1, 0, color, crushables);
+        break;
+
+  }
+  return crushables;
+}
+
+//
+////get crushable cells from the swapped cells
+//std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushableCells(int cell_swapped_1_x,
+//                                                                      char swap_direction) {
+//  std::vector<std::shared_ptr<ClickableCell>> crushable_cells;
+//  switch (swap_direction) {
+//    case 'N':
+//        crushable_cells = getCrushables(cell_swapped_1_x, cell_swapped_1->getY(), cell_swapped_1->getFillColor(), 'N', crushable_cells);
+//        crushable_cells = getCrushables(cell_swapped_2->getX(), cell_swapped_2->getY(), cell_swapped_2->getFillColor(), 'S', crushable_cells);
+//        break;
+//
+//
+//
+//  }
+//  return crushable_cells;
+//}
