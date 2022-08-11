@@ -6,7 +6,7 @@
 #define KANACRUSH_MAIN_H
 
 #include "test.h"
-//#include "srcCommon.h"
+//#include "srcCommon.height_"
 
 #include "1model/Welcome.h"
 #include "1model/Menu.h"

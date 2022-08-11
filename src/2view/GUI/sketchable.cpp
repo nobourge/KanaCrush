@@ -5,47 +5,63 @@
 #include "sketchable.h"
 
 
-Rectangle::Rectangle(Point center, int w, int h,
-                     Fl_Color frameColor,
-                     Fl_Color fillColor)
-    : center{center}, w{w}, h{h}, fillColor{fillColor},
-      frameColor{frameColor} {}
-
-void Rectangle::draw() {
-  std::array<Point, 5> points{
-      Point{center.x-w/2, center.y-h/2},
-      Point{center.x-w/2, center.y+h/2},
-      Point{center.x+w/2, center.y+h/2},
-      Point{center.x+w/2, center.y-h/2},
-      Point{center.x-w/2, center.y-h/2}};
-  fl_color(fillColor);
-  fl_begin_polygon();
-  for (auto& point : points) {
-    fl_vertex(point.x, point.y);
-  }
-  fl_end_polygon();
-  fl_color(frameColor);
-  fl_begin_line();
-  for (auto& point : points) {
-    fl_vertex(point.x, point.y);
-  }
-  fl_end_line();
+void Sketchable::setWidth(int new_width) {
+  width_ = new_width;
+}
+void Sketchable::setHeight(int new_height) {
+  height_ = new_height;
+}
+int Sketchable::getWidth() const {
+  return width_;
+}
+int Sketchable::getHeight() const {
+  return height_;
+}
+//Point getCenter() {
+//  return center_;
+//}
+void Sketchable::setFillColor(Fl_Color newFillColor) {
+  fill_color_ = newFillColor;
 }
 
-void Rectangle::setFillColor(Fl_Color newFillColor) {
-  fillColor = newFillColor;
+void Sketchable::setFillColorFrom(int colorIndex) {
+  setFillColor(Colors_codes[colorIndex]);
 }
 //Fl_Color Rectangle::getFillColor() const {
-//    return fillColor;
+//    return fill_color_;
 //}
 
-void Rectangle::setFrameColor(Fl_Color newFrameColor) {
-  frameColor = newFrameColor;
+void Sketchable::setFrameColor(Fl_Color newFrameColor) {
+  frame_color_ = newFrameColor;
 }
 
-bool Rectangle::contains(Point p) const {
-  return p.x>=center.x-w/2 &&
-      p.x<center.x+w/2 &&
-      p.y>=center.y-h/2 &&
-      p.y<center.y+h/2;
+
+Fl_Color Sketchable::getFillColor() const {
+  return fill_color_;
+
 }
+Fl_Color Sketchable::getFrameColor() const {
+  return frame_color_;
+
+}
+Sketchable::Sketchable(Point center, int w, int h, Fl_Color frameColor, Fl_Color fillColor) {
+  init(center, w, h, frameColor, fillColor);
+
+}
+void Sketchable::init(Point center, int w, int h, Fl_Color frameColor, Fl_Color fillColor) {
+    center_ = center;
+    width_ = w;
+    height_ = h;
+    fill_color_ = fillColor;
+    frame_color_ = frameColor;
+
+}
+Point Sketchable::getCenter() {
+    return center_;
+}
+//
+//void Sketchable::bounce(Point mouseLoc, int dir, char direction, Fl_Color newFillColor) {
+//  if (contains(mouseLoc)) {
+//    std::shared_ptr<Bounce> bounce = std::make_shared<Bounce>(this, 50, 50);
+//    bounce->start(dir, direction, newFillColor);
+//  }

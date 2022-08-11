@@ -92,7 +92,7 @@ bool Board::crushFrom(int x, int y)
 //                    //not enough same_type_quantity to crush but
 //                    if (cardinal_direction_int < 2)
 //                    {
-//                        //memorize for same axis other cardinal direction
+//                        //memorize for same axis other cardinal direction_
 //                        std::get<cardinal_direction_int>(N_E_potential_crush) = same_type_quantity;
 //                    }
 //                }
@@ -119,22 +119,26 @@ void Board::print()
     std::cout << "Board::print()" << std::endl;
     std::cout << "cells_containers_head_orientation: " << cells_containers_head_orientation_ << std::endl;
 
-
+  for (int i = 0; i < cells_containers_container_size_ ; i++) {
+    std::cout << "-";
+  }
+  std::cout<< std::endl;
     if (data_structure_ == "linked_list")
     {
       if (DEBUG||DEBUG_CRUSH)
       {
+        std::cout << "Board::print() linked_list->print()" << std::endl;
         for (auto &linked_list : cell_linked_list_array) {
           linked_list->print();
         }
-        for (int i = 0; i < cells_containers_container_size_ ; i++) {
-          std::shared_ptr<Node> temp_node = get_cells(i)->get_head();
-
-          for (int j = 0; j < cells_containers_size_; j++) {
-            std::cout << "temp_node ->getValue() : " << temp_node->getValue() << std::endl;
-//            std::cout << "temp_node ->getValue() : " << temp_node->get_cell()->getValue() << std::endl;
-          }
-        }
+//        for (int i = 0; i < cells_containers_container_size_ ; i++) {
+//          std::shared_ptr<Node> temp_node = get_cells(i)->get_head();
+//
+//          for (int j = 0; j < cells_containers_size_; j++) {
+//            std::cout << "temp_node ->getValue() : " << temp_node->getValue() << std::endl;
+////            std::cout << "temp_node ->getValue() : " << temp_node->get_cell()->getValue() << std::endl;
+//          }
+//        }
       }
 
       if (cells_containers_head_orientation_ == "left")
@@ -143,20 +147,18 @@ void Board::print()
         {
             linked_list->print();
         }
+
       }
 
       else if (cells_containers_head_orientation_ == "down")
       {
 //        std::cout << "printing cells_containers_head_orientation: " << cells_containers_head_orientation_ << std::endl;
-//        std::cout << "cells size: " << cell_linked_list_array.size() << std::endl;
+//        std::cout << "cells_ size: " << cell_linked_list_array.size() << std::endl;
         for (int i = 0; i < cell_linked_list_array.size(); i++)
         {
           for (auto &linked_list : cell_linked_list_array)
           {
-            if (DEBUG || DEBUG_BOARD)
-            {
-              linked_list->debug();
-            }
+
             if (i == 0)
             {
               linked_list->end();
@@ -169,7 +171,9 @@ void Board::print()
 
           }
           std::cout << std::endl;
+
         }
+
       }
 
     }
@@ -227,6 +231,10 @@ void Board::print()
 //      }
 //    }
 
+  for (int i = 0; i < cells_containers_container_size_ ; i++) {
+    std::cout << "-";
+  }
+  std::cout<< std::endl;
 }
 
 //board linked list functions
@@ -344,7 +352,7 @@ Board::Board() {
 
 }
 
-//find groups of minimum 3 cells
+//find groups of minimum 3 cells_
 // with same value
 // in same row or column
 // adjacents to each other
@@ -428,24 +436,24 @@ std::shared_ptr<Linked_list> Board::get_cells(int row) {
     return cell_linked_list_array.at(row);
 }
 
-//cells_container move cells
-//void Board::moveCells(int row, int column, int direction) {
-//  if (direction == 0) {
+//cells_container move cells_
+//void Board::moveCells(int row, int column, int direction_) {
+//  if (direction_ == 0) {
 //    for (int i = 0; i < cells_containers_container_size_-column-1; i++) {
 //      replaceCellValue(row, i);
 //    }
 //  }
-//  else if (direction == 1) {
+//  else if (direction_ == 1) {
 //    for (int i = 0; i < cells_containers_container_size_-column-1; i++) {
 //      replaceCellValue(row, cells_containers_container_size_-1-i);
 //    }
 //  }
-//  else if (direction == 2) {
+//  else if (direction_ == 2) {
 //    for (int i = 0; i < cells_containers_size_-row-1; i++) {
 //      replaceCellValue(i, column);
 //    }
 //  }
-//  else if (direction == 3) {
+//  else if (direction_ == 3) {
 //    for (int i = 0; i < cells_containers_size_-row-1; i++) {
 //      replaceCellValue(cells_containers_size_-1-i, column);
 //    }
@@ -457,9 +465,20 @@ void Board::crushColumn(int column,
                         int origin,
                         int nodes_quantity
                             ) {
+  if (DEBUG_CRUSH){
+    std::cout << "Board::crushColumn()" << std::endl;
+    std::cout << "column: " << column << std::endl;
+    std::cout << "origin: " << origin << std::endl;
+    std::cout << "nodes_quantity: " << nodes_quantity << std::endl;
+  }
   get_cells(column)->crush(origin,
                            nodes_quantity);
 //  get_cells(column)->move(origin, destination, nodes_quantity);
+
+    if (DEBUG_CRUSH){
+        std::cout << "Board::crushColumn()" << std::endl;
+        print();
+    }
 }
 
 
@@ -468,14 +487,14 @@ void Board::crush() {
     for (int i = 0; i < cells_containers_size_; i++) {
         for (int j = 0; j < cells_containers_container_size_; j++) {
 //        if (get_cells(i)->get_head()->getValue() == get_cells(i)->get_head()->getNext()->getValue()) {
-//            crushColumn(i, j, 2);
+            crushColumn(i, j, 2);
 //        }
         }
     }
 
 }
 //
-////cell_linked_list_array update cell_array_array or Canvas->cells
+////cell_linked_list_array update cell_array_array or Canvas->cells_
 //void Board::updateCells(std::string to_update) {
 //  if (data_structure_ == "array") {
 //    std::cout << "Board::updateCells() array" << std::endl;

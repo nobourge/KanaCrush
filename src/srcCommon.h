@@ -18,6 +18,8 @@
 
 struct Point {
     int x,y;
+    int getX() { return x; }
+    int getY() { return y; }
 };
 
 #endif //KANACRUSH_SRC_H

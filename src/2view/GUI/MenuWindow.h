@@ -42,10 +42,8 @@ public:
 //      set_resizable((Fl_Widget &) this);
 
     }
-    void run(){
-      show();
-      Fl::run();
-    };
+    void run();
+
 
   static void Timer_CB(void *userdata) {
     MenuWindow *o = (MenuWindow*) userdata;
@@ -94,6 +92,7 @@ public:
 
 
 
+  static void close(void *w);
 };
 
 #endif //KANACRUSH_SRC_2VIEW_GUI_MENUWINDOW_H_

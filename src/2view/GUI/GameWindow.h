@@ -5,6 +5,8 @@
 #ifndef KANACRUSH_MAINWINDOW_H
 #define KANACRUSH_MAINWINDOW_H
 
+#include<unistd.h>
+
 #include "constants.h"
 #include "canvas.h"
 #include "1model/game/game.h"
@@ -29,7 +31,12 @@ class GameWindow : public Fl_Window {
 
     show();
     canvas_.draw();
+
+    unsigned int microsecond = 1000000;
+    usleep(3 * microsecond);//sleeps for 3 second
     game_.getBoard()->crushColumn(0,2,2);
+
+    canvas_.redraw();
 
 
         Fl::run();

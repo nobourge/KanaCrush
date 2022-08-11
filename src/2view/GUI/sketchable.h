@@ -9,74 +9,41 @@
 #include "constants.h"
 
 class Sketchable {
-  Fl_Color fillColor;
-  Fl_Color frameColor;
+  friend class Animation;
+protected:
+  Point center_{};
+  int width_;
+  int height_;
+  Fl_Color fill_color_;
+  Fl_Color frame_color_;
 
  public:
-  virtual void draw() =0;
-  virtual bool contains(Point p) const =0;
-  virtual Point getCenter() const =0;
-  virtual Fl_Color PointgetColor(Point mouseLoc) const =0;
-  //get color
-  virtual Fl_Color getFillColor() const = 0;
-  virtual void setFillColor(Fl_Color newFillColor) =0;
+    Sketchable(Point center, int w, int h,
+                 Fl_Color frameColor,
+                 Fl_Color fillColor);
+    void init(Point center, int w, int h,
+                 Fl_Color frameColor,
+                 Fl_Color fillColor);
+
+    virtual void draw() = 0;
+//  bool contains(Point p) const =0;
+//  virtual bool contains(Point p) const =0;
+//  Point getCenter() const;
+//  [[nodiscard]] virtual Fl_Color PointgetColor(Point mouseLoc) const =0;
+  Fl_Color getFillColor() const;
+  void setFillColor(Fl_Color newFillColor);
+//  virtual void setFillColor(Fl_Color newFillColor) =0;
   virtual ~Sketchable() = default;;
-};
-
-
-//filled-in rectangle
-//with different colors for the fill and the border
-//displayed at a given location
-class Rectangle: public Sketchable {
-  Point center;
-  int w, h;
-  Fl_Color fillColor, frameColor;
- public:
-  Rectangle(Point center, int w, int h,
-            Fl_Color frameColor,
-            Fl_Color fillColor);
-  void draw() override;
-  void setFillColor(Fl_Color newFillColor) override;
-  Fl_Color getFillColor() const {
-    return fillColor;
-  }
+  [[nodiscard]] Fl_Color getFrameColor() const;
   void setFrameColor(Fl_Color newFrameColor);
-  Fl_Color getFrameColor() const {
-    return frameColor;
-  }
-  void setWidth(int new_width) {
-    w = new_width;
-  }
-  void setHeight(int new_height) {
-    h = new_height;
-  }
-  int getWidth() const {
-    return w;
-  }
-  int getHeight() const {
-    return h;
-  }
-  bool contains(Point p) const override;
-  Point getCenter() const override {
-    return center;
-  }
-  Fl_Color PointgetColor(Point mouseLoc) const override {
-    return fillColor;
-  }
-
-  //print
-    void print(std::string attribute) const {
-        std::cout << attribute << ": " << fillColor << std::endl;
-        if (attribute == "fillColor") {
-            std::cout << attribute << ": " << fillColor << std::endl;
-        } else if (attribute == "frameColor") {
-            std::cout << attribute << ": " << frameColor << std::endl;
-        }
-    }
-
-    //print color code
-
-
+  void setFillColorFrom(int colorIndex);
+  void setHeight(int new_height);
+  [[nodiscard]] int getWidth() const;
+  [[nodiscard]] int getHeight() const;
+  void setWidth(int new_width);
+  Point getCenter();
 };
+
+
 
 #endif //KANACRUSH_SRC_2VIEW_SKETCHABLE_H_

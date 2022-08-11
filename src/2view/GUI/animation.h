@@ -8,66 +8,54 @@
 
 #include "src/srcCommon.h"
 #include "sketchable.h"
+#include "srcCommon.h"
+#include <math.h>
+#include <time.h>
+#include <array>
+#include <memory>
+#include <unistd.h>
 
-class Animation: public Sketchable {
+#if __cplusplus >= 202002L
+#include <numbers>
+using std::numbers::pi;
+#else
+const double pi = 3.141592653589793238462643383279502884L;
+#endif
+
+using namespace std;
+
+class Animation {
  protected:
-  std::shared_ptr<Sketchable> toAnimate;
- public:
-  explicit Animation(std::shared_ptr<Sketchable> toAnimate)
-      : toAnimate{toAnimate} {}
-  virtual bool isComplete() =0;
-  virtual void start(int direction,
-                     char directionText,
-                     Fl_Color newFillColor) {
-    std::shared_ptr<Animation> a = std::dynamic_pointer_cast<Animation>(toAnimate);
-    if (a) a->start(1, 'V', FL_BLACK);
-  };
-  bool contains(Point p) const override {
-    return toAnimate->contains(p);
-  }
-  Point getCenter() const override {
-    return toAnimate->getCenter();
-  }
-  Fl_Color PointgetColor(Point mouseLoc) const override {
-    return toAnimate->PointgetColor(mouseLoc);
-  }
-  Fl_Color getFillColor() const  {
-    return toAnimate->getFillColor();
-  }
+  Animation();
+  std::shared_ptr<Sketchable> to_animate_;
+  bool animating_ = false;
+  int duration_{};
+  int time_{0};
 
-  void setFillColor(Fl_Color newFillColor) override {
-    toAnimate->setFillColor(newFillColor);
-  }
+  int direction_{};
+  char direction_text_{} ;
+//  Fl_Color color;
+ public:
+  virtual bool isComplete() =0;
+  virtual void start() ;
+  virtual void animate(std::shared_ptr<Sketchable> to_animate,
+                       int duration,
+                       int direction,
+                       char directionText,
+                       Fl_Color newFillColor);
+  void setState();
 };
 
-
-class Bounce: public Animation {
-  int duration;
-  int bounceHeight;
-  bool bouncing = false;
-  int time{0};
-  int direction = -1;
-  char directionText;
-  Fl_Color color;
-  Point currentTranslation();
- public:
-  Bounce(std::shared_ptr<Sketchable> toAnimate,
-         int duration = 50, int bounceHeight = 50)
-      : Animation{toAnimate},
-        duration{duration},
-        bounceHeight{bounceHeight},
-        direction{direction} {}
-  void draw() override;
-  bool isComplete() override;
-  void start(int dir,
-             char dirText,
-             Fl_Color newFillColor) override {
-    Animation::start(dir, dirText, newFillColor);
-    bouncing = true;
-    time = 0;
-    direction = dir;
-    directionText = dirText;
-    color = newFillColor;
+struct Translation {
+  Translation(Point p, char directionText) {
+    fl_push_matrix();
+    if (directionText == 'V')
+      fl_translate(p.x, p.y);
+    else if (directionText == 'H')
+      fl_translate(p.y, p.x);
+  }
+  ~Translation() {
+    fl_pop_matrix();
   }
 };
 

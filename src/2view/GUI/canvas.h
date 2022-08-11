@@ -5,7 +5,7 @@
 #ifndef KANACRUSH_SRC_2VIEW_CANVAS_H_
 #define KANACRUSH_SRC_2VIEW_CANVAS_H_
 
-//#include "animation.h"
+//#include "animation.height_"
 #include "constants.h"
 #include "ClickableCell.h"
 #include "src/1model/game/board/Mboard.h"
@@ -26,9 +26,15 @@ elsewhere it will probably crash.
 --------------------------------------------------*/
 class Canvas {
   std::shared_ptr<Board> board_;
-  int cells_containers_size_;
-    int cells_containers_container_size_;
-  std::vector< ClickableCell > cells;
+  std::shared_ptr<Bounce> bounce_;
+
+  static const int cells_containers_size_=9;
+   static const int cells_containers_container_size_=9;
+  std::array<
+      std::array<
+          shared_ptr<ClickableCell>,cells_containers_size_
+          > ,cells_containers_container_size_> cells_;
+//  std::vector< ClickableCell > cells_;
   Point mouse_click{}, mouse_release{}, mouse_hover{};
   Fl_Color cellColor1{}, cellColor2{};
   int n_du_carre_1_x_{},nDuCarre1Y{}, nDuCarre2X{}, nDuCarre2Y{};
@@ -44,6 +50,8 @@ class Canvas {
 //  std::vector<ClickableCell> getCells();
   void update();
   void print();
+  void redraw();
+  void debug();
 };
 
 #endif //KANACRUSH_SRC_2VIEW_CANVAS_H_

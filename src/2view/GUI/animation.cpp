@@ -1,62 +1,44 @@
-// These should include everything you might use
 
-//#include "constants.h"
-
-#include "srcCommon.h"
-#include <math.h>
-#include <time.h>
-
-#include <array>
-#include <memory>
-#include <unistd.h>
 
 #include "animation.h"
 
+#include <utility>
 
-#if __cplusplus >= 202002L
-#include <numbers>
-using std::numbers::pi;
-#else
-const double pi = 3.141592653589793238462643383279502884L;
-#endif
+void Animation::start(){
+  time_ = 0;
+    animating_ = true;
+//    std::shared_ptr<Animation> a = std::dynamic_pointer_cast<Animation>(to_animate_);
+//    if (a) a->start(1
+//                    , 'V'
+//                    , FL_BLACK);
 
-using namespace std;
+}
+Animation::Animation() {
+//  init(std::move(toAnimate), duration);
 
-struct Translation {
-  Translation(Point p, char directionText) {
-    fl_push_matrix();
-    if (directionText == 'V')
-      fl_translate(p.x, p.y);
-    else if (directionText == 'H')
-      fl_translate(p.y, p.x);
-  }
-  ~Translation() {
-    fl_pop_matrix();
-  }
-};
-
-
-
-void Bounce::draw() {
-  if (bouncing)
-    ++time;
-  Translation t1{currentTranslation(), directionText};
-  toAnimate->draw();
+}
+//init
+//void Animation::init(std::shared_ptr<Sketchable> toAnimate, int duration) {
+//  to_animate_ = std::move(toAnimate);
+//  duration_ = duration;
+//}
+void Animation::setState() {
+  if (animating_)
+    ++time_;
   if (isComplete())
-    bouncing = false;
-}
-
-Point Bounce::currentTranslation() {
-  if (isComplete()) {
-    toAnimate->setFillColor(color);
-    return {0, 0};
-  }
-  else
-    return {0, static_cast<int>(direction*bounceHeight*time/duration)};
+    animating_ = false;
 
 }
+void Animation::animate(std::shared_ptr<Sketchable> to_animate,
+                        int duration,
+                        int direction,
+                        char directionText,
+                        Fl_Color newFillColor) {
+    to_animate_ = std::move(to_animate);
+  duration_ = duration;
+    direction_ = direction;
+    direction_text_ = directionText;
 
-bool Bounce::isComplete() {
-  return time > duration;
+  start();
+
 }
-

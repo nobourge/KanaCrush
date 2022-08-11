@@ -9,6 +9,7 @@
 #include "constants.h"
 #include "FL_includes.h"
 
+//todo make base for  Window classes
 class GUIWindow : public Fl_Window{
 public:
   GUIWindow(int x,

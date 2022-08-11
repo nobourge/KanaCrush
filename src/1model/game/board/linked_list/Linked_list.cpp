@@ -380,22 +380,25 @@ void Linked_list::setRandom(const std::shared_ptr<Node>& start,
 {
     std::cout << "Linked_list::set_random()" << std::endl;
     if (direction == 1) {
-        std::cout << "Linked_list::set_random() - direction == 1" << std::endl;
+        std::cout << "Linked_list::set_random() - direction_ == 1" << std::endl;
         std::shared_ptr<Node> temp = start;
         for (int i = 0; i < nodes_quantity; i++) {
             temp->setRandom();//*
             temp = temp->get_next();
         }
     } else if (direction == -1) {
-        std::cout << "Linked_list::set_random() - direction == -1" << std::endl;
+        std::cout << "Linked_list::set_random() - direction_ == -1" << std::endl;
         std::shared_ptr<Node> temp = start;
         for (int i = 0; i < nodes_quantity; i++) {
             temp->setRandom();//*
             temp = temp->get_prev();
         }
     } else {
-        std::cout << "Linked_list::set_random() - direction != 1 || -1" << std::endl;
-        throw std::invalid_argument("direction != 1 || -1");
+        std::cout << "Linked_list::set_random() - direction_ != 1 || -1" << std::endl;
+        throw std::invalid_argument("direction_ != 1 || -1");
+    }
+    if (DEBUG_LINKED_LIST) {
+        print();
     }
 }
 int Linked_list::get_size() const {
