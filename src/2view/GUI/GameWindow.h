@@ -34,7 +34,7 @@ class GameWindow : public Fl_Window {
 
     unsigned int microsecond = 1000000;
     usleep(3 * microsecond);//sleeps for 3 second
-    game_.getBoard()->crushColumn(0,2,2);
+    game_.getBoard()->crush();
 
     canvas_.redraw();
 

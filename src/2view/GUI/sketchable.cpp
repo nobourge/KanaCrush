@@ -59,9 +59,10 @@ void Sketchable::init(Point center, int w, int h, Fl_Color frameColor, Fl_Color 
 Point Sketchable::getCenter() {
     return center_;
 }
-//
-//void Sketchable::bounce(Point mouseLoc, int dir, char direction, Fl_Color newFillColor) {
-//  if (contains(mouseLoc)) {
-//    std::shared_ptr<Bounce> bounce = std::make_shared<Bounce>(this, 50, 50);
-//    bounce->start(dir, direction, newFillColor);
-//  }
+
+bool Sketchable::contains(Point p) const  {
+  return p.x>=center_.x-width_/2 &&
+      p.x<center_.x+width_/2 &&
+      p.y>=center_.y-height_/2 &&
+      p.y<center_.y+height_/2;
+}

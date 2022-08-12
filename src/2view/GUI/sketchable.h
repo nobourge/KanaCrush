@@ -12,10 +12,10 @@ class Sketchable {
   friend class Animation;
 protected:
   Point center_{};
-  int width_;
-  int height_;
-  Fl_Color fill_color_;
-  Fl_Color frame_color_;
+  int width_{};
+  int height_{};
+  Fl_Color fill_color_{};
+  Fl_Color frame_color_{};
 
  public:
     Sketchable(Point center, int w, int h,
@@ -30,7 +30,7 @@ protected:
 //  virtual bool contains(Point p) const =0;
 //  Point getCenter() const;
 //  [[nodiscard]] virtual Fl_Color PointgetColor(Point mouseLoc) const =0;
-  Fl_Color getFillColor() const;
+  [[nodiscard]] Fl_Color getFillColor() const;
   void setFillColor(Fl_Color newFillColor);
 //  virtual void setFillColor(Fl_Color newFillColor) =0;
   virtual ~Sketchable() = default;;
@@ -42,6 +42,7 @@ protected:
   [[nodiscard]] int getHeight() const;
   void setWidth(int new_width);
   Point getCenter();
+  [[nodiscard]] bool contains(Point p) const;
 };
 
 

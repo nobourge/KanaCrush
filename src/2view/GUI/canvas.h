@@ -5,9 +5,9 @@
 #ifndef KANACRUSH_SRC_2VIEW_CANVAS_H_
 #define KANACRUSH_SRC_2VIEW_CANVAS_H_
 
-//#include "animation.height_"
 #include "constants.h"
 #include "ClickableCell.h"
+#include "Bounce.h"
 #include "src/1model/game/board/Mboard.h"
 
 /*--------------------------------------------------

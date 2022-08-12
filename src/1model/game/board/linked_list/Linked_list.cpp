@@ -359,17 +359,18 @@ std::shared_ptr<Node> Linked_list::get_node(int index) {
 }
 
 //crush
-void Linked_list::crush(int origin_int,
-                        int nodes_quantity) {
+void Linked_list::crush(std::vector<std::array<int, 3>> crush_vector) {
     std::cout << "Linked_list::crush()" << std::endl;
-  std::shared_ptr<Node> origin = get_node(origin_int);
-  move(origin,
-       tail_,
-       nodes_quantity
-       );
-  setRandom(tail_,
-            nodes_quantity);
-
+    for (int i = crush_vector.size(); 0 < i ; i--) {
+        std::shared_ptr<Node> origin = get_node(crush_vector[i].at(0));
+        int nodes_quantity = crush_vector[i].at(1);
+      move(origin,
+           tail_,
+           nodes_quantity
+      );
+      setRandom(tail_,
+                nodes_quantity);
+    }
 }
 
 //node(s) set random from origin to destination

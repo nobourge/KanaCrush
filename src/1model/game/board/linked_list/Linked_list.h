@@ -48,8 +48,7 @@ class Linked_list {
   std::shared_ptr<Node> get_next(std::shared_ptr<Node> node);
   std::shared_ptr<Node> get_prev(std::shared_ptr<Node> node);
   std::shared_ptr<Node> get_node(int index);
-  void crush(int origin_int,
-             int nodes_quantity);
+
   void move(std::shared_ptr<Node> origin,
             std::shared_ptr<Node> destination,
             int nodes_quantity,
@@ -59,6 +58,8 @@ class Linked_list {
                  int direction=-1);
   [[nodiscard]] int get_size() const;
   void debug();
+//  void crush(std::vector<std::pair<int, int>> crush_vector);
+  void crush(std::vector<std::array<int, 3>> crush_vector);
 };
 
 #endif //KANACRUSH_SRC_1MODEL_BOARD_LINKED_LIST_H_

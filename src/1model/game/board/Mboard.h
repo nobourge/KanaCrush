@@ -59,13 +59,13 @@ class Board {
   void rain(int row
             , int column);
   void setDataStructure(const std::string &data_structure="linked_list");
-  void crushColumn(int column
-                   , int origin
-                   , int nodes_quantity);
+
   void updateCells(std::string to_update);
   void setCells(const std::string& mode="random"
       , int value=1);
-  void searchCrushableCells();
+  std::array<std::vector<std::array<int, 3>>, 9> getCrushableCells();
+
+  void crushColumn(int column, std::vector<std::array<int, 3>> &origins_and_nodes_quantities);
 };
 
 #endif //KANACRUSH_MBOARD_H
