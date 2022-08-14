@@ -27,14 +27,18 @@ elsewhere it will probably crash.
 class Canvas {
   std::shared_ptr<Board> board_;
   std::shared_ptr<Bounce> bounce_;
+  //todo
+  // std::shared_ptr<Translate> translate_;
 
   static const int cells_containers_size_=9;
    static const int cells_containers_container_size_=9;
+
   std::array<
       std::array<
           shared_ptr<ClickableCell>,cells_containers_size_
           > ,cells_containers_container_size_> cells_;
 //  std::vector< ClickableCell > cells_;
+
   Point mouse_click{}, mouse_release{}, mouse_hover{};
   Fl_Color cellColor1{}, cellColor2{};
   int n_du_carre_1_x_{},nDuCarre1Y{}, nDuCarre2X{}, nDuCarre2Y{};
@@ -63,6 +67,7 @@ class Canvas {
                                                   Fl_Color color,
                                                   char direction,
                                                   vector<shared_ptr<ClickableCell>> crushables);
+  void translateCell(int x, int y, int dx, int dy);
 };
 
 #endif //KANACRUSH_SRC_2VIEW_CANVAS_H_

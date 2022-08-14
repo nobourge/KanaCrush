@@ -19,6 +19,8 @@ class Board {
 
   //crush
   std::array<std::shared_ptr<Linked_list>, cells_containers_size_> cell_linked_list_array;
+  std::array<std::vector<std::array<int, 3>>, cells_containers_container_size_> crushable_cells_;
+
   //random access search & comparison
   std::array<std::array<std::shared_ptr<Cell>, cells_containers_container_size_>, cells_containers_size_> cell_array_array;
   std::string cells_value_distribution_;
@@ -66,6 +68,9 @@ class Board {
   std::array<std::vector<std::array<int, 3>>, 9> getCrushableCells();
 
   void crushColumn(int column, std::vector<std::array<int, 3>> &origins_and_nodes_quantities);
+  void crushableCellsAddNewSerie(int column, int origin, int node_quantity);
+  void crushable_cells_Print();
+  void crushableCellsUpdate(int column, int origin, int node_quantity, int serie_index);
 };
 
 #endif //KANACRUSH_MBOARD_H

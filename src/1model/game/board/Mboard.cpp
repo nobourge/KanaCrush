@@ -460,16 +460,98 @@ std::shared_ptr<Linked_list> Board::get_cells(int row) {
 //  }
 //}
 
+//crushable_cells_ print
+void Board::crushable_cells_Print() {
+  int i = 0;
+//            std::cout << "linked_list: " << linked_list << std::endl;
+//            std::cout << "crushable_cells_ : " << crushable_cells_ << std::endl;
+
+  for (auto &array_vector: crushable_cells_)
+  {
+    std::cout << "array_vector column: " << i << " ";
+//    std::cout << "array_vector: " << i << std::endl;
+    i++;
+    if (array_vector.empty()) {
+      std::cout << " empty" ;
+//                std::cout << "array_vector empty" << std::endl;
+    }
+    else {
+//      std::cout << "array_vector not empty" << std::endl;
+      for (auto &origin_node_quantity_bool : array_vector) {
+        std::cout
+//        << "origin_node_quantity_bool"
+        << origin_node_quantity_bool[0] << " "
+                  << origin_node_quantity_bool[1] << " " << origin_node_quantity_bool[2];
+
+      }
+    }
+    std::cout << std::endl;
+  }
+}
+//crushable cells at array (column) index at vector index push back new array
+void Board::crushableCellsAddNewSerie(int column,
+                                       int origin,
+                                       int node_quantity
+                                       )
+{
+  if (DEBUG_CRUSH) {
+    std::cout << "             vector empty or last serie ended" << std::endl;
+    std::cout << "                        create new" << std::endl;
+  }
+  std::array<int, 3> new_crushable_serie = {origin, node_quantity,-1};
+  crushable_cells_.at(column).push_back(new_crushable_serie);
+//  crushable_cells_.at(column).push_back({origin, node_quantity,-1});
+
+
+  if (DEBUG_CRUSH) {
+    std::cout << "                        push_back" << std::endl;
+    crushable_cells_Print();
+  }
+}
+
+void Board::crushableCellsUpdate(int column,
+                                  int origin,
+                                  int node_quantity,
+                                    int serie_index
+
+                                  ){
+
+//    if (DEBUG_CRUSH) {
+//      std::cout << "current not confirmed" << current_confirmed << std::endl;
+//    }
+
+    if (!crushable_cells_.at(column).empty()) {
+      std::array column_current_array = crushable_cells_.at(column - serie_index).back();
+
+      if (column_current_array.at(2) == -1){
+        column_current_array.at(1)++;
+      }
+    }
+    else
+    {
+      crushableCellsAddNewSerie(column, origin, node_quantity);
+
+    }
+}
 //search crushable cells_
 //todo from the last crush zone +2
 //todo array9 not resizable replace with vector
+
+//
 std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells() {
 //  std::array<int, cells_containers_container_size_> containers;
 //  std::vector<std::pair<int, int>> origin_and_nodes_quantity;
 // 1 origin
 // 2 nodes quantity
 // 3 crushable bool
-  std::array<std::vector<std::array<int, 3>>, cells_containers_container_size_> crushable_cells;
+
+  if (DEBUG_CRUSH) {
+    std::cout << "Board::getCrushableCells()" << std::endl;
+  }
+//  std::array<std::vector<std::array<int, 3>>, cells_containers_container_size_> crushable_cells_;
+  for (int i = 0; i < cells_containers_container_size_; i++) {
+    crushable_cells_.at(i) = std::vector<std::array<int, 3>>();
+  }
 
   int current_value;
   int previous_container_value;
@@ -486,12 +568,21 @@ std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells() {
 
   for (int i = 0; i < cells_containers_container_size_; i++)
   {
+    int column = 0;
+    if (DEBUG_CRUSH) {
+      std::cout << "i row: " << i << std::endl;
+    }
     for (auto &linked_list: cell_linked_list_array)
     {
+        if (DEBUG_CRUSH)
+        {
+          crushable_cells_Print();
+        }
+//      std::vector  current_column = crushable_cells_.at(column);
       std::array<int,3> current_column_current_array{};
-      if (!crushable_cells.at(i).empty())
+      if (!crushable_cells_.at(column).empty())
       {
-        current_column_current_array = crushable_cells.at(i).back();
+        current_column_current_array = crushable_cells_.at(column).back();
         current_column_current_array_empty = false;
       }
       else
@@ -499,6 +590,11 @@ std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells() {
         current_column_current_array_empty = true;
       }
       current_confirmed = false;
+      if (DEBUG_CRUSH) {
+
+        std::cout << "column: " << column << std::endl;
+        std::cout << " current_column_current_array: " << current_column_current_array[0] << " " << current_column_current_array[1] << " " << current_column_current_array[2] << std::endl;
+      }
       if (i == 0)
       {
         linked_list->begin();
@@ -507,8 +603,9 @@ std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells() {
       else
       {
         linked_list->next();
-        if (2 <= i ) {
-          current_value = linked_list->get_iterator()->getValue();
+        current_value = linked_list->get_iterator()->getValue();
+
+        if (1 < i ) {
 
           //compare current_value with value of
           //container previous
@@ -516,12 +613,11 @@ std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells() {
           linked_list_previous2_value = linked_list->get_iterator()->get_prev()->get_prev()->getValue();
 
           if (current_value == linked_list_previous_value
-              && current_value == linked_list_previous2_value) {
+              && current_value == linked_list_previous2_value)
+          {
             if (current_column_current_array.at(2) == 1 || current_column_current_array_empty
             ) {
-              //vector confirmed
-              // create new
-              crushable_cells.at(i).push_back({linked_list_previous2_value, 3, -1});
+              crushableCellsAddNewSerie(column, linked_list_previous2_value, 3);
             } else {
               current_column_current_array.at(1)++;
               current_confirmed = true;
@@ -533,61 +629,57 @@ std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells() {
           }
         }
       }
-      //previous container
-      if (previous_container_value == current_value
-      && previous2_container_value == current_value)
+      if ( 1 < column )
       {
-        //3<=serie
-        if (!current_confirmed){
-          if (current_column_current_array.at(2) == 1
-              || current_column_current_array_empty) {
-            //last vector confirmed
-            // create new
-            crushable_cells.at(i).push_back({previous2_container_value, 1, -1});
-          }
-          else {
-            current_column_current_array.at(1)++;
-          }
-        }
-        if (!previous_confirmed){
-          std::array previous_colmumn_current_array = crushable_cells.at(i-1).back();
-
-          if (previous_colmumn_current_array.at(2) == 1
-              || crushable_cells.at(i-1).empty())
-          {
-              //last vector confirmed
-              // create new
-              crushable_cells.at(i-1).push_back({previous_container_value, 1, -1});
-          }
-          else {
-              previous_colmumn_current_array.at(1)++;
-          }
-        }
-        if (!previous2_confirmed)
+        //previous container
+        if (previous_container_value == current_value
+            && previous2_container_value == current_value)
         {
-          std::array previous2_colmumn_current_array = crushable_cells.at(i-2).back();
-
-          if (previous2_colmumn_current_array.at(2) == 1
-          || crushable_cells.at(i-2).empty())
-          {
-            //last vector confirmed
-            // create new
-            crushable_cells.at(i-2).push_back({previous_container_value, 1, -1});
+          if (DEBUG_CRUSH) {
+            std::cout << "3<=serie" << std::endl;
           }
-          else
+          if (!current_confirmed){
+            crushableCellsUpdate(column,
+                                 i,
+                                 1,
+                                 0);
+            current_confirmed = true;
+          }
+          if (!previous_confirmed){
+
+            if (DEBUG_CRUSH) {
+              std::cout << "3<=serie previous not confirmed" << previous_confirmed << std::endl;
+            }
+            crushableCellsUpdate(column - 1,
+                                 i,
+                                 1,
+                                 1);
+            previous_confirmed = true;
+          }
+          if (!previous2_confirmed)
           {
-            previous2_colmumn_current_array.at(1)++;
+
+            if (DEBUG_CRUSH) {
+              std::cout << "3<=serie previous2 not confirmed" << previous2_confirmed << std::endl;
+            }
+            crushableCellsUpdate(column - 2,
+                                 i,
+                                 1,
+                                 2);
           }
         }
       }
+
       previous2_container_value = previous_container_value;
       previous2_confirmed = previous_confirmed;
 
       previous_container_value = current_value;
       previous_confirmed = current_confirmed;
+      column++;
+
     }
   }
-  return crushable_cells;
+  return crushable_cells_;
 }
 //crush column
 void Board::crushColumn(int column,

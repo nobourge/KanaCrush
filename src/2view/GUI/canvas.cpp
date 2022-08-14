@@ -39,7 +39,14 @@ unsigned concatenate(unsigned x, unsigned y) {
   return x * pow + y;
 }
 
+//translates a cell
+void Canvas::translateCell(int x, int y, int dx, int dy) {
+//  todo
+//   translate_.translate(x, y, dx, dy);
+}
+
 void Canvas::mouseRelease(Point mouseLoc) {
+
   mouse_release = Point{Fl::event_x(),Fl::event_y()};
 
   n_du_carre_1_x_ = trunc(mouse_click.x/50);
@@ -49,6 +56,7 @@ void Canvas::mouseRelease(Point mouseLoc) {
   // testing if the second rectangle is adjacent to the first one
   AdjacentX = (abs(n_du_carre_1_x_-nDuCarre2X) == 0 && abs(nDuCarre1Y-nDuCarre2Y) == 1);
   AdjacentY = (abs(n_du_carre_1_x_-nDuCarre2X) == 1 && abs(nDuCarre1Y-nDuCarre2Y) == 0);
+
   if (AdjacentX || AdjacentY) {
     std::vector<shared_ptr<ClickableCell>> cells_swapped;
     cells_swapped.push_back(cells_[n_du_carre_1_x_][nDuCarre1Y]);
@@ -69,11 +77,25 @@ void Canvas::mouseRelease(Point mouseLoc) {
     int click_cell_y = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getY();
     int release_cell_x = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getX();
     int release_cell_y = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getY();
-//todo
+
+
+
+
+    //game state : play (no potential possible crush)
+//todo player swipe
+// call translation function
+// translateCell(n_du_carre_1_x_, nDuCarre1Y, nDuCarre2X, nDuCarre2Y);
+// valid = getCrushables()
+// if valid
+// board_ matrix update
+// else
+// call translation function
+// translateCell(nDuCarre2X, nDuCarre2Y, n_du_carre_1_x_, nDuCarre1Y);
 //
 //    if (nDuCarre2Y > nDuCarre1Y) {
 //      auto crushables = getCrushables(cells_swapped,
 //                                      'S');
+//      if (crushables.size() > 0) {
 //
 //      fl_translate(click_cell_x, click_cell_y);
 //
@@ -84,7 +106,9 @@ void Canvas::mouseRelease(Point mouseLoc) {
 ////      for (auto &c: cells_)
 ////        c.bounce(mouse_release, -1, 'V', cellColor1);
 //    }
+
 //    else if (nDuCarre2Y < nDuCarre1Y) {
+//      bounce_->bounce(cells_[n_du_carre_1_x_][nDuCarre1Y],
 //      for (auto &c: cells_)
 //        c.bounce(mouse_release, 1, 'V', cellColor1);
 //      for (auto &c: cells_)
@@ -208,6 +232,7 @@ std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushablesFromDirectionXY
     std::vector<std::shared_ptr<ClickableCell>> crushables
     ) {
 
+  //for 2 cells
   while (cells_.at(current_x+=direction_x).at(current_y+=direction_y)->getFillColor() == color) {
     crushables.push_back(cells_.at(current_x).at(current_y));
   }
@@ -243,15 +268,15 @@ std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushablesFromDirectionXY
 ////get crushable cells from the swapped cells
 //std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushableCells(int cell_swapped_1_x,
 //                                                                      char swap_direction) {
-//  std::vector<std::shared_ptr<ClickableCell>> crushable_cells;
+//  std::vector<std::shared_ptr<ClickableCell>> crushable_cells_;
 //  switch (swap_direction) {
 //    case 'N':
-//        crushable_cells = getCrushables(cell_swapped_1_x, cell_swapped_1->getY(), cell_swapped_1->getFillColor(), 'N', crushable_cells);
-//        crushable_cells = getCrushables(cell_swapped_2->getX(), cell_swapped_2->getY(), cell_swapped_2->getFillColor(), 'S', crushable_cells);
+//        crushable_cells_ = getCrushables(cell_swapped_1_x, cell_swapped_1->getY(), cell_swapped_1->getFillColor(), 'N', crushable_cells_);
+//        crushable_cells_ = getCrushables(cell_swapped_2->getX(), cell_swapped_2->getY(), cell_swapped_2->getFillColor(), 'S', crushable_cells_);
 //        break;
 //
 //
 //
 //  }
-//  return crushable_cells;
+//  return crushable_cells_;
 //}
