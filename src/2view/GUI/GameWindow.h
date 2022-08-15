@@ -32,14 +32,23 @@ class GameWindow : public Fl_Window {
     show();
     canvas_.draw();
 
-    unsigned int microsecond = 1000000;
-    usleep(3 * microsecond);//sleeps for 3 second
-    game_.getBoard()->crush();
+//    unsigned int microsecond = 1000000;
+//    usleep(3 * microsecond);//sleeps for 3 second
 
+    bool cells_to_crush = game_.getBoard()->crush();
     canvas_.redraw();
 
 
-        Fl::run();
+    while(cells_to_crush)
+    {
+      std::cout << "cells_to_crush, recrush" << std::endl;
+      cells_to_crush = game_.getBoard()->crush();
+
+      canvas_.redraw();
+//      usleep(3 * microsecond);//sleeps for 3 second
+      std::cout << "cells to crush: " << cells_to_crush << std::endl;
+    }
+    std::cout << " no more cells to crush" << std::endl;
   };
   int handle(int event) override {
     switch (event) {
@@ -58,6 +67,7 @@ class GameWindow : public Fl_Window {
   static void Timer_CB(void *userdata) {
     GameWindow *o = (GameWindow*) userdata;
     o->redraw();
+//    canvas_.redraw();
     Fl::repeat_timeout(1.0/refreshPerSecond, Timer_CB, userdata);
   }
 };

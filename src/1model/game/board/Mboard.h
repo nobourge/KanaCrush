@@ -41,7 +41,7 @@ class Board {
   //new game
     void newGame();
     //crush
-    void crush();
+    bool crush();
     //swap
     void swap(int row1, int col1, int row2, int col2);
 
@@ -65,12 +65,15 @@ class Board {
   void updateCells(std::string to_update);
   void setCells(const std::string& mode="random"
       , int value=1);
-  std::array<std::vector<std::array<int, 3>>, 9> getCrushableCells();
 
   void crushColumn(int column, std::vector<std::array<int, 3>> &origins_and_nodes_quantities);
-  void crushableCellsAddNewSerie(int column, int origin, int node_quantity);
+//  void crushableCellsAddNewSerie(int column, int origin, int node_quantity);
   void crushable_cells_Print();
-  void crushableCellsUpdate(int column, int origin, int node_quantity, int serie_index);
+//  void crushableCellsUpdate(int column, int origin, int node_quantity, int serie_index);
+  void crushableCellsUpdate(int column
+                            , int origin=-1);
+  void crushableCellsAddNewSerie(int column, int origin);
+  void getCrushableCells();
 };
 
 #endif //KANACRUSH_MBOARD_H

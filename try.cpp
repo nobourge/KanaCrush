@@ -420,7 +420,6 @@ bool Canvas::checkCrush() {
         thirdMouseLoc = {(column+2)*50+25, row*50+25};
         firstColor = cells[concCarre1].getColor(firstMouseLoc);
         secondColor = cells[concCarre2].getColor(secondMouseLoc);
-        thirdColor = cells[concCarre3].getColor(thirdMouseLoc);
         // cout << firstColor << " - " << secondColor << " - " << thirdColor << endl;
         // Horizontal crush test
         if (firstColor == secondColor && firstColor != FL_WHITE) {

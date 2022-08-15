@@ -8,12 +8,12 @@
 #include <string>
 //static bool DEBUG = true;
 static bool DEBUG = false;
-static bool DEBUG_NODE = true;
-//static bool DEBUG_NODE = false;
+//static bool DEBUG_NODE = true;
+static bool DEBUG_NODE = false;
 static bool DEBUG_LINKED_LIST = true;
 //static bool DEBUG_LINKED_LIST = false;
-static bool DEBUG_BOARD = true;
-//static bool DEBUG_BOARD = false;
+//static bool DEBUG_BOARD = true;
+static bool DEBUG_BOARD = false;
 static bool DEBUG_CANVAS = true;
 //static bool DEBUG_CANVAS = false;
 static bool DEBUG_CRUSH = true;

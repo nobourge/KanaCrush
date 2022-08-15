@@ -360,14 +360,30 @@ std::shared_ptr<Node> Linked_list::get_node(int index) {
 
 //crush
 void Linked_list::crush(std::vector<std::array<int, 3>> crush_vector) {
+  if (DEBUG_CRUSH)
+  {
     std::cout << "Linked_list::crush()" << std::endl;
-    for (int i = crush_vector.size(); 0 < i ; i--) {
-        std::shared_ptr<Node> origin = get_node(crush_vector[i].at(0));
-        int nodes_quantity = crush_vector[i].at(1);
-      move(origin,
-           tail_,
-           nodes_quantity
-      );
+  }
+    for (int i = crush_vector.size()-1; 0 <= i ; i--)
+    {
+      if (DEBUG_CRUSH)
+      {
+        std::cout
+            << crush_vector[i][0] << " "
+            << crush_vector[i][1] << " "
+            << crush_vector[i][2];
+        std::cout << std::endl;
+      }
+
+      std::shared_ptr<Node> origin = get_node(crush_vector[i].at(0));
+      int nodes_quantity = crush_vector[i].at(1);
+      if (nodes_quantity < get_size()){
+        move(origin,
+             tail_,
+             nodes_quantity
+        );
+      }
+
       setRandom(tail_,
                 nodes_quantity);
     }
