@@ -1,17 +1,7 @@
-//
-// Created by noe on 11.08.22.
-//
-
 #include "Rectangle.h"
 
-Rectangle::Rectangle(Point center_1,
-                     int w_1,
-                     int h_1,
-                     Fl_Color frame_color,
-                     Fl_Color fill_color
-                   ) : Sketchable(center_1, w_1, h_1, frame_color, fill_color) {
-   }
-
+Rectangle::Rectangle(Point center_1, int w_1, int h_1, Fl_Color frame_color, Fl_Color fill_color)
+                   : Sketchable(center_1, w_1, h_1, frame_color, fill_color) {}
 
 void Rectangle::draw() {
   std::array<Point, 5> points{

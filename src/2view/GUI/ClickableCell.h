@@ -1,7 +1,3 @@
-//
-// Created by noe on 08.08.22.
-//
-
 #ifndef KANACRUSH_SRC_2VIEW_GUI_CLICKABLECELL_H_
 #define KANACRUSH_SRC_2VIEW_GUI_CLICKABLECELL_H_
 
@@ -13,17 +9,12 @@
 #include "Rectangle.h"
 
 class ClickableCell :
-    public Rectangle
+        public Rectangle
 //    public Sketchable
  {
  public:
   // Constructor
-    explicit ClickableCell(
-        Point center
-                           , int w,
-                           int h,
-                            Fl_Color frameColor,
-                            Fl_Color fillColor);
+    explicit ClickableCell(Point center, int w, int h, Fl_Color frameColor, Fl_Color fillColor);
   // Methods that draw and handle events
 //  void draw() override;
 //  void animationV1(Point mouseLoc);

@@ -1,7 +1,3 @@
-//
-// Created by noe on 25.07.22.
-//
-
 #ifndef KANACRUSH_SRC_2VIEW_CANVAS_H_
 #define KANACRUSH_SRC_2VIEW_CANVAS_H_
 

@@ -1,7 +1,3 @@
-//
-// Created by noe on 08.08.22.
-//
-
 #ifndef KANACRUSH_SRC_2VIEW_GUI_WINDOW_H_
 #define KANACRUSH_SRC_2VIEW_GUI_WINDOW_H_
 
@@ -12,15 +8,7 @@
 //todo make base for  Window classes
 class GUIWindow : public Fl_Window{
 public:
-  GUIWindow(int x,
-            int y,
-            int w,
-            int h,
-            const char *l) : Fl_Window(x,
-                                       y,
-                                       w,
-                                       h,
-                                       l) {
+  GUIWindow(int x, int y, int w, int h, const char *l) : Fl_Window(x, y, w, h, l) {
 //    Fl::add_timeout(1.0 / refreshPerSecond
 //                    ,Timer_CB(this)
 //                    ,this

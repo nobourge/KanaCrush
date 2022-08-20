@@ -1,18 +1,17 @@
-
-
 #include "animation.h"
 
 #include <utility>
 
-void Animation::start(){
+void Animation::start(int direction, char directionText, Fl_Color newFillColor){
   time_ = 0;
     animating_ = true;
-//    std::shared_ptr<Animation> a = std::dynamic_pointer_cast<Animation>(to_animate_);
-//    if (a) a->start(1
-//                    , 'V'
-//                    , FL_BLACK);
+    std::shared_ptr<Animation> a = std::dynamic_pointer_cast<Animation>(to_animate_);
+    if (a) a->start(1
+                    , 'V'
+                    , FL_BLACK);
 
 }
+
 Animation::Animation() {
 //  init(std::move(toAnimate), duration);
 
@@ -29,16 +28,13 @@ void Animation::setState() {
     animating_ = false;
 
 }
-void Animation::animate(std::shared_ptr<Sketchable> to_animate,
-                        int duration,
-                        int direction,
-                        char directionText,
+void Animation::animate(std::shared_ptr<Sketchable> to_animate, int duration, int direction, char directionText,
                         Fl_Color newFillColor) {
     to_animate_ = std::move(to_animate);
   duration_ = duration;
     direction_ = direction;
     direction_text_ = directionText;
 
-  start();
+  start(direction, directionText, newFillColor);
 
 }

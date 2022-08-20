@@ -1,7 +1,3 @@
-//
-// Created by noe on 08.08.22.
-//
-
 #ifndef KANACRUSH_SRC_2VIEW_GUI_WELCOMEWINDOW_H_
 #define KANACRUSH_SRC_2VIEW_GUI_WELCOMEWINDOW_H_
 
@@ -29,19 +25,12 @@ class WelcomeWindow : public Fl_Window {
 //    char *authors = new char[author1.length() + author2.length() + 1];
 //    strcpy(authors, author1.c_str());
 
-    Fl_Box *authors_ = new Fl_Box(0
-        ,windowHeight / 10
-        , windowWidth
-        , windowHeight / 10
-        , "Created by Morari Augustin and Bourgeois Noe"
+    Fl_Box *authors_ = new Fl_Box(0, windowHeight / 10, windowWidth, windowHeight / 10,
+                                  "Created by Morari Augustin and Bourgeois Noe"
 //        , "Created by : \n" + author2 + "\n & \n" + author1
         );
 public:
-    WelcomeWindow() :Fl_Window(3000,
-                             300,
-                             windowWidth,
-                             windowHeight,
-                             "Kana Crush") {
+    WelcomeWindow() :Fl_Window(3000, 300, windowWidth, windowHeight, "Kana Crush") {
 //        Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
 
         add(title_);

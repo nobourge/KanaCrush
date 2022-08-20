@@ -1,7 +1,3 @@
-//
-// Created by bourg on 28-12-21.
-//
-
 #include "Vboard.h"
 
 DisplayBoard::DisplayBoard(const shared_ptr<const Board> board): board{board} {};

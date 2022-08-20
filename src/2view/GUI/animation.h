@@ -1,7 +1,3 @@
-//
-// Created by noe on 25.07.22.
-//
-
 #ifndef KANACRUSH_SRC_2VIEW_ANIMATION_H_
 #define KANACRUSH_SRC_2VIEW_ANIMATION_H_
 
@@ -37,26 +33,10 @@ class Animation {
 //  Fl_Color color;
  public:
   virtual bool isComplete() =0;
-  virtual void start() ;
-  virtual void animate(std::shared_ptr<Sketchable> to_animate,
-                       int duration,
-                       int direction,
-                       char directionText,
+  virtual void start(int direction, char directionText, Fl_Color newFillColor);
+  virtual void animate(std::shared_ptr<Sketchable> to_animate, int duration, int direction, char directionText,
                        Fl_Color newFillColor);
   void setState();
-};
-
-struct Translation {
-  Translation(Point p, char directionText) {
-    fl_push_matrix();
-    if (directionText == 'V')
-      fl_translate(p.x, p.y);
-    else if (directionText == 'H')
-      fl_translate(p.y, p.x);
-  }
-  ~Translation() {
-    fl_pop_matrix();
-  }
 };
 
 

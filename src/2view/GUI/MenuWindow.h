@@ -1,7 +1,3 @@
-//
-// Created by noe on 08.08.22.
-//
-
 #ifndef KANACRUSH_SRC_2VIEW_GUI_MENUWINDOW_H_
 #define KANACRUSH_SRC_2VIEW_GUI_MENUWINDOW_H_
 
@@ -27,19 +23,15 @@ class MenuWindow : public Fl_Window {
     Fl_Button *button_about_ = new Fl_Button(10, button_height *3, button_width, button_height, "About");
     Fl_Button *button_settings_ = new Fl_Button(10, button_height *4, button_width, button_height, "Settings");
 public:
-    MenuWindow() :Fl_Window(3000,
-                            300,
-                            windowWidth,
-                            windowHeight,
-                            "Kana Crush") {
-      Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
+    MenuWindow() :Fl_Window(3000, 300, windowWidth, windowHeight, "Kana Crush") {
+    Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
 
-      add(button_start_);
-        add(button_exit_);
-        add(button_help_);
-        add(button_about_);
-        add(button_settings_);
-//      set_resizable((Fl_Widget &) this);
+    add(button_start_);
+    add(button_exit_);
+    add(button_help_);
+    add(button_about_);
+    add(button_settings_);
+//    set_resizable((Fl_Widget &) this);
 
     }
     void run();

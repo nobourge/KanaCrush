@@ -1,7 +1,3 @@
-//
-// Created by noe on 11.08.22.
-//
-
 #ifndef KANACRUSH_SRC_2VIEW_GUI_RECTANGLE_H_
 #define KANACRUSH_SRC_2VIEW_GUI_RECTANGLE_H_
 

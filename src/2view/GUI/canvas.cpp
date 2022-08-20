@@ -1,9 +1,7 @@
-//
-// Created by noe on 25.07.22.
-//
 #include "parameters.h"
 #include "canvas.h"
 #include "Bounce.h"
+#include "animation.h"
 
 #include <utility>
 #include "srcCommon.h"
@@ -43,6 +41,16 @@ unsigned concatenate(unsigned x, unsigned y) {
 void Canvas::translateCell(int x, int y, int dx, int dy) {
 //  todo
 //   translate_.translate(x, y, dx, dy);
+
+    char direction = 'V';
+    if (x > dx or x < dx)
+        char direction = 'H';
+    else if (y > dy or y < dy)
+        char direction = 'V';
+    cout << "--------------------------------------" << endl;
+    Translation t1{Point{x, dx}, direction};
+//    bounce_->draw();
+
 }
 
 void Canvas::mouseRelease(Point mouseLoc) {
@@ -62,13 +70,13 @@ void Canvas::mouseRelease(Point mouseLoc) {
     cells_swapped.push_back(cells_[n_du_carre_1_x_][nDuCarre1Y]);
     cells_swapped.push_back(cells_[nDuCarre2X][nDuCarre2Y]);
     // put the coordinates together to be able to access them through cell_linked_list_array
-//    int concCarre1 = concatenate(n_du_carre_1_x_+1, nDuCarre1Y+1);
-//    int concCarre2 = concatenate(nDuCarre2X+1, nDuCarre2Y+1);
+    // int concCarre1 = concatenate(n_du_carre_1_x_+1, nDuCarre1Y+1);
+    // int concCarre2 = concatenate(nDuCarre2X+1, nDuCarre2Y+1);
     // getting the colors
-//    cellColor1 = cells_[concCarre1].getFillColor();
-  cellColor1 = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getFillColor();
-//    cellColor2 = cells_[concCarre2].getFillColor();
-  cellColor2 = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getFillColor();
+    // cellColor1 = cells_[concCarre1].getFillColor();
+    cellColor1 = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getFillColor();
+    // cellColor2 = cells_[concCarre2].getFillColor();
+    cellColor2 = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getFillColor();
 
     // doing the animation always inwards for all the directions possible
     // and changing the colors accordingly right after the animation is ended
@@ -78,8 +86,9 @@ void Canvas::mouseRelease(Point mouseLoc) {
     int release_cell_x = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getX();
     int release_cell_y = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getY();
 
-
-
+    translateCell(click_cell_x, click_cell_y, release_cell_x, release_cell_y);
+    cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->setFillColor(cellColor2);
+    cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->setFillColor(cellColor1);
 
     //game state : play (no potential possible crush)
 //todo player swipe
@@ -159,15 +168,8 @@ Canvas::Canvas(std::shared_ptr<Board> board) {
 //      int temp_value = temp_node->getValue();
 //      int temp_type = temp_node->getType();
 
-      cells_.at(i).at(j) =
-          std::make_shared<ClickableCell>(Point{i * 50 - 25,
-                                                j * 50 - 25},
-                                          50,
-                                          50,
-                                          FL_BLACK,
-                                          (Fl_Color) Colors_codes[(temp_node->getValue())-1]//*
-
-      );
+      cells_.at(i).at(j) = std::make_shared<ClickableCell>(Point{i * 50 - 25, j * 50 - 25}, 50, 50, FL_BLACK,
+                                                           (Fl_Color) Colors_codes[(temp_node->getValue())-1]);
 
       temp_node = temp_node->get_next();
     }
@@ -239,13 +241,8 @@ std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushablesFromDirectionXY
     return crushables;
 
 }
-  std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushables(
-    int x,
-    int y,
-    Fl_Color color,
-    char direction,
-    std::vector<std::shared_ptr<ClickableCell>> crushables
-    ) {
+  std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushables(int x, int y, Fl_Color color, char direction,
+                                                                    std::vector<std::shared_ptr<ClickableCell>> crushables) {
 
   switch (direction) {
     case 'N':getCrushablesFromDirectionXY(x, y, 0, -1, color, crushables);
