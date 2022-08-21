@@ -33,7 +33,9 @@ int main(int argc, char *argv[]) {
     menu_window.run();
 
   GameWindow game_window;
+//  game_window.run();
   game_window.run();
+//  game_window.run();
 
   return Fl::run();
 }

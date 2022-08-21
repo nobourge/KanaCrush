@@ -20,7 +20,13 @@ void Canvas::draw() {
 }
 void Canvas::redraw() {
 
+  if(DEBUG_CANVAS) {
+    std::cout << "Canvas::redraw()" << std::endl;
+  }
   update();
+  if (DEBUG_CANVAS) {
+    print();
+  }
   draw();
 }
 
@@ -204,8 +210,11 @@ void Canvas::update() {
   }
 }
 
-//print
+//terminal print
 void Canvas::print() {
+    if (DEBUG_CANVAS) {
+        std::cout << "Canvas::print()" << std::endl;
+    }
   for (int i = 0; i < cells_containers_container_size_ ; i++) {
     std::cout << "-";
   }
@@ -263,7 +272,7 @@ std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushablesFromDirectionXY
 
 //
 ////get crushable cells from the swapped cells
-//std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushableCells(int cell_swapped_1_x,
+//std::vector<std::shared_ptr<ClickableCell>> Canvas::searchCrushableCells(int cell_swapped_1_x,
 //                                                                      char swap_direction) {
 //  std::vector<std::shared_ptr<ClickableCell>> crushable_cells_;
 //  switch (swap_direction) {

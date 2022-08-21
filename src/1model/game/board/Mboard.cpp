@@ -4,6 +4,18 @@
 
 #include "Mboard.h"
 
+Board::Board() {
+  if (DEBUG_BOARD){
+    std::cout << "Board::Board()" << std::endl;
+  }
+  setDataStructure("linked_list");
+  setCells();
+  setCells("equal",1);
+//  setCellsValueDistribution("ascent");
+  setCellsContainersHeadOrientation("down");
+
+  print();
+}
 void Board::newGame() {
 //    int types_quantity = 6;
 //    for (auto &c: cell_linked_list_array) for (auto &x: c) x = squareType[(rand() % types_quantity - 1) + 1] ;
@@ -115,9 +127,10 @@ bool Board::crushFrom(int x, int y)
 //}
 void Board::print()
 {
-
+  if (DEBUG_BOARD) {
     std::cout << "Board::print()" << std::endl;
     std::cout << "cells_containers_head_orientation: " << cells_containers_head_orientation_ << std::endl;
+  }
 
   for (int i = 0; i < cells_containers_container_size_ ; i++) {
     std::cout << "-";
@@ -336,21 +349,7 @@ void Board::setCellsContainersHeadOrientation(const std::string& cells_container
   }
 }
 
-Board::Board() {
-    std::cout << "Board::Board()" << std::endl;
 
-  setDataStructure("linked_list");
-
-    setCells();
-
-  setCells("equal",1);
-//  setCellsValueDistribution("ascent");
-  setCellsContainersHeadOrientation("down");
-//  rain(0,0);
-  print();
-//  updateCells("canvas");
-
-}
 
 //find groups of minimum 3 cells_
 // with same value
@@ -382,7 +381,10 @@ void Board::rain(int row, int column) {
 
 //set data_structure: Linked_list, array
 void Board::setDataStructure(const std::string& data_structure) {
-  std::cout << "Board::setDataStructure()" << std::endl;
+  if (DEBUG_BOARD){
+    std::cout << "Board::setDataStructure()" << std::endl;
+
+  }
   if (data_structure == "input") {
     std::cout << "please insert data_structure" << std::endl;
     std::cin >> data_structure_;
@@ -390,21 +392,31 @@ void Board::setDataStructure(const std::string& data_structure) {
   else {
     data_structure_ = data_structure;
   }
-  std::cout << "data_structure_: " << data_structure_ << std::endl;
+  if (DEBUG_BOARD){
+    std::cout << "Board::setDataStructure()" << std::endl;
+    std::cout << "data_structure_: " << data_structure_ << std::endl;
 
+  }
 }
 
 void Board::setCells(const std::string& mode
                     ,int value
                         )
 {
+  if (DEBUG_BOARD){
+    std::cout << "Board::setCells()" << std::endl;
+    std::cout << "mode: " << mode << std::endl;
+    std::cout << "value: " << value << std::endl;
+  }
     if (data_structure_ == "array") {
-      std::cout << "Board::setCells() array" << std::endl;
+
 
     }
 
     else if (data_structure_ == "linked_list") {
+      if (DEBUG_BOARD) {
         std::cout << "Board::setCells() linked_list" << std::endl;
+      }
 
       if (mode == "init"){
         for (int i = 0; i < cells_containers_size_; i++) {
@@ -462,9 +474,14 @@ std::shared_ptr<Linked_list> Board::get_cells(int row) {
 
 //crushable_cells_ print
 void Board::crushable_cells_Print() {
+  if (DEBUG) {
+    std::cout << "Board::crushable_cells_Print()" << std::endl;
+    std::cout << "crushable_cells_: " << std::endl;
+  }
   int i = 0;
   for (auto &array_vector: crushable_cells_)
   {
+//    get_cells(i)->print();
     std::cout << "array_vector column: " << i << " ";
     i++;
     if (array_vector.empty()) {
@@ -503,18 +520,23 @@ void Board::crushableCellsUpdate(int column
                                  ,int origin
                                  )
                                  {
-
-  if (origin==-1)
-  {
-    //close serie
-    crushable_cells_.at(column).back().at(2) = 1;
-  }
-
-    if (!crushable_cells_.at(column).empty()) {
+  if (!crushable_cells_.at(column).empty()) {
 //      std::array column_current_array = crushable_cells_.at(column).back();
 //      std::shared_ptr<std::array> column_current_array = crushable_cells_.at(column).back();
-      if (crushable_cells_.at(column).back().at(2) == -1){
-        //column_current_array not closed
+    if (crushable_cells_.at(column).back().at(2) == -1){
+      //column_current_array not closed
+      if (origin==-1)
+      {
+        //close column_current_array
+        crushable_cells_.at(column).back().at(2) = 1;
+        if (DEBUG_CRUSH)
+        {
+          std::cout << "             vector not empty and last serie not ended" << std::endl;
+          std::cout << "                        close last serie" << std::endl;
+        }
+      }
+      else
+      {
         crushable_cells_.at(column).back().at(1)++;
         if (DEBUG_CRUSH)
         {
@@ -524,58 +546,84 @@ void Board::crushableCellsUpdate(int column
         }
       }
     }
-    else
+  }
+  else
+  {
+    if (DEBUG_CRUSH)
+    {
+      std::cout << "                        column_current_array empty" << std::endl;
+    }
+    if (origin!=-1)
     {
       crushableCellsAddNewSerie(column, origin);
     }
+  }
 }
 //search crushable_cells_
 //todo from the last crush zone +2
 //todo array9 not resizable replace with vector
-void Board::getCrushableCells() {
-//std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells() {
+void Board::searchCrushableCells()
+{
+//std::array<std::vector<std::array<int, 3>>, 9> Board::searchCrushableCells() {
 // 1 origin
 // 2 nodes quantity
 // 3 crushable bool
 
-  if (DEBUG_CRUSH) {
-    std::cout << "Board::getCrushableCells()" << std::endl;
+  if (DEBUG_CRUSH)
+  {
+    std::cout << "Board::searchCrushableCells()" << std::endl;
   }
-//  std::array<std::vector<std::array<int, 3>>, cells_containers_container_size_> crushable_cells_;
-  for (int i = 0; i < cells_containers_container_size_; i++) {
-    crushable_cells_.at(i) = std::vector<std::array<int, 3>>();
-  }
+
+  crushable_ = false;
   int current_value;
 
   bool adding_horizontal = false;
   bool adding_vertical[cells_containers_container_size_] = {false};
+  if (DEBUG_CRUSH)
+  {
+    std::cout << "adding_vertical: " << std::endl;
+    for (bool i : adding_vertical)
+    {
+      std::cout << i << " ";
+    }
+    std::cout << std::endl;
+  }
   bool added = false;
 
   for (int i = 0; i < cells_containers_container_size_; i++)
   {
     int column = 0;
-    if (DEBUG_CRUSH) {
+    if (DEBUG_CRUSH)
+    {
       std::cout << "i row: " << i << std::endl;
+    }
+    for (auto &linked_list: cell_linked_list_array) {
+      if (i == 0) {
+        linked_list->begin();
+      } else {
+        linked_list->next();
+      }
     }
     for (auto &linked_list: cell_linked_list_array)
     {
       added = false;
-
-      if (DEBUG_CRUSH)
+      if (DEBUG_CRUSH) {
+        std::cout << "column: " << column << std::endl;
+        crushable_cells_Print();
+        std::cout << "adding_horizontal: " << adding_horizontal << std::endl;
+        std::cout << "adding_vertical: " << std::endl;
+        for (bool a : adding_vertical)
         {
-            std::cout << "column: " << column << std::endl;
-          crushable_cells_Print();
+          std::cout << a << " ";
         }
-      if (i == 0)
-      {
-        linked_list->begin();
+        std::cout << "adding_vertical current: " << adding_vertical[column] << std::endl;
       }
-      else
-      {
-        linked_list->next();
-      }
-      current_value = linked_list->get_iterator()->getValue();
 
+      current_value = linked_list->get_iterator()->getValue();
+      if (DEBUG_CRUSH)
+      {
+        std::cout << "current_value: " << current_value << std::endl;
+      }
       if (adding_vertical[column])
       {
         crushableCellsUpdate(column,
@@ -589,16 +637,26 @@ void Board::getCrushableCells() {
             adding_vertical[column] = false;
           }
         }
-
       }
       else
       {
         if (i < cells_containers_container_size_-2)
         {
+          //in range search
           if (current_value == linked_list->get_iterator()->get_next()->getValue())
           {
+            if (DEBUG_CRUSH)
+            {
+              std::cout << "current = vertical next" << std::endl;
+            }
             if (current_value == linked_list->get_iterator()->get_next()->get_next()->getValue())
             {
+
+              if (DEBUG_CRUSH)
+              {
+                std::cout << "current = vertical next next" << std::endl;
+                std::cout << "serie vertical start" << std::endl;
+              }
               crushableCellsUpdate(column,
                                    i);
               adding_vertical[column] = true;
@@ -606,10 +664,9 @@ void Board::getCrushableCells() {
             }
           }
         }
-
-
       }
-      if (adding_horizontal){
+      if (adding_horizontal)
+      {
         if (!added)
         {
           crushableCellsUpdate(column,
@@ -618,45 +675,69 @@ void Board::getCrushableCells() {
         }
         if (column < cells_containers_container_size_-1)
         {
-          if (current_value != cell_linked_list_array.at(column+1)->get_iterator()->get_next()->getValue())
+          if (current_value != cell_linked_list_array.at(column+1)->get_iterator()->getValue())
           {
             adding_horizontal = false;
           }
         }
-
       }
-      else {
+      else
+      {
         if (column < cells_containers_container_size_-2)
         {
-          if (current_value == cell_linked_list_array.at(column+1)->get_iterator()->get_next()->getValue())
+          if (current_value == cell_linked_list_array.at(column+1)->get_iterator()->getValue())
           {
-            if (current_value == cell_linked_list_array.at(column+2)->get_iterator()->get_next()->getValue())
+            if (DEBUG_CRUSH) {
+              std::cout << "current = horizontal next" << std::endl;
+            }
+            if (current_value == cell_linked_list_array.at(column+2)->get_iterator()->getValue())
             {
+              adding_horizontal = true;
+
+              if (DEBUG_CRUSH)
+              {
+                std::cout << "current = horizontal next next" << std::endl;
+                std::cout << "serie adding_horizontal start" << std::endl;
+                std::cout << "adding_horizontal: " << adding_horizontal << std::endl;
+              }
               if (!added)
               {
                 crushableCellsUpdate(column,
                                      i);
                 added = true;
               }
-              adding_horizontal = true;
             }
           }
         }
       }
       if (!added)
       {
-        //close serie
+        //if serie open, close serie
         crushableCellsUpdate(column);
+      }
+      else
+      {
+        if (DEBUG_CRUSH)
+        {
+          std::cout << "                        added" << std::endl;
+        }
+        crushable_ = true;
       }
       column++;
     }
   }
 //  return crushable_cells_;
-  if (DEBUG_CRUSH) {
-    std::cout << "Board::getCrushableCells() DONE" << std::endl;
+  if (DEBUG_CRUSH)
+  {
+    std::cout << "Board::searchCrushableCells() DONE" << std::endl;
     crushable_cells_Print();
-
   }
+}
+//get crushable_cells_
+// returns a vector of vectors of arrays of int
+std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells()
+{
+  return crushable_cells_;
 }
 
 //crush column
@@ -690,27 +771,24 @@ bool Board::crush() {
   if (DEBUG_CRUSH){
     std::cout << "Board::crush()" << std::endl;
   }
-
-//    std::array<std::vector<std::array<int, 3>>, cells_containers_container_size_> crushable_cells = getCrushableCells();
-
-    getCrushableCells();
-  if (crushable_cells_.size() == 0)
+  if (crushable_cells_.empty())
   {
     return false;
   }
-//    crushable_cells_Print();
     if (DEBUG_CRUSH){
         print();
     }
     for (int i = 0; i < cells_containers_size_; i++) {
-        if (crushable_cells_.at(i).size() > 0) {
+        if (!crushable_cells_.at(i).empty()) {
           crushColumn(i, crushable_cells_.at(i));
         }
     }
     if (DEBUG_CRUSH){
         std::cout << "Board::crush() DONE" << std::endl;
-        print();
     }
+    emptyCrushableCellsVectors();
+  print();
+
 }
 //
 ////cell_linked_list_array update cell_array_array or Canvas->cells_
@@ -752,6 +830,17 @@ int Board::get_cells_containers_size() {
 int Board::get_cells_containers_container_size() {
     return cells_containers_container_size_;
 }
+
+//empties crushable_cells_ vectors
+void Board::emptyCrushableCellsVectors() {
+  for (int i = 0; i < cells_containers_container_size_; i++) {
+    crushable_cells_.at(i).clear();
+  }
+}
+bool Board::isCrushable() const {
+  return crushable_;
+}
+
 
 
 

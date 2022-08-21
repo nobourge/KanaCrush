@@ -20,6 +20,7 @@ class Board {
   //crush
   std::array<std::shared_ptr<Linked_list>, cells_containers_size_> cell_linked_list_array;
   std::array<std::vector<std::array<int, 3>>, cells_containers_container_size_> crushable_cells_;
+  bool crushable_ = false;
 
   //random access search & comparison
   std::array<std::array<std::shared_ptr<Cell>, cells_containers_container_size_>, cells_containers_size_> cell_array_array;
@@ -51,29 +52,27 @@ class Board {
 //  void cellsValueSetRandom();
   void setCellsValueDistribution(const std::string& value_distribution="random");
   void setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation="down");
-  void deleteCell(int row
-                  , int column);
-  void addCell(int row
-               , int column
-               , int value);
+
   void replaceCellValue(int row
                         , int column);
   void rain(int row
             , int column);
   void setDataStructure(const std::string &data_structure="linked_list");
-
-  void updateCells(std::string to_update);
-  void setCells(const std::string& mode="random"
-      , int value=1);
+  void setCells(const std::string& mode="random",
+                int value=1);
 
   void crushColumn(int column, std::vector<std::array<int, 3>> &origins_and_nodes_quantities);
-//  void crushableCellsAddNewSerie(int column, int origin, int node_quantity);
   void crushable_cells_Print();
-//  void crushableCellsUpdate(int column, int origin, int node_quantity, int serie_index);
   void crushableCellsUpdate(int column
-                            , int origin=-1);
-  void crushableCellsAddNewSerie(int column, int origin);
-  void getCrushableCells();
+                            , int origin=-1 //-1 close column current serie or do nothing
+                                );
+  void crushableCellsAddNewSerie(int column
+                                 , int origin
+                                 );
+  void searchCrushableCells();
+  std::array<std::vector<std::array<int, 3>>, 9> getCrushableCells();
+  void emptyCrushableCellsVectors();
+  bool isCrushable() const;
 };
 
 #endif //KANACRUSH_MBOARD_H

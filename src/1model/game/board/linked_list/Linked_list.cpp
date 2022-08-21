@@ -5,7 +5,9 @@
 #include "Linked_list.h"
 
 Linked_list::Linked_list(const std::string& mode, int value) {
+  if (DEBUG_LINKED_LIST) {
     std::cout << "Linked_list::Linked_list()" << std::endl;
+    }
     head_ = nullptr;
     tail_ = nullptr;
   init();
@@ -215,6 +217,8 @@ void Linked_list::debug() {
   std::cout << "tail: " << get_tail()->getValue() << std::endl;
 }
 void Linked_list::print() {
+  //stock current iterator before set to head_
+    std::shared_ptr<Node> iterator = iterator_;
   iterator_ = head_;
   for (int i = 0; i < size_; i++) {
     std::cout << iterator_->getValue() << " "; //@
@@ -222,6 +226,8 @@ void Linked_list::print() {
   }
     std::cout << std::endl;
 
+    //set iterator back to original value
+    iterator_ = iterator;
 }
 
 //nodes set values incrementing by 1
@@ -229,7 +235,9 @@ void Linked_list::set_values(const std::string& mode
                              , int head
                              , int tail
                              ) {
-    std::cout << "Linked_list::set_values()" << std::endl;
+    if (DEBUG_LINKED_LIST) {
+        std::cout << "Linked_list::set_values()" << std::endl;
+    }
     if (mode == "increment"){
       iterator_ = head_;
       for (int i = 0; i < size_; i++) {
@@ -267,37 +275,48 @@ void Linked_list::move(std::shared_ptr<Node> origin,
                        std::shared_ptr<Node> destination,
                        int nodes_quantity,
                        std::string mode) {
-    std::cout << "Linked_list::move()" << std::endl;
+    if (DEBUG_LINKED_LIST) {
+        std::cout << "Linked_list::move()" << std::endl;
+    }
+
     if (origin == destination) {
         std::cout << "Linked_list::move() - origin == destination" << std::endl;
-    } else {
-
+    }
+    else
+    {
         std::shared_ptr<Node> temp;
         if (DEBUG_CRUSH) {
-            std::cout << "Linked_list::move() - origin: " << origin->getValue() << std::endl;
-            std::cout << "Linked_list::move() - destination: " << destination->getValue() << std::endl;
-            std::cout << "Linked_list::move() - nodes_quantity: " << nodes_quantity << std::endl;
+            std::cout << "Linked_list::move() - origin value: " << origin->getValue() << std::endl;
+            std::cout << "Linked_list::move() - destination value: " << destination->getValue() << std::endl;
+            std::cout << "Linked_list::move() - nodes_quantity value: " << nodes_quantity << std::endl;
         }
-        if (mode == "after") {
-            std::cout << "Linked_list::move() - mode == after" << std::endl;
+        if (mode == "after")
+        {
+            if (DEBUG_CRUSH) {
+                std::cout << "Linked_list::move() - mode == after" << std::endl;
+            }
           if (nodes_quantity == 1) {
             temp = origin;
           }
           
-          else if (1 < nodes_quantity) {
+          else if (1 < nodes_quantity)
+          {
             temp = origin->get_next();
-            for (int i = 0; i < nodes_quantity-2; i++) {
+            for (int i = 0; i < nodes_quantity-2; i++)
+            {
               temp = temp->get_next();
             }
           }
           else {
-            std::cout << "Linked_list::move() - nodes_quantity < 1" << std::endl;
+            if (DEBUG_CRUSH) {
+                std::cout << "Linked_list::move() - nodes_quantity < 1" << std::endl;
+            }
             throw std::invalid_argument("nodes_quantity < 1");
           }
 
           if (DEBUG_CRUSH) {
             std::cout << "Linked_list::move() - destination->get_next(): " << destination->get_next() << std::endl;
- }
+          }
 
           if (destination != tail_)
           {
@@ -334,19 +353,21 @@ void Linked_list::move(std::shared_ptr<Node> origin,
           origin->set_prev(destination);
         }
         else if (mode == "before") {
+          if (DEBUG_LINKED_LIST) {
             std::cout << "Linked_list::move() - mode == before" << std::endl;
-//            destination->get_prev()->set_next(origin->get_next());
-//            origin->get_next()->set_prev(destination->get_prev());
-//            destination->set_prev(origin);
-//            origin->set_next(destination);
+          }
         }
     }
-    print();
+    if (DEBUG_LINKED_LIST){
+      print();
+    }
 }
 
 //get node by index
 std::shared_ptr<Node> Linked_list::get_node(int index) {
+  if (DEBUG_LINKED_LIST) {
     std::cout << "Linked_list::get_node()" << std::endl;
+  }
     if (index < 0 || index >= size_) {
         std::cout << "Linked_list::get_node() - index < 0 || index >= size_" << std::endl;
         throw std::invalid_argument("index < 0 || index >= size_");
@@ -366,18 +387,21 @@ void Linked_list::crush(std::vector<std::array<int, 3>> crush_vector) {
   }
     for (int i = crush_vector.size()-1; 0 <= i ; i--)
     {
+      int index = crush_vector[i][0];
+      int nodes_quantity = crush_vector[i].at(1);
+
       if (DEBUG_CRUSH)
       {
         std::cout
-            << crush_vector[i][0] << " "
-            << crush_vector[i][1] << " "
-            << crush_vector[i][2];
+            << "index : "          << crush_vector[i][0] << " "
+            << "nodes_quantity : " << crush_vector[i][1] << " "
+//            << crush_vector[i][2]
+            ;
         std::cout << std::endl;
       }
 
       std::shared_ptr<Node> origin = get_node(crush_vector[i].at(0));
-      int nodes_quantity = crush_vector[i].at(1);
-      if (nodes_quantity < get_size()){
+      if (index + nodes_quantity < get_size()){
         move(origin,
              tail_,
              nodes_quantity
@@ -395,23 +419,33 @@ void Linked_list::setRandom(const std::shared_ptr<Node>& start,
                             int direction
                             )
 {
-    std::cout << "Linked_list::set_random()" << std::endl;
+    if (DEBUG_CRUSH)
+    {
+      std::cout << "Linked_list::setRandom()" << std::endl;
+    }
     if (direction == 1) {
-        std::cout << "Linked_list::set_random() - direction_ == 1" << std::endl;
+      if (DEBUG_CRUSH){
+        std::cout << "Linked_list::setRandom() - direction == 1" << std::endl;
+      }
         std::shared_ptr<Node> temp = start;
         for (int i = 0; i < nodes_quantity; i++) {
             temp->setRandom();//*
             temp = temp->get_next();
         }
     } else if (direction == -1) {
-        std::cout << "Linked_list::set_random() - direction_ == -1" << std::endl;
+        if (DEBUG_CRUSH){
+          std::cout << "Linked_list::setRandom() - direction == -1" << std::endl;
+        }
         std::shared_ptr<Node> temp = start;
         for (int i = 0; i < nodes_quantity; i++) {
             temp->setRandom();//*
             temp = temp->get_prev();
         }
-    } else {
-        std::cout << "Linked_list::set_random() - direction_ != 1 || -1" << std::endl;
+    } else
+    {
+        if (DEBUG_CRUSH) {
+          std::cout << "Linked_list::set_random() - direction_ != 1 || -1" << std::endl;
+        }
         throw std::invalid_argument("direction_ != 1 || -1");
     }
     if (DEBUG_LINKED_LIST) {

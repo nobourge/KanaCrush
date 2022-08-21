@@ -58,8 +58,9 @@ Game::Game() {
 
 }
 std::shared_ptr<Board> Game::getBoard() {
+  if (DEBUG_BOARD) {
     std::cout << "Game::getBoard()" << std::endl;
-
+  }
   return board_;;
 }
 
