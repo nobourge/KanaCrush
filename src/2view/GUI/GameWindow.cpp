@@ -25,19 +25,10 @@ void GameWindow::run(){
   }
   unsigned int microsecond = 1000000;
 //  usleep(3 * microsecond);//sleeps for 3 second
-  game_.getBoard()->searchCrushableCells();
-  usleep(3 * microsecond);//sleeps for 3 second
 
-  while(game_.getBoard()->isCrushable()) {
-    if (DEBUG_GAME_WINDOW) {
-      std::cout << "GameWindow::run() - while" << std::endl;
-      std::cout << "cells to crush: " << std::endl;
-      game_.getBoard()->crushable_cells_Print();
-    }
-    game_.getBoard()->crush();
-    game_.getBoard()->searchCrushableCells();
-    usleep(3 * microsecond);//sleeps for 3 second
-  }
+  game_.getBoard()->crushWhilePossible();
+
+  game_.getBoard()->swap(0,0,0,1);
   std::cout << " no more cells to crush" << std::endl;
 };
 

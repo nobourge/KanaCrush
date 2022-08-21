@@ -73,6 +73,7 @@ class Board {
   std::array<std::vector<std::array<int, 3>>, 9> getCrushableCells();
   void emptyCrushableCellsVectors();
   bool isCrushable() const;
+  void crushWhilePossible();
 };
 
 #endif //KANACRUSH_MBOARD_H

@@ -22,40 +22,29 @@ void Board::newGame() {
 //    currentGameState = Play;
 }
 
-//squareType Board::getSquareType(int row, int column) const {
-//    return cell_linked_list_array.at(row).at(column);
-//}
-//gameState Board::getGameState() const {
-//    return currentGameState;
-//}
 
-void Board::swap(int row1, int col1, int row2, int col2){
-//    squareType candy1square_type = getSquareType(row1, col1);
-//
-//  int tmp = cell_linked_list_array.at(row1).at(col1).getValue();
-//  cell_linked_list_array.at(row1).at(col1).setValue(cell_linked_list_array.at(row2).at(col2).getValue());
-//
-//    cell_linked_list_array.at(row2).at(col2).setValue(tmp);
-
-//    int tmp = cell_linked_list_array->at(row1).at(col1).getValue();
-//  cell_linked_list_array->at(row1).at(col1).setValue(cell_linked_list_array->at(row2).at(col2).getValue());
-//
-//    cell_linked_list_array->at(row2).at(col2).setValue(tmp);
+//swap two cells values and types
+void Board::swap(int row1, int col1, int row2, int col2) {
+  if (DEBUG_BOARD){
+    std::cout << "Board::swap(" << row1 << ", " << col1 << ", " << row2 << ", " << col2 << ")" << std::endl;
+  }
+  std::shared_ptr<Node> to_swap_node_1 = cell_linked_list_array[col1]->get_node(row1);
+  std::shared_ptr<Node> to_swap_node_2 = cell_linked_list_array[col2]->get_node(row2);
+  int to_swap_value_1 = to_swap_node_1->getValue();
+    int to_swap_value_2 = to_swap_node_2->getValue();
+    int to_swap_type_1 = to_swap_node_1->getType();
+      int to_swap_type_2 = to_swap_node_2->getType();
+    to_swap_node_1->setValue(to_swap_value_2);
+      to_swap_node_1->setType(to_swap_type_2);
+    to_swap_node_2->setValue(to_swap_value_1);
+        to_swap_node_2->setType(to_swap_type_1);
+        if (DEBUG_BOARD){
+          std::cout << "Board::swap(" << row1 << ", " << col1 << ", " << row2 << ", " << col2 << ") done" << std::endl;
+          print();
+        }
 }
 
-//
-//void Board::swap(Candy *candy1, Candy *candy2) {
-//    int type = candy1->getType();
-//    candy1->setCandy(candy2->getType());
-//    candy2->setCandy(type);
-//}
 
-    ///
-    /// \param square1
-    /// \param origin_cardinal
-    /// \param destination_column
-    /// \param destination_row
-    /// \return
 bool Board::crushFrom(int x, int y)
 {
 //    std::optional< std::vector< std::pair<int,int> > >
@@ -118,13 +107,7 @@ bool Board::crushFrom(int x, int y)
 //    }
       return false;
 }
-//
-//int Board::getCellValue(int row, int column) const {
-//    return cell_linked_list_array.at(row).at(column).getValue();
-//}
-//void Board::setCellValue(int row, int column, int value) {
-//    cell_linked_list_array.at(row).at(column).setValue(value);
-//}
+
 void Board::print()
 {
   if (DEBUG_BOARD) {
@@ -349,37 +332,7 @@ void Board::setCellsContainersHeadOrientation(const std::string& cells_container
   }
 }
 
-
-
-//find groups of minimum 3 cells_
-// with same value
-// in same row or column
-// adjacents to each other
-
-
-//
-////crush
-//void Board::crush(std::vector<std::pair<int, int>> crushable_cells_vec) {
-//    for (auto &crushable_cell : crushable_cells_vec) {
-//        deleteCell(crushable_cell.first, crushable_cell.second);
-//    }
-//}
-//
-//cell replace value with next cell value
-void Board::replaceCellValue(int row, int column) {
-//    cell_linked_list_array.at(row).at(column).setValue(cell_linked_list_array.at(row).at(column+1).getValue());
-}
-
-//cell rain
-void Board::rain(int row, int column) {
-    for (int i = 0; i < cells_containers_container_size_-column-1; i++) {
-//        cell_linked_list_array.at(row).at(i).setValue(cell_linked_list_array.at(row).at(i+1).getValue());
-      replaceCellValue(row, i);
-      print();
-    }
-}
-
-//set data_structure: Linked_list, array
+//set data_structure: Linked_list or array
 void Board::setDataStructure(const std::string& data_structure) {
   if (DEBUG_BOARD){
     std::cout << "Board::setDataStructure()" << std::endl;
@@ -790,40 +743,7 @@ bool Board::crush() {
   print();
 
 }
-//
-////cell_linked_list_array update cell_array_array or Canvas->cells_
-//void Board::updateCells(std::string to_update) {
-//  if (data_structure_ == "array") {
-//    std::cout << "Board::updateCells() array" << std::endl;
-//  }
-//  else if (data_structure_ == "linked_list") {
-//    std::cout << "Board::updateCells() linked_list" << std::endl;
-//    for (int i = 0; i < cells_containers_container_size_ ; i++) {
-//        std::shared_ptr<Node> temp_node = cell_linked_list_array.at(i)->get_head();
-//
-//      for (int j = 0; j < cells_containers_size_ ; j++) {
-//
-//        int temp_value = temp_node->getValue();
-//        int temp_type = temp_node->getType();
-//
-//        if (to_update == "cell_array_array") {
-//          cell_array_array.at(i).at(j)->set(temp_value
-//                                            ,temp_type
-//                                            );        }
-//        else if (to_update == "canvas") {
-//          canvas_.getCells().at(i*j).setFillColorFrom(temp_node->getValue());
-//        }
-//        else {
-//          std::cout << "Board::updateCells() : unknown to_update, cell_array_array initialization: array" << std::endl;
-//        }
-//        temp_node = temp_node->get_next();
-//      }
-//    }
-//  }
-//  else {
-//    std::cout << "Board::updateCells() : unknown data_structure_, cell_array_array initialization: array" << std::endl;
-//  }
-//}
+
 int Board::get_cells_containers_size() {
     return cells_containers_size_;
 }
@@ -841,7 +761,26 @@ bool Board::isCrushable() const {
   return crushable_;
 }
 
+//crush while possible
+void Board::crushWhilePossible() {
+  if (DEBUG_CRUSH){
+    std::cout << "Board::crushWhilePossible()" << std::endl;
+  }
+  searchCrushableCells();
 
+  while (crushable_) {
+    crush();
+    searchCrushableCells();
+    if (DEBUG_CRUSH){
+      std::cout << "cells to crush: " << std::endl;
+      crushable_cells_Print();
+    }
+  }
+
+  if (DEBUG_CRUSH){
+    std::cout << "Board::crushWhilePossible() DONE" << std::endl;
+  }
+}
 
 
 
