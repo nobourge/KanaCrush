@@ -134,11 +134,11 @@ void Canvas::draw(
 }
 void Canvas::redraw() {
 
-  if(DEBUG_CANVAS) {
+  if(DEBUG_CANVAS_REDRAW) {
     std::cout << "Canvas::redraw()" << std::endl;
   }
   update();
-  if (DEBUG_CANVAS) {
+  if (DEBUG_CANVAS_REDRAW) {
     print();
   }
   draw();

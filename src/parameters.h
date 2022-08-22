@@ -14,12 +14,14 @@ static bool DEBUG_NODE = false;
 static bool DEBUG_LINKED_LIST = false;
 static bool DEBUG_BOARD = true;
 //static bool DEBUG_BOARD = false;
-static bool DEBUG_CANVAS = true;
-//static bool DEBUG_CANVAS = false;
+//static bool DEBUG_CANVAS = true;
+static bool DEBUG_CANVAS = false;
+// static bool DEBUG_CANVAS_REDRAW = true;
+static bool DEBUG_CANVAS_REDRAW = false;
 // static bool DEBUG_GAME_WINDOW = true;
 static bool DEBUG_GAME_WINDOW = false;
-//static bool DEBUG_CRUSH = true;
-static bool DEBUG_CRUSH = false;
+static bool DEBUG_CRUSH = true;
+//static bool DEBUG_CRUSH = false;
 
 //board
 static int BOARD_SIZE = 9;

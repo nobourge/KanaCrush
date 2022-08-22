@@ -27,6 +27,7 @@ void Board::newGame() {
 void Board::swap(int row1, int col1, int row2, int col2) {
   if (DEBUG_BOARD){
     std::cout << "Board::swap(" << row1 << ", " << col1 << ", " << row2 << ", " << col2 << ")" << std::endl;
+    print();
   }
   std::shared_ptr<Node> to_swap_node_1 = cell_linked_list_array[col1]->get_node(row1);
   std::shared_ptr<Node> to_swap_node_2 = cell_linked_list_array[col2]->get_node(row2);
@@ -121,7 +122,7 @@ void Board::print()
   std::cout<< std::endl;
     if (data_structure_ == "linked_list")
     {
-      if (DEBUG||DEBUG_CRUSH)
+      if (DEBUG)
       {
         std::cout << "Board::print() linked_list->print()" << std::endl;
         for (auto &linked_list : cell_linked_list_array) {
@@ -427,7 +428,9 @@ std::shared_ptr<Linked_list> Board::get_cells(int row) {
 
 //crushable_cells_ print
 void Board::crushable_cells_Print() {
-  if (DEBUG) {
+  if (DEBUG
+  ||DEBUG_BOARD
+  ||DEBUG_CRUSH) {
     std::cout << "Board::crushable_cells_Print()" << std::endl;
     std::cout << "crushable_cells_: " << std::endl;
   }
@@ -546,6 +549,7 @@ void Board::searchCrushableCells()
   for (int i = 0; i < cells_containers_container_size_; i++)
   {
     int column = 0;
+    adding_horizontal = false;
     if (DEBUG_CRUSH)
     {
       std::cout << "i row: " << i << std::endl;
@@ -683,6 +687,8 @@ void Board::searchCrushableCells()
   if (DEBUG_CRUSH)
   {
     std::cout << "Board::searchCrushableCells() DONE" << std::endl;
+    print();
+    std::cout << "cells to crush: " << std::endl;
     crushable_cells_Print();
   }
 }
