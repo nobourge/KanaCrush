@@ -1,7 +1,3 @@
-//
-// Created by bourg on 22-12-21.
-//
-
 #ifndef KANACRUSH_SRC_H
 #define KANACRUSH_SRC_H
 

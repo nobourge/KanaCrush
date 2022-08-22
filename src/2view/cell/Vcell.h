@@ -23,7 +23,6 @@ public:
 };
 
 class VCell {
-    //const shared_ptr<const Cell> cell;
     vector<int> l{1, 91, 3, 2, 4, 232}; // voir fltk color map
     int index = rand() % l.size();
     int color = l[index];

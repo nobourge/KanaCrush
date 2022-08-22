@@ -10,9 +10,8 @@ static int cell_potential_values[6] {Colors_codes[0], Colors_codes[1], Colors_co
 
 static const double refreshPerSecond = 60;
 
-//static const int windowWidth = 450;
-//static const int windowHeight = 450;
-static const int windowWidth = 900;
-static const int windowHeight = 900;
+static const int windowWidth = 450;
+static const int windowHeight = 450;
 
+//static const bool DEBUG = true;
 #endif //KANACRUSH__CONSTANTS_H_

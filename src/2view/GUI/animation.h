@@ -30,7 +30,6 @@ class Animation {
 
   int direction_{};
   char direction_text_{} ;
-//  Fl_Color color;
  public:
   virtual bool isComplete() =0;
   virtual void start(int direction, char directionText, Fl_Color newFillColor);

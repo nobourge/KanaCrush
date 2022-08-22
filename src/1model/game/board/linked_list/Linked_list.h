@@ -9,6 +9,7 @@ class Linked_list {
     std::shared_ptr<Node> tail_;
     int size_{};
 
+    //iterator_
     std::shared_ptr<Node> iterator_;
 
  public:

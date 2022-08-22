@@ -11,8 +11,6 @@
 class MenuWindow : public Fl_Window {
 
   Menu menu_ = Menu();
-//  Fl_Box *title;
-//buttons
   int buttons_quantity = 5;
   int button_width = windowWidth / 2;
     int button_height = windowHeight / buttons_quantity;

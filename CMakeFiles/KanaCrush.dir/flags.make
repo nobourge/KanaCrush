@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++2a
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/. -I/mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/src 
+CXX_INCLUDES = -I/mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/. -I/mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/src 
 

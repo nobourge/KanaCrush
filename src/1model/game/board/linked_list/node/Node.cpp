@@ -1,14 +1,18 @@
 #include "Node.h"
 
+//#include <utility>
 #include "constants.h"
 
 Node::Node()
+//Node::Node():private Cell()
 {
   if (DEBUG_NODE){
     std::cout <<
               "Node::Node()" <<
               std::endl;
   }
+
+//    cell_ = std::make_shared<Cell>();
 
     setRandom();
     next_ = nullptr;
@@ -17,6 +21,8 @@ Node::Node()
     std::cout << "next_ : " << next_ << std::endl;
     std::cout << "prev_ : " << prev_ << std::endl;
     std::cout << "value : " << getValue() << std::endl;
+//    std::cout << "value : " << cell_->getValue() << std::endl;
+//    std::cout << value_ << std::endl;
   }
 
 
@@ -65,3 +71,5 @@ std::shared_ptr<Cell> Node::get_cell() {
     return static_cast<const std::shared_ptr<Cell> &>(cell_);
 
 }
+
+//

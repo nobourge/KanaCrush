@@ -1,3 +1,3 @@
-/mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/CMakeFiles/rebuild_cache.dir
-/mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/CMakeFiles/KanaCrush.dir
+/mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/CMakeFiles/KanaCrush.dir

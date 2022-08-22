@@ -15,15 +15,11 @@ Canvas::Canvas(std::shared_ptr<Board> board) {
   board_ = std::move(board);
   board_->print();
   heads_orientation_ = board_->getCellsContainersHeadOrientation();
-//
-//  cells_containers_size_ = board_->get_cells_containers_size();
-//  cells_containers_container_size_ = board_->get_cells_containers_container_size();
 
   bounce_ = std::make_shared<Bounce>();
-//  update();
-  for (int i = 0; i < cells_containers_size_ ; i++) {
+  for (int i = 0; i < cells_containers_container_size_ ; i++) {
     std::shared_ptr<Node> temp_node = board_->get_cells(i)->get_head();
-    for (int j = 0; j < cells_containers_container_size_; j++) {
+    for (int j = 0; j < cells_containers_size_; j++) {
       cells_.at(i).at(j) = std::make_shared<ClickableCell>(Point{j * 50 - 25
                                                                  , i * 50 - 25}
                                                                  , 50
@@ -56,7 +52,6 @@ void Canvas::print(    const std::string& head_orientation
         for (int row = 0; row < cells_containers_container_size_; row++)
         {
         std::cout << cells_.at(row).at(j)->getFillColor() << " ";
-//        std::cout << cells_.at(i).at(j)->getFillColor() << " ";
       }
       std::cout<< std::endl;
     }
@@ -85,7 +80,6 @@ void Canvas::print(    const std::string& head_orientation
 void Canvas::draw(
 
     const std::string& head_orientation
-//                  ,std::string& mode
                   ) {
   if (DEBUG_CANVAS) {
     std::cout << "Canvas::draw()" << std::endl;
@@ -102,16 +96,11 @@ void Canvas::draw(
     }
   }
   else if (head_orientation == "down"){
-//    for (int i = 0; i < cells_containers_container_size_; i++) {
-      //x
-      //123
-      //456
       int x = 0;
         int y = 1;
       for (int col = cells_containers_container_size_ - 1; col >= 0; col--) {
         x=1;
         for (int row = 0; row < cells_containers_size_; row++) {
-          //y
           cells_[row][col]->drawAt((x++) * 50 - 25,
                                (y) * 50 - 25);
         }
@@ -210,73 +199,6 @@ void Canvas::mouseRelease(Point mouseLoc) {
                      , n_du_carre_1_x_
                      , cells_containers_size_-nDuCarre2Y-1
                      , nDuCarre2X);
-//    // put the coordinates together to be able to access them through cell_linked_list_array
-//    // int concCarre1 = concatenate(n_du_carre_1_x_+1, nDuCarre1Y+1);
-//    // int concCarre2 = concatenate(nDuCarre2X+1, nDuCarre2Y+1);
-//    // getting the colors
-//    // cellColor1 = cells_[concCarre1].getFillColor();
-//    cellColor1 = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getFillColor();
-//    // cellColor2 = cells_[concCarre2].getFillColor();
-//    cellColor2 = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getFillColor();
-//
-//    // doing the animation always inwards for all the directions possible
-//    // and changing the colors accordingly right after the animation is ended
-//    fl_push_matrix();
-//    int click_cell_x = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getX();
-//    int click_cell_y = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getY();
-//    int release_cell_x = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getX();
-//    int release_cell_y = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getY();
-//
-//    translateCell(click_cell_x, click_cell_y, release_cell_x, release_cell_y);
-//    cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->setFillColor(cellColor2);
-//    cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->setFillColor(cellColor1);
-
-    //game state : play (no potential possible crush)
-//todo player swipe
-// call translation function
-// translateCell(n_du_carre_1_x_, nDuCarre1Y, nDuCarre2X, nDuCarre2Y);
-// valid = getCrushables()
-// if valid
-// board_ matrix update
-// else
-// call translation function
-// translateCell(nDuCarre2X, nDuCarre2Y, n_du_carre_1_x_, nDuCarre1Y);
-//
-//    if (nDuCarre2Y > nDuCarre1Y) {
-//      auto crushables = getCrushables(cells_swapped,
-//                                      'S');
-//      if (crushables.size() > 0) {
-//
-//      fl_translate(click_cell_x, click_cell_y);
-//
-////
-////      for (auto &c: cells_)
-////        bounce_->bounce(c)
-////        c.bounce(mouse_click, 1, 'V', cellColor2);
-////      for (auto &c: cells_)
-////        c.bounce(mouse_release, -1, 'V', cellColor1);
-//    }
-
-//    else if (nDuCarre2Y < nDuCarre1Y) {
-//      bounce_->bounce(cells_[n_du_carre_1_x_][nDuCarre1Y],
-//      for (auto &c: cells_)
-//        c.bounce(mouse_release, 1, 'V', cellColor1);
-//      for (auto &c: cells_)
-//        c.bounce(mouse_click, -1, 'V', cellColor2);
-//    }
-//    else if (nDuCarre2X > n_du_carre_1_x_) {
-//      for (auto &c: cells_)
-//        c.bounce(mouse_click, 1, 'H', cellColor2);
-//      for (auto &c: cells_)
-//        c.bounce(mouse_release, -1, 'H', cellColor1);
-//    }
-//    else if (nDuCarre2X < n_du_carre_1_x_) {
-//      for (auto &c: cells_)
-//        c.bounce(mouse_release, 1, 'H', cellColor1);
-//      for (auto &c: cells_)
-//        c.bounce(mouse_click, -1, 'H', cellColor2);
-//    }
-//todo end
   }
 }
 
@@ -299,13 +221,10 @@ void Canvas::debug() {
 void Canvas::update() {
   if (DEBUG_CANVAS) {
       std::cout << "Canvas::update()" << std::endl;
-//      debug();
   }
   for (int i = 0; i < cells_containers_container_size_ ; i++) {
     std::shared_ptr<Node> temp_node = board_->get_cells(i)->get_head();
     for (int j = 0; j < cells_containers_size_ ; j++) {
-//      int temp_value = temp_node->getValue();
-//      int temp_type = temp_node->getType();
       cells_.at(i).at(j)->setFillColorFrom((temp_node->getValue()) - 1);
       temp_node = temp_node->get_next();
     }
@@ -354,20 +273,3 @@ std::vector<std::shared_ptr<ClickableCell>> Canvas::getCrushablesFromDirectionXY
   }
   return crushables;
 }
-
-//
-////get crushable cells from the swapped cells
-//std::vector<std::shared_ptr<ClickableCell>> Canvas::searchCrushableCells(int cell_swapped_1_x,
-//                                                                      char swap_direction) {
-//  std::vector<std::shared_ptr<ClickableCell>> crushable_cells_;
-//  switch (swap_direction) {
-//    case 'N':
-//        crushable_cells_ = getCrushables(cell_swapped_1_x, cell_swapped_1->getY(), cell_swapped_1->getFillColor(), 'N', crushable_cells_);
-//        crushable_cells_ = getCrushables(cell_swapped_2->getX(), cell_swapped_2->getY(), cell_swapped_2->getFillColor(), 'S', crushable_cells_);
-//        break;
-//
-//
-//
-//  }
-//  return crushable_cells_;
-//}

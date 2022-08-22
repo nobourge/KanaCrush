@@ -1,6 +1,8 @@
 #include "srcCommon.h"
 #include "GameWindow.h"
 
+
+
 void GameWindow::draw()  {
   if(DEBUG_GAME_WINDOW) {
     std::cout << "GameWindow::draw()" << std::endl;
@@ -8,8 +10,6 @@ void GameWindow::draw()  {
   Fl_Window::draw();
   canvas_.draw();
 }
-
-// this runs the game window
 void GameWindow::run(){
   if(DEBUG_GAME_WINDOW) {
     std::cout << "GameWindow::run()" << std::endl;

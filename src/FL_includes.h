@@ -1,7 +1,3 @@
-//
-// Created by noe on 25.07.22.
-//
-
 #ifndef KANACRUSH__FL_INCLUDES_H_
 #define KANACRUSH__FL_INCLUDES_H_
 

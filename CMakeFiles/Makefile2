@@ -44,10 +44,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main
+CMAKE_SOURCE_DIR = /mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main
+CMAKE_BINARY_DIR = /mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -74,14 +74,14 @@ clean: CMakeFiles/KanaCrush.dir/clean
 CMakeFiles/KanaCrush.dir/all:
 	$(MAKE) -f CMakeFiles/KanaCrush.dir/build.make CMakeFiles/KanaCrush.dir/depend
 	$(MAKE) -f CMakeFiles/KanaCrush.dir/build.make CMakeFiles/KanaCrush.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target KanaCrush"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target KanaCrush"
 .PHONY : CMakeFiles/KanaCrush.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/KanaCrush.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/CMakeFiles 20
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/KanaCrush.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Boss/Desktop/LdP2/KanaCrush-main/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Boss/Desktop/LdP2/FINAL/KanaCrush-main/CMakeFiles 0
 .PHONY : CMakeFiles/KanaCrush.dir/rule
 
 # Convenience name for target.

@@ -5,11 +5,6 @@ void WelcomeWindow::run() {
 
   Fl::run();
 
-//  Fl_Window::show();
-//  Fl::wait(3,hide());
-
-
-//  hide();
 }
 
 //close window

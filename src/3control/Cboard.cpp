@@ -16,8 +16,6 @@ int ControlBoard::processEvent(const int event) {
         case FL_RELEASE:
             cout << "ici release !" << endl;
             mouse_move = Point{Fl::event_x(),Fl::event_y()};
-            //board->swap(col1, row1, destination_column, destination_row);
-            //board->move(col1, row1, destination_column, destination_row);
             nDuCarre1X = trunc(mouse_click.x/50);
             nDuCarre1Y = trunc(mouse_click.y/50);
             nDuCarre2X = trunc(mouse_move.x/50);

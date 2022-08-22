@@ -10,12 +10,10 @@
 
 class GameWindow : public Fl_Window
     {
-    std::cout << "Enter the number of cells of the board !" << "\n";
-    int size;
-    std::cin << size << "\n";
-  Game game_ = Game(size);
+  Game game_ = Game();
   Canvas canvas_ = Canvas(game_.getBoard());
  public:
+
     GameWindow() :Fl_Window(
         3000,
         300,
@@ -23,6 +21,7 @@ class GameWindow : public Fl_Window
         windowHeight,
         "Game") {
         Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
+
     };
 
   void draw() override;

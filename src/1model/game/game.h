@@ -3,9 +3,9 @@
 
 #include "board/Mboard.h"
 
-class Game(size) {
-  std::shared_ptr<Board(size)> board_;
-//  std::shared_ptr<Board(size)> canvas_;
+class Game {
+  std::shared_ptr<Board> board_;
+  std::shared_ptr<Board> canvas_;
     std::string state_;
     int score_{};
     int nb_cells_crushed_{};

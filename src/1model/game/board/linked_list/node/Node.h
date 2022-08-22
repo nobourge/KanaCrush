@@ -4,6 +4,7 @@
 #include "src/parameters.h"
 #include "src/1model/game/board/cell/Mcell.h"
 
+//Cell heritage
 class Node : public Cell {
     std::shared_ptr<Cell> cell_;
     std::shared_ptr<Node> next_;
@@ -11,6 +12,7 @@ class Node : public Cell {
 
 
 public:
+//    explicit Node(Node *cell);
   Node();
     ~Node();
     void set_next(std::shared_ptr<Node> node);

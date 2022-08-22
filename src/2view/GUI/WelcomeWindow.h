@@ -18,11 +18,8 @@ class WelcomeWindow : public Fl_Window {
         , windowHeight / 10
         , "Kana Crush"
         );
-    //authors
     std::string author1 = "Bourgeois Noe";
     std::string author2 = "Morari Augustin";
-//    char *authors = new char[author1.length() + author2.length() + 1];
-//    strcpy(authors, author1.c_str());
 
     Fl_Box *authors_ = new Fl_Box(0, windowHeight / 10, windowWidth, windowHeight / 10,
                                   "Created by Morari Augustin and Bourgeois Noe"
@@ -30,14 +27,12 @@ class WelcomeWindow : public Fl_Window {
         );
 public:
     WelcomeWindow() :Fl_Window(3000, 300, windowWidth, windowHeight, "Kana Crush") {
-//        Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
 
         add(title_);
         add(authors_);
 //      set_resizable((Fl_Widget &) this);
 
     };
-//    ~WelcomeWindow();
     void run();
 
   static void close(void *w);

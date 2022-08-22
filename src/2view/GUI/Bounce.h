@@ -33,6 +33,8 @@ class Bounce: public Animation {
 
 /*--------------------------------------------------
 Translation Class
+
+ Taken from class TPs.
 --------------------------------------------------*/
 struct Translation {
     Translation(Point p, char directionText) {

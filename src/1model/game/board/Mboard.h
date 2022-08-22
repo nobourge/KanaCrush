@@ -9,25 +9,25 @@
 class Board {
   std::string data_structure_;
   //cell_linked_list_array containers size
-  int cells_containers_size_;
+  static const int cells_containers_size_ = 9;
   //containers container size
-  int cells_containers_container_size_;
+  static const int cells_containers_container_size_ = 9;
 
   //crush
-  std::vector<std::shared_ptr<Linked_list> > cell_linked_list_array;
-  std::vector<std::vector<std::array<int, 3>> > crushable_cells_;
+  std::array<std::shared_ptr<Linked_list>, cells_containers_size_> cell_linked_list_array;
+  std::array<std::vector<std::array<int, 3>>, cells_containers_container_size_> crushable_cells_;
   bool crushable_ = false;
 
   //random access search & comparison
-  std::vector<std::vector<std::shared_ptr<Cell> > > cell_array_array;
+  std::array<std::array<std::shared_ptr<Cell>, cells_containers_container_size_>, cells_containers_size_> cell_array_array;
   std::string cells_value_distribution_;
   std::string cells_containers_head_orientation_;
   std::string state_;
 
  public:
-  Board(int size);
-  int get_cells_containers_size() ;
-  int get_cells_containers_container_size() ;
+  Board();
+  static int get_cells_containers_size() ;
+    static int get_cells_containers_container_size() ;
   bool crushFrom(int x, int y);
   void cellsInitRandom();
     void cellsInitValueAscent();
@@ -49,8 +49,6 @@ class Board {
   void setCellsValueDistribution(const std::string& value_distribution="random");
   void setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation="down");
   std::basic_string<char> getCellsContainersHeadOrientation();
-  void setCellsContainersSize(int size);
-  void setCellsContainersContainerSize(int size);
 
   void replaceCellValue(int row
                         , int column);
@@ -69,7 +67,7 @@ class Board {
                                  , int origin
                                  );
   void searchCrushableCells();
-  std::vector<std::vector<std::array<int, 3>> > getCrushableCells();
+  std::array<std::vector<std::array<int, 3>>, 9> getCrushableCells();
   void emptyCrushableCellsVectors();
   bool isCrushable() const;
   bool crushWhilePossible();

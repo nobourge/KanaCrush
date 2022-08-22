@@ -13,9 +13,6 @@ int Sketchable::getWidth() const {
 int Sketchable::getHeight() const {
   return height_;
 }
-//Point getCenter() {
-//  return center_;
-//}
 void Sketchable::setFillColor(Fl_Color newFillColor) {
   fill_color_ = newFillColor;
 }
@@ -23,9 +20,6 @@ void Sketchable::setFillColor(Fl_Color newFillColor) {
 void Sketchable::setFillColorFrom(int colorIndex) {
   setFillColor(Colors_codes[colorIndex]);
 }
-//Fl_Color Rectangle::getFillColor() const {
-//    return fill_color_;
-//}
 
 void Sketchable::setFrameColor(Fl_Color newFrameColor) {
   frame_color_ = newFrameColor;

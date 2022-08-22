@@ -19,6 +19,10 @@ keyPressed whenever a key is pressed
 Any drawing code should be called ONLY in draw
 or methods called by draw. If you try to draw
 elsewhere it will probably crash.
+
+This class and a few others were taken from
+class TPs.
+ We adapted that code by our needs.
 --------------------------------------------------*/
 class Canvas {
   int width_{};
@@ -35,7 +39,6 @@ class Canvas {
       std::array<
           shared_ptr<ClickableCell>,cells_containers_size_
           > ,cells_containers_container_size_> cells_;
-//  std::vector< ClickableCell > cells_;
 
   std::string heads_orientation_;
   Point mouse_click{}, mouse_release{}, mouse_hover{};
@@ -48,8 +51,6 @@ class Canvas {
   void mouseClick(Point mouseLoc);
   void keyPressed(int keyCode);
   void mouseRelease(Point mouseLoc);
-//  void changeColors(int concCarre1, int concCarre2);
-//  std::vector<ClickableCell> getCells();
   void update();
   void print(const string &head_orientation="down");
   void draw(const string& head_orientation="down");
