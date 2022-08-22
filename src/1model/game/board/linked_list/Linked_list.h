@@ -1,7 +1,3 @@
-//
-// Created by noe on 02.08.22.
-//
-
 #ifndef KANACRUSH_SRC_1MODEL_BOARD_LINKED_LIST_H_
 #define KANACRUSH_SRC_1MODEL_BOARD_LINKED_LIST_H_
 
@@ -13,7 +9,6 @@ class Linked_list {
     std::shared_ptr<Node> tail_;
     int size_{};
 
-    //iterator_
     std::shared_ptr<Node> iterator_;
 
  public:
@@ -58,7 +53,6 @@ class Linked_list {
                  int direction=-1);
   [[nodiscard]] int get_size() const;
   void debug();
-//  void crush(std::vector<std::pair<int, int>> crush_vector);
   void crush(std::vector<std::array<int, 3>> crush_vector);
 };
 

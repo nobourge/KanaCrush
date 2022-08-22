@@ -1,6 +1,3 @@
-//
-// Created by bourg on 20-12-21.
-//
 #include "Mcell.h"
 #include <random>
 
@@ -35,17 +32,9 @@ Cell::Cell(int value, int type) {
 void Cell::setRandom() {
     std::random_device rd;
     std::mt19937 gen(rd());
-//    std::uniform_int_distribution<> dis(0, 5);
     std::uniform_int_distribution<> dis(1, 6);
     value_ = dis(gen);
-//    std::uniform_int_distribution<> disType(0, 5);
     std::uniform_int_distribution<> disType(1, 6);
     type_ = disType(gen);
 
 }
-//void Cell::set(std::string mode="random",
-//               int value,
-//               int type) {
-//    value_ = value;
-//    type_ = type;
-//}

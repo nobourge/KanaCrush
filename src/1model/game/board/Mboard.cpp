@@ -1,13 +1,11 @@
-//
-// Created by bourg on 28-12-21.
-//
-
 #include "Mboard.h"
 
-Board::Board() {
-  if (DEBUG_BOARD){
-    std::cout << "Board::Board()" << std::endl;
+Board::Board(int size) {
+  if (DEBUG_BOARD) {
+      std::cout << "Board::Board()" << std::endl;
   }
+    Board::setCellsContainersSize(size);
+    Board::setCellsContainersContainerSize(size);
   setDataStructure("linked_list");
   setCells();
   setCells("equal",1);
@@ -694,7 +692,8 @@ void Board::searchCrushableCells()
 }
 //get crushable_cells_
 // returns a vector of vectors of arrays of int
-std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells()
+//std::array<std::vector<std::array<int, 3>>, 9> Board::getCrushableCells()
+std::vector<std::vector<std::array<int, 3>> > Board::getCrushableCells()
 {
   return crushable_cells_;
 }
@@ -747,7 +746,7 @@ bool Board::crush() {
     }
     emptyCrushableCellsVectors();
   print();
-
+    return crushable_;
 }
 
 int Board::get_cells_containers_size() {
@@ -789,10 +788,19 @@ bool Board::crushWhilePossible() {
   if (DEBUG_CRUSH){
     std::cout << "Board::crushWhilePossible() DONE" << std::endl;
   }
+  return crushable_;
 }
 std::basic_string<char> Board::getCellsContainersHeadOrientation() {
   return cells_containers_head_orientation_;
 
+}
+
+void setCellsContainersSize(int size) {
+    int cells_containers_size_ = size;
+}
+
+void setCellsContainersContainerSize(int size) {
+    int cells_containers_container_size_ = size;
 }
 
 

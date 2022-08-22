@@ -14,7 +14,6 @@ class Bounce: public Animation {
     int direction = -1;
     char directionText;
     Fl_Color color;
-//    Point currentTranslation();
  public:
   Bounce();
   Point currentTranslation();

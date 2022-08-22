@@ -1,7 +1,3 @@
-//
-// Created by noe on 28.07.22.
-//
-
 #include "game.h"
 
 

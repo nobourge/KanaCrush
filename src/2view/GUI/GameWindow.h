@@ -10,10 +10,12 @@
 
 class GameWindow : public Fl_Window
     {
-  Game game_ = Game();
+    std::cout << "Enter the number of cells of the board !" << "\n";
+    int size;
+    std::cin << size << "\n";
+  Game game_ = Game(size);
   Canvas canvas_ = Canvas(game_.getBoard());
  public:
-
     GameWindow() :Fl_Window(
         3000,
         300,
@@ -21,25 +23,6 @@ class GameWindow : public Fl_Window
         windowHeight,
         "Game") {
         Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
-//        add(canvas_);
-//        set_resizable((Fl_Widget &) this);
-
-//      draw();
-//      canvas_.redraw();
-//      show();
-
-      if (DEBUG_GAME_WINDOW) {
-        std::cout << "SLEEP" << std::endl;
-      }
-      unsigned int microsecond = 1000000;
-//      usleep(3 * microsecond);//sleeps for 3 second
-
-
-//      return Fl::run();
-//      run();
-//      Fl::run();
-//      run();
-
     };
 
   void draw() override;

@@ -1,15 +1,9 @@
-//
-// Created by noe on 02.08.22.
-//
-
 #ifndef KANACRUSH_SRC_1MODEL_BOARD_NODE_H_
 #define KANACRUSH_SRC_1MODEL_BOARD_NODE_H_
 
 #include "src/parameters.h"
 #include "src/1model/game/board/cell/Mcell.h"
 
-//Cell heritage
-//class Node : protected Cell {
 class Node : public Cell {
     std::shared_ptr<Cell> cell_;
     std::shared_ptr<Node> next_;
@@ -17,7 +11,6 @@ class Node : public Cell {
 
 
 public:
-//    explicit Node(Node *cell);
   Node();
     ~Node();
     void set_next(std::shared_ptr<Node> node);

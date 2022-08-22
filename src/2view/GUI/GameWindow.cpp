@@ -1,11 +1,5 @@
-//
-// Created by bourg on 28-12-21.
-//
-
 #include "srcCommon.h"
 #include "GameWindow.h"
-
-
 
 void GameWindow::draw()  {
   if(DEBUG_GAME_WINDOW) {
@@ -14,21 +8,17 @@ void GameWindow::draw()  {
   Fl_Window::draw();
   canvas_.draw();
 }
+
+// this runs the game window
 void GameWindow::run(){
   if(DEBUG_GAME_WINDOW) {
     std::cout << "GameWindow::run()" << std::endl;
   }
     Fl::add_timeout(1.0 / refreshPerSecond, Timer_CB, this);
   show();
-  if (DEBUG_GAME_WINDOW) {
-    std::cout << "SLEEP" << std::endl;
-  }
-  unsigned int microsecond = 1000000;
-//  usleep(3 * microsecond);//sleeps for 3 second
 
   game_.getBoard()->crushWhilePossible();
 
-  game_.getBoard()->swap(0,0,0,1);
   std::cout << " no more cells to crush" << std::endl;
 };
 

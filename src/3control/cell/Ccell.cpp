@@ -1,7 +1,3 @@
-//
-// Created by bourg on 20-12-21.
-//
-
 #include "Ccell.h"
 
 CRectangle::CRectangle(const shared_ptr<const Rectangle> model_rectangle): model_rectangle{model_rectangle} {}):

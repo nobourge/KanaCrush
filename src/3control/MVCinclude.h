@@ -1,7 +1,3 @@
-//
-// Created by noe on 05.08.22.
-//
-
 #ifndef KANACRUSH_SRC_3CONTROL_MVCINCLUDE_H_
 #define KANACRUSH_SRC_3CONTROL_MVCINCLUDE_H_
 

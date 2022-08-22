@@ -6,8 +6,8 @@
 
 class Board {
 public:
-    static const int rows = 9;
-    static const int columns = 9;
+//    static const int rows = 9;
+//    static const int columns = 9;
     //static const int toWin = 3;
     static const int toCrush = 3;
     enum squareType {Empty, Red, Black};

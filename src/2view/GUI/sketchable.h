@@ -22,13 +22,8 @@ protected:
                  Fl_Color fillColor);
 
     virtual void draw() = 0;
-//  bool contains(Point p) const =0;
-//  virtual bool contains(Point p) const =0;
-//  Point getCenter() const;
-//  [[nodiscard]] virtual Fl_Color PointgetColor(Point mouseLoc) const =0;
   [[nodiscard]] Fl_Color getFillColor() const;
   void setFillColor(Fl_Color newFillColor);
-//  virtual void setFillColor(Fl_Color newFillColor) =0;
   virtual ~Sketchable() = default;;
   [[nodiscard]] Fl_Color getFrameColor() const;
   void setFrameColor(Fl_Color newFrameColor);

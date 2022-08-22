@@ -1,7 +1,3 @@
-//
-// Created by noe on 02.08.22.
-//
-
 #include "Linked_list.h"
 
 Linked_list::Linked_list(const std::string& mode, int value) {
@@ -25,7 +21,6 @@ void Linked_list::init(int size) {
 
   }
   if (DEBUG_LINKED_LIST) {
-//      std::cout << "node value: " << node->getValue() << std::endl;
     debug();
   }
 }
@@ -47,19 +42,16 @@ void Linked_list::add( const std::shared_ptr<Node>& node) {
       tail_->set_next(node);
       tail_ = tail_->get_next();
       if (DEBUG_LINKED_LIST) {
-
-//        std::cout << "head next: " << get_head()->get_next()->getValue() << std::endl;
         std::cout << "tail previous: " << get_tail()->get_prev()->getValue() << std::endl;
-
       }
     }
     if (DEBUG_LINKED_LIST){
       std::cout << "head: " << get_head()->getValue() << std::endl;
       std::cout << "tail: " << get_tail()->getValue() << std::endl;
     }
-
     size_++;
 }
+
 void Linked_list::remove(std::shared_ptr<Node> node) {
     std::cout << "Linked_list::remove(Cell *cell)" << std::endl;
     if (head_ == nullptr) {
@@ -395,7 +387,6 @@ void Linked_list::crush(std::vector<std::array<int, 3>> crush_vector) {
         std::cout
             << "index : "          << crush_vector[i][0] << " "
             << "nodes_quantity : " << crush_vector[i][1] << " "
-//            << crush_vector[i][2]
             ;
         std::cout << std::endl;
       }

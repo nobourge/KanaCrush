@@ -21,9 +21,9 @@ Canvas::Canvas(std::shared_ptr<Board> board) {
 
   bounce_ = std::make_shared<Bounce>();
 //  update();
-  for (int i = 0; i < cells_containers_container_size_ ; i++) {
+  for (int i = 0; i < cells_containers_size_ ; i++) {
     std::shared_ptr<Node> temp_node = board_->get_cells(i)->get_head();
-    for (int j = 0; j < cells_containers_size_; j++) {
+    for (int j = 0; j < cells_containers_container_size_; j++) {
       cells_.at(i).at(j) = std::make_shared<ClickableCell>(Point{j * 50 - 25
                                                                  , i * 50 - 25}
                                                                  , 50

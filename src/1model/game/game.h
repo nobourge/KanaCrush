@@ -1,15 +1,11 @@
-//
-// Created by noe on 28.07.22.
-//
-
 #ifndef KANACRUSH_SRC_1MODEL_GAME_GAME_H_
 #define KANACRUSH_SRC_1MODEL_GAME_GAME_H_
 
 #include "board/Mboard.h"
 
-class Game {
-  std::shared_ptr<Board> board_;
-  std::shared_ptr<Board> canvas_;
+class Game(size) {
+  std::shared_ptr<Board(size)> board_;
+//  std::shared_ptr<Board(size)> canvas_;
     std::string state_;
     int score_{};
     int nb_cells_crushed_{};

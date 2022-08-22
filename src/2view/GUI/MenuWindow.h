@@ -9,7 +9,6 @@
 #include "1model/Menu.h"
 
 class MenuWindow : public Fl_Window {
-//class MenuWindow : public GUIWindow {
 
   Menu menu_ = Menu();
 //  Fl_Box *title;

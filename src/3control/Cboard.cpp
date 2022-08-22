@@ -1,7 +1,3 @@
-//
-// Created by bourg on 28-12-21.
-//
-
 #include "Cboard.h"
 
 ControlBoard::ControllBoard(shared_ptr<Board> board): board{board} {};
@@ -35,8 +31,6 @@ int ControlBoard::processEvent(const int event) {
                 canvas.mouseClick(mouse_click, cellColor2);
                 canvas.mouseClick(mouse_move, cellColor1);
                 cout << "----------" << endl;
-                // canvas.checkIfThree();
-                // cout << "----------" << endl;
             }
             return 1;
 

@@ -19,7 +19,6 @@ class WelcomeWindow : public Fl_Window {
         , "Kana Crush"
         );
     //authors
-//    std::char author1 = "Bourgeois Noe";
     std::string author1 = "Bourgeois Noe";
     std::string author2 = "Morari Augustin";
 //    char *authors = new char[author1.length() + author2.length() + 1];
