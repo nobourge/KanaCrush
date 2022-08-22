@@ -52,6 +52,7 @@ class Board {
 //  void cellsValueSetRandom();
   void setCellsValueDistribution(const std::string& value_distribution="random");
   void setCellsContainersHeadOrientation(const std::string& cells_containers_head_orientation="down");
+  std::basic_string<char> getCellsContainersHeadOrientation();
 
   void replaceCellValue(int row
                         , int column);
@@ -73,7 +74,9 @@ class Board {
   std::array<std::vector<std::array<int, 3>>, 9> getCrushableCells();
   void emptyCrushableCellsVectors();
   bool isCrushable() const;
-  void crushWhilePossible();
+  bool crushWhilePossible();
+//  void crushWhilePossible();
+
 };
 
 #endif //KANACRUSH_MBOARD_H

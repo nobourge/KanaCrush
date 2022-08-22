@@ -6,17 +6,131 @@
 #include <utility>
 #include "srcCommon.h"
 
+Canvas::Canvas(std::shared_ptr<Board> board) {
+  if (DEBUG) {
+    std::cout << "Canvas::Canvas(std::shared_ptr<Board> board)" << std::endl;
 
-void Canvas::draw() {
-  for (int i = 0; i < cells_containers_container_size_; i++) {
+  }
+
+  board_ = std::move(board);
+  board_->print();
+  heads_orientation_ = board_->getCellsContainersHeadOrientation();
+//
+//  cells_containers_size_ = board_->get_cells_containers_size();
+//  cells_containers_container_size_ = board_->get_cells_containers_container_size();
+
+  bounce_ = std::make_shared<Bounce>();
+//  update();
+  for (int i = 0; i < cells_containers_container_size_ ; i++) {
+    std::shared_ptr<Node> temp_node = board_->get_cells(i)->get_head();
     for (int j = 0; j < cells_containers_size_; j++) {
-      cells_[i][j]->draw();
+      cells_.at(i).at(j) = std::make_shared<ClickableCell>(Point{j * 50 - 25
+                                                                 , i * 50 - 25}
+                                                                 , 50
+                                                                 , 50
+                                                                 , FL_BLACK
+                                                                 ,(Fl_Color) Colors_codes[(temp_node->getValue())-1]);
+      temp_node = temp_node->get_next();
     }
   }
-//  for (auto &c: cells_) {
-//    c.draw();
-//  }
+  if (DEBUG_CANVAS) {
+    debug();
+  }
+}
+//terminal print
+void Canvas::print(    const std::string& head_orientation
+) {
+  if (DEBUG_CANVAS) {
+    std::cout << "Canvas::print() - " << head_orientation << std::endl;
+  }
+  for (int i = 0; i < cells_containers_container_size_ ; i++) {
+    std::cout << "-";
+  }
+  std::cout<< std::endl;
 
+  if (head_orientation == "down")
+  {
+
+      for (int j = cells_containers_size_ - 1; j >= 0; j--)
+      {
+        for (int row = 0; row < cells_containers_container_size_; row++)
+        {
+        std::cout << cells_.at(row).at(j)->getFillColor() << " ";
+//        std::cout << cells_.at(i).at(j)->getFillColor() << " ";
+      }
+      std::cout<< std::endl;
+    }
+  }
+  else if (head_orientation == "left")
+    for (int i = cells_containers_container_size_ - 1; i >= 0; i--) {
+      for (int j = 0; j < cells_containers_size_; j++) {
+        std::cout << cells_.at(i).at(j)->getFillColor() << " ";
+      }
+      std::cout<< std::endl;
+    }
+
+  else if (head_orientation == "right")
+    for (int i = 0; i < cells_containers_container_size_; i++) {
+      for (int j = 0; j < cells_containers_size_; j++) {
+        std::cout << cells_.at(i).at(j)->getFillColor() << " ";
+      }
+      std::cout<< std::endl;
+
+    }
+  for (int i = 0; i < cells_containers_container_size_ ; i++) {
+    std::cout << "-";
+  }
+  std::cout<< std::endl;
+}
+void Canvas::draw(
+
+    const std::string& head_orientation
+//                  ,std::string& mode
+                  ) {
+  if (DEBUG_CANVAS) {
+    std::cout << "Canvas::draw()" << std::endl;
+  }
+
+  if (head_orientation == "up")
+  {
+    for (int i = 0; i < cells_containers_container_size_; i++)
+    {
+      for (int j = cells_containers_size_ - 1; j >= 0; j--)
+      {
+        cells_[i][j]->draw();
+      }
+    }
+  }
+  else if (head_orientation == "down"){
+//    for (int i = 0; i < cells_containers_container_size_; i++) {
+      //x
+      //123
+      //456
+      int x = 0;
+        int y = 1;
+      for (int col = cells_containers_container_size_ - 1; col >= 0; col--) {
+        x=1;
+        for (int row = 0; row < cells_containers_size_; row++) {
+          //y
+          cells_[row][col]->drawAt((x++) * 50 - 25,
+                               (y) * 50 - 25);
+        }
+        y++;
+    }
+  }
+  else if (head_orientation == "left")
+
+    for (int i = 0; i < cells_containers_container_size_; i++) {
+      for (int j = 0; j < cells_containers_size_; j++) {
+        cells_[i][j]->drawAt((i + 1) * 50 - 25, (j + 1) * 50 - 25);
+      }
+    }
+  else if (head_orientation == "right")
+    for (int i = 0; i < cells_containers_container_size_; i++) {
+      for (int j = 0; j < cells_containers_size_; j++) {
+        cells_[i][j]->draw();
+      }
+    }
 }
 void Canvas::redraw() {
 
@@ -61,12 +175,16 @@ void Canvas::translateCell(int x, int y, int dx, int dy) {
 
 void Canvas::mouseRelease(Point mouseLoc) {
 
+    if (DEBUG_CANVAS) {
+        std::cout << "Canvas::mouseRelease()" << std::endl;
+    }
   mouse_release = Point{Fl::event_x(),Fl::event_y()};
 
-  n_du_carre_1_x_ = trunc(mouse_click.x/50);
-  nDuCarre1Y = trunc(mouse_click.y/50);
-  nDuCarre2X = trunc(mouse_release.x/50);
-  nDuCarre2Y = trunc(mouse_release.y/50);
+      n_du_carre_1_x_ = trunc(mouse_click.x / 50);
+      nDuCarre1Y = trunc(mouse_click.y / 50);
+      nDuCarre2X = trunc(mouse_release.x / 50);
+      nDuCarre2Y = trunc(mouse_release.y / 50);
+
   // testing if the second rectangle is adjacent to the first one
   AdjacentX = (abs(n_du_carre_1_x_-nDuCarre2X) == 0 && abs(nDuCarre1Y-nDuCarre2Y) == 1);
   AdjacentY = (abs(n_du_carre_1_x_-nDuCarre2X) == 1 && abs(nDuCarre1Y-nDuCarre2Y) == 0);
@@ -75,26 +193,43 @@ void Canvas::mouseRelease(Point mouseLoc) {
     std::vector<shared_ptr<ClickableCell>> cells_swapped;
     cells_swapped.push_back(cells_[n_du_carre_1_x_][nDuCarre1Y]);
     cells_swapped.push_back(cells_[nDuCarre2X][nDuCarre2Y]);
-    // put the coordinates together to be able to access them through cell_linked_list_array
-    // int concCarre1 = concatenate(n_du_carre_1_x_+1, nDuCarre1Y+1);
-    // int concCarre2 = concatenate(nDuCarre2X+1, nDuCarre2Y+1);
-    // getting the colors
-    // cellColor1 = cells_[concCarre1].getFillColor();
-    cellColor1 = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getFillColor();
-    // cellColor2 = cells_[concCarre2].getFillColor();
-    cellColor2 = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getFillColor();
 
-    // doing the animation always inwards for all the directions possible
-    // and changing the colors accordingly right after the animation is ended
-    fl_push_matrix();
-    int click_cell_x = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getX();
-    int click_cell_y = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getY();
-    int release_cell_x = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getX();
-    int release_cell_y = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getY();
+    if (heads_orientation_ == "down") {
 
-    translateCell(click_cell_x, click_cell_y, release_cell_x, release_cell_y);
-    cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->setFillColor(cellColor2);
-    cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->setFillColor(cellColor1);
+      board_->swap(cells_containers_size_-nDuCarre1Y-1
+                   , n_du_carre_1_x_
+                   , cells_containers_size_-nDuCarre2Y-1
+                   , nDuCarre2X);
+    }
+    update();
+    board_->searchCrushableCells();
+    if (board_->isCrushable())
+        board_->crushWhilePossible();
+    else
+        board_->swap(cells_containers_size_-nDuCarre1Y-1
+                     , n_du_carre_1_x_
+                     , cells_containers_size_-nDuCarre2Y-1
+                     , nDuCarre2X);
+//    // put the coordinates together to be able to access them through cell_linked_list_array
+//    // int concCarre1 = concatenate(n_du_carre_1_x_+1, nDuCarre1Y+1);
+//    // int concCarre2 = concatenate(nDuCarre2X+1, nDuCarre2Y+1);
+//    // getting the colors
+//    // cellColor1 = cells_[concCarre1].getFillColor();
+//    cellColor1 = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getFillColor();
+//    // cellColor2 = cells_[concCarre2].getFillColor();
+//    cellColor2 = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getFillColor();
+//
+//    // doing the animation always inwards for all the directions possible
+//    // and changing the colors accordingly right after the animation is ended
+//    fl_push_matrix();
+//    int click_cell_x = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getX();
+//    int click_cell_y = cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->getCenter().getY();
+//    int release_cell_x = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getX();
+//    int release_cell_y = cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->getCenter().getY();
+//
+//    translateCell(click_cell_x, click_cell_y, release_cell_x, release_cell_y);
+//    cells_.at(n_du_carre_1_x_+1).at(nDuCarre1Y+1)->setFillColor(cellColor2);
+//    cells_.at(nDuCarre2X+1).at(nDuCarre2Y+1)->setFillColor(cellColor1);
 
     //game state : play (no potential possible crush)
 //todo player swipe
@@ -153,37 +288,7 @@ void Canvas::keyPressed(int keyCode) {
       exit(0);
   }
 }
-Canvas::Canvas(std::shared_ptr<Board> board) {
-  if (DEBUG) {
-    std::cout << "Canvas::Canvas(std::shared_ptr<Board> board)" << std::endl;
 
-  }
-
-  board_ = std::move(board);
-  board_->print();
-//
-//  cells_containers_size_ = board_->get_cells_containers_size();
-//  cells_containers_container_size_ = board_->get_cells_containers_container_size();
-
-  bounce_ = std::make_shared<Bounce>();
-//  update();
-  for (int i = 0; i < cells_containers_container_size_ ; i++) {
-    std::shared_ptr<Node> temp_node = board_->get_cells(i)->get_head();
-
-    for (int j = 0; j < cells_containers_size_; j++) {
-//      int temp_value = temp_node->getValue();
-//      int temp_type = temp_node->getType();
-
-      cells_.at(i).at(j) = std::make_shared<ClickableCell>(Point{i * 50 - 25, j * 50 - 25}, 50, 50, FL_BLACK,
-                                                           (Fl_Color) Colors_codes[(temp_node->getValue())-1]);
-
-      temp_node = temp_node->get_next();
-    }
-  }
-  if (DEBUG_CANVAS) {
-    debug();
-  }
-}
 void Canvas::debug() {
     std::cout << "Canvas::debug()" << std::endl;
   std::cout << "canvas.cells_.size() : " << cells_.size() << std::endl;
@@ -210,26 +315,6 @@ void Canvas::update() {
   }
 }
 
-//terminal print
-void Canvas::print() {
-    if (DEBUG_CANVAS) {
-        std::cout << "Canvas::print()" << std::endl;
-    }
-  for (int i = 0; i < cells_containers_container_size_ ; i++) {
-    std::cout << "-";
-  }
-  std::cout<< std::endl;
-  for (int i = 0; i < cells_containers_container_size_ ; i++) {
-    for (int j = 0; j < cells_containers_size_ ; j++) {
-      std::cout << cells_.at(i).at(j)->getFillColor() << " ";
-    }
-    std::cout << std::endl;
-  }
-  for (int i = 0; i < cells_containers_container_size_ ; i++) {
-    std::cout << "-";
-  }
-  std::cout<< std::endl;
-}
 
 
 //

@@ -21,6 +21,8 @@ or methods called by draw. If you try to draw
 elsewhere it will probably crash.
 --------------------------------------------------*/
 class Canvas {
+  int width_{};
+    int height_{};
   std::shared_ptr<Board> board_;
   std::shared_ptr<Bounce> bounce_;
   //todo
@@ -35,6 +37,7 @@ class Canvas {
           > ,cells_containers_container_size_> cells_;
 //  std::vector< ClickableCell > cells_;
 
+  std::string heads_orientation_;
   Point mouse_click{}, mouse_release{}, mouse_hover{};
   Fl_Color cellColor1{}, cellColor2{};
   int n_du_carre_1_x_{},nDuCarre1Y{}, nDuCarre2X{}, nDuCarre2Y{};
@@ -42,14 +45,14 @@ class Canvas {
   bool AdjacentX{}, AdjacentY{};
  public:
   explicit Canvas(std::shared_ptr<Board> board);
-  void draw();
   void mouseClick(Point mouseLoc);
   void keyPressed(int keyCode);
   void mouseRelease(Point mouseLoc);
 //  void changeColors(int concCarre1, int concCarre2);
 //  std::vector<ClickableCell> getCells();
   void update();
-  void print();
+  void print(const string &head_orientation="down");
+  void draw(const string& head_orientation="down");
   void redraw();
   void debug();
   vector<shared_ptr<ClickableCell>> getCrushablesFromDirectionXY(int current_x,

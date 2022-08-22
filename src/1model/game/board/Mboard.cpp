@@ -762,12 +762,15 @@ bool Board::isCrushable() const {
 }
 
 //crush while possible
-void Board::crushWhilePossible() {
+bool Board::crushWhilePossible() {
   if (DEBUG_CRUSH){
     std::cout << "Board::crushWhilePossible()" << std::endl;
   }
   searchCrushableCells();
 
+    if (!crushable_) {
+        return false;
+    }
   while (crushable_) {
     crush();
     searchCrushableCells();
@@ -780,6 +783,10 @@ void Board::crushWhilePossible() {
   if (DEBUG_CRUSH){
     std::cout << "Board::crushWhilePossible() DONE" << std::endl;
   }
+}
+std::basic_string<char> Board::getCellsContainersHeadOrientation() {
+  return cells_containers_head_orientation_;
+
 }
 
 
